@@ -1,0 +1,84 @@
+﻿
+#pragma kernel CopyPosition
+#pragma kernel CopyRotation
+#pragma kernel NoiseScale
+
+
+struct Vert{
+
+  float3 pos;
+  float3 vel;
+  float3 nor;
+  float3 tang;
+  float2 uv;
+  float used;
+  float3 triIDs;
+  float3 triWeights;
+  float3 debug;
+
+};
+
+RWStructuredBuffer<Vert> _BaseBuffer;
+RWStructuredBuffer<float4x4> _SkeletonBuffer;
+
+int _BaseBuffer_COUNT;
+int _SkeletonBuffer_COUNT;
+
+float _Time;
+
+#include "../Chunks/safeID.cginc"
+
+#include "../Chunks/translationMatrix.cginc"
+#include "../Chunks/rotationMatrix.cginc"
+#include "../Chunks/scaleMatrix.cginc"
+#include "../Chunks/noise.cginc"
+
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void CopyPosition(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+  int pID = threadID + u3GroupID.x * NR_THREADS;
+
+  float4x4 t = translationMatrix(_BaseBuffer[safeID(pID,_BaseBuffer_COUNT)].pos);
+  _SkeletonBuffer[safeID(pID,_SkeletonBuffer_COUNT)] = t;
+
+}
+
+
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void CopyRotation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+  int pID = threadID + u3GroupID.x * NR_THREADS;
+
+  float3 tang = _BaseBuffer[safeID(pID,_BaseBuffer_COUNT)].tang;
+  float3 up  = normalize(_BaseBuffer[safeID(pID,_BaseBuffer_COUNT)].nor);
+
+   _SkeletonBuffer[safeID(pID,_SkeletonBuffer_COUNT)] = rotationMatrix(up,tang );
+
+}
+
+
+
+
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void NoiseScale(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+  int pID = threadID + u3GroupID.x * NR_THREADS;
+
+  float3 pos = _BaseBuffer[safeID(pID,_BaseBuffer_COUNT)].debug;
+
+  int id = safeID(pID,_SkeletonBuffer_COUNT);
+  float s = noise( pos * 100 + float3(0,_Time,0) ) * .4;
+  //float4x4 t = rotationMatrix( up ,tang );// * translationMatrix(_BaseBuffer[safeID(pID,_BaseBuffer_COUNT)].pos);
+  //float4x4 t =  mul( rotationMatrix(up,float3(0,1,0)) , translationMatrix(_BaseBuffer[safeID(pID,_BaseBuffer_COUNT)].pos));
+  float4x4 t =scaleMatrix(s);//  mul( translationMatrix(_BaseBuffer[safeID(pID,_BaseBuffer_COUNT)].pos) , rotationMatrix(float3(1,0,0),0 ));
+  _SkeletonBuffer[id] = mul( translationMatrix(_BaseBuffer[safeID(pID,_BaseBuffer_COUNT)].pos) , mul(t,_SkeletonBuffer[id]));
+
+}
+
+

@@ -1,0 +1,43 @@
+﻿
+#pragma kernel Transfer
+
+struct Vert{
+    float3 pos;
+    float3 nor;
+    float3 tangent;
+    float2 uv;
+    float debug;
+};
+
+
+
+RWStructuredBuffer<Vert> _VertBuffer;
+RWStructuredBuffer<Vert> _OGBuffer;
+RWStructuredBuffer<float4x4> _SkeletonBuffer;
+
+int _VertBuffer_COUNT;
+int _SkeletonBuffer_COUNT;
+int _OGBuffer_COUNT;
+
+#include "../Chunks/safeID.cginc"
+#include "../Chunks/translationMatrix.cginc"
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+  int pID = threadID + u3GroupID.x * NR_THREADS;
+
+  int meshID = pID / _OGBuffer_COUNT;
+  int idInMesh = pID % _OGBuffer_COUNT;
+
+  float4x4 t = _SkeletonBuffer[safeID(meshID,_SkeletonBuffer_COUNT)];
+  Vert og = _OGBuffer[safeID(idInMesh,_OGBuffer_COUNT)];
+
+  _VertBuffer[safeID(pID,_VertBuffer_COUNT)].pos = mul(t,float4(og.pos,1)).xyz;
+  _VertBuffer[safeID(pID,_VertBuffer_COUNT)].nor = normalize(mul(t,float4(og.nor,0)).xyz);
+  _VertBuffer[safeID(pID,_VertBuffer_COUNT)].tangent = normalize(mul(t,float4(og.tangent,0)).xyz);
+  
+  _VertBuffer[safeID(pID,_VertBuffer_COUNT)].uv = og.uv;
+
+}

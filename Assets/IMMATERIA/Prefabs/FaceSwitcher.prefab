@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1002589463061222}
+  m_IsPrefabAsset: 1
+--- !u!1 &1002589463061222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4422961079008110}
+  - component: {fileID: 114381394278239568}
+  m_Layer: 0
+  m_Name: FaceSwitcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4422961079008110
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002589463061222}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.19260466, y: 0.049075395, z: -0.17872682}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114381394278239568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002589463061222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3babb81e5a2c345a3545b8eeecf78d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  created: 0
+  begunGestation: 0
+  gestating: 0
+  gestated: 0
+  begunBirth: 0
+  birthed: 0
+  birthing: 0
+  begunLive: 0
+  living: 0
+  lived: 0
+  begunDeath: 0
+  dying: 0
+  died: 0
+  destroyed: 0
+  debug: 0
+  children: []
+  lenses: []
+  materials:
+  - {fileID: 2100000, guid: 061f516cb5d3743a391c916f9292640e, type: 2}
+  - {fileID: 2100000, guid: f6e2e91f044664674a59c78383b6159b, type: 2}
+  - {fileID: 2100000, guid: 0eafc0c8e166e4cd2b0f64b71fda0c45, type: 2}
+  - {fileID: 2100000, guid: ce4125ba226ab418eaeb18c5eeec2e01, type: 2}
+  - {fileID: 2100000, guid: 4a1ee3d1ad7314aa8a3abe2bb61331ee, type: 2}
+  - {fileID: 2100000, guid: c78be428e40f04795b2bd2ec22019620, type: 2}
+  - {fileID: 2100000, guid: 968bee3c9986a4cdca95aed414ada27d, type: 2}
+  - {fileID: 2100000, guid: 238bd22e47efb4a8aa42fa9627233653, type: 2}
+  - {fileID: 2100000, guid: df2ad797e3e4e4bb9a14ae7d635678c4, type: 2}
+  backgrounds:
+  - {fileID: 2100000, guid: f1d9352050a75486f878ab19fa578f16, type: 2}
+  - {fileID: 2100000, guid: fae40221e0a794da59518a90a8216282, type: 2}
+  - {fileID: 2100000, guid: 4a1983635904648d2bd5e22af1a2a31b, type: 2}
+  - {fileID: 2100000, guid: f5888a723a95a4695b9978f33cddef4f, type: 2}
+  - {fileID: 2100000, guid: 249859e0e176a40d8a5682cbe4bb470a, type: 2}
+  face: {fileID: 0}
+  bg: {fileID: 0}
+  faceMesh: {fileID: 0}
+  allOn: 0
+  activeFace: 0
+  activeFaceMat: 0
+  activeBG: 0

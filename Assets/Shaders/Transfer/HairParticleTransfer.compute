@@ -1,0 +1,61 @@
+﻿
+#pragma kernel Transfer
+
+struct Vert{
+    float3 pos;
+    float3 vel;
+    float3 nor;
+    float3 tangent;
+    float2 uv;
+    float2 debug;
+};
+
+RWStructuredBuffer<Vert> _VertBuffer;
+RWStructuredBuffer<Vert> _HairBuffer;
+
+
+int _VertBuffer_COUNT;
+int _HairBuffer_COUNT;
+#include "../Chunks/safeID.cginc"
+
+
+float3 _CameraUp;
+float3 _CameraLeft;
+float _Size;
+
+int _NumVertsPerHair;
+
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+    int pID = threadID + u3GroupID.x * NR_THREADS;
+
+    int particleID = pID / 4;
+
+
+    particleID = safeID(particleID,_HairBuffer_COUNT);
+    Vert p = _HairBuffer[particleID];
+
+    int idInParticle = pID % 4;
+    int row = idInParticle / 2;
+    int col = pID % 2;
+
+    float3 nor = p.nor;//normalize(p.pos - pD.pos);
+
+    float3 l = normalize(cross(nor,float3(0,1,0)));
+    float3 u = normalize(cross(nor,l));
+
+    l *= (float(col)-.5);
+    u *= (float(row)-.5);
+
+    float3 fPos = p.pos + (l + u) * (1-p.uv.x)*  _Size;
+
+    float2 fUV = float2( float(row) , float(col) );
+
+    pID = safeID(pID,_VertBuffer_COUNT);
+    _VertBuffer[pID].pos = fPos;
+    _VertBuffer[pID].uv = fUV;
+
+}
