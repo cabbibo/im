@@ -133,5 +133,13 @@ public class TerrainEngine : LifeForm {
   }
 
 
+  public void BindData(Life life){
+
+    life.BindAttribute("_HeightMap", "heightMap" , this );
+    life.BindAttribute("_MapSize"  , "size" , this );
+    life.BindAttribute("_MapHeight", "height" , this );
+
+  }
+
 
 }

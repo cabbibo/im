@@ -6,7 +6,7 @@
 struct Vert{
     float3 pos;
     float3 nor;
-    float3 tangent;
+    float3 tang;
     float2 uv;
     float debug;
 };
@@ -21,8 +21,6 @@ float4x4 _Transform;
 float4x4 _oTransform;
 float3 _DeltaPos;
 
-float _MapSize;
-float _MapHeight;
 
 float3 _PaintPosition;
 float3 _PaintDirection;
@@ -34,6 +32,8 @@ float _NormalOrHeight;
 
 Texture2D<float4> _HeightMap;
 SamplerState sampler_HeightMap;
+float _MapSize;
+float _MapHeight;
 
 
     float3 worldPos( float3 pos ){
@@ -42,6 +42,19 @@ SamplerState sampler_HeightMap;
         return pos;
     }
 
+
+
+    float3 getNormal( float3 pos ){
+
+      float delta = 1;
+      float3 dU = worldPos( pos + float3(delta,0,0) );
+      float3 dD = worldPos( pos + float3(-delta,0,0) );
+      float3 dL = worldPos( pos + float3(0,0,delta) );
+      float3 dR = worldPos( pos + float3(0,0,-delta) );
+
+      return -normalize(cross(dU.xyz-dD.xyz , dL.xyz-dR.xyz));
+
+    }
 
 #include "../Chunks/noise.cginc"
 
@@ -63,8 +76,10 @@ void Paint(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
       newVal = lerp( newVal , float3(0,0,0) , l );
 
 
-      v.nor +=  newVal;//float3( noise( v.pos ) , 0 , noise( v.pos * 10 ) );
-      v.nor = normalize( v.nor );
+      v.tang +=  newVal;//float3( noise( v.pos ) , 0 , noise( v.pos * 10 ) );
+      v.tang = normalize( v.tang );
+
+
 
     //  v.pos = worldPos( v.pos );
     }else if( _NormalOrHeight == 1 ){
@@ -80,6 +95,8 @@ void Paint(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
       if( v.pos.y < 0 ){ v.pos.y = 0; }
 
     }
+
+    v.nor = getNormal( v.pos );
     _VectorBuffer[sID] = v;
 
 }

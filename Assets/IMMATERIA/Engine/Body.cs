@@ -17,7 +17,7 @@ public class Body : MeshLifeForm {
   private bool oActive;
 
   public override void _Create(){
-    print("starting");
+    
     if( verts == null ){ verts = GetComponent<MeshVerts>(); }
     if( triangles == null ){ triangles = GetComponent<MeshTris>(); }
     Cycles.Insert(0,verts);

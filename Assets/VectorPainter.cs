@@ -11,6 +11,7 @@ public class VectorPainter : LifeForm {
   public PaintVectorIndexForm indices;
   public Life life;
   public Trace trace;
+  public Body body;
   public TouchToRay touch;
   public TerrainEngine engine;
 
@@ -24,9 +25,8 @@ public class VectorPainter : LifeForm {
 	// Use this for initialization
 	public override void Create(){
 
-    Cycles.Insert(0,vectors);
-    Cycles.Insert(1,indices);
-    Cycles.Insert(2,life);
+    Cycles.Insert(0,body);
+    Cycles.Insert(1,life);
   }
 
   public override void Bind(){
@@ -38,11 +38,7 @@ public class VectorPainter : LifeForm {
     life.BindAttribute("_PaintOpacity", "paintOpacity" , this);
     life.BindAttribute("_NormalOrHeight", "normalOrHeight" , this);
 
-
-    life.BindAttribute("_HeightMap", "heightMap" , engine);
-    life.BindAttribute("_MapSize"  , "size" , engine);
-    life.BindAttribute("_MapHeight", "height" , engine);
-
+    engine.BindData(life);
   }
 
   public override void WhileLiving( float v){
@@ -81,8 +77,8 @@ public class VectorPainter : LifeForm {
       float h = values[ i * vectors.structSize + 1 ] / engine.height;
       
       // extracting normals
-      float x = values[ i * vectors.structSize + 3 ] * .5f + .5f;
-      float z = values[ i * vectors.structSize + 5 ] * .5f + .5f;
+      float x = values[ i * vectors.structSize + 6 ] * .5f + .5f;
+      float z = values[ i * vectors.structSize + 8 ] * .5f + .5f;
 
 
       colors[i] = new Color( h,x,z,1);

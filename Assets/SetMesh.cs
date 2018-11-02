@@ -18,8 +18,6 @@ public class SetMesh : LifeForm{
 
 	// Use this for initialization
 	public override void Create () {
-	   
-      print(position);
 
       verts = GetComponent<MeshVerts>();
       tris  = GetComponent<MeshTris>();

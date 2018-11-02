@@ -18,8 +18,7 @@ public class PaintVectors : Form {
 
   public override void SetStructSize(){ structSize = 12; }
   public override void SetCount(){
-    print("hmmm");
-    print(engine.heightMap.width);
+
     width = engine.heightMap.width;
 
     count = engine.heightMap.width * engine.heightMap.width;
@@ -42,13 +41,13 @@ public class PaintVectors : Form {
       values[ index ++ ] = c.r * engine.height;
       values[ index ++ ] = ((float)y/(float)engine.heightMap.width) / engine.size;
 
+      values[ index ++ ] = 0;
+      values[ index ++ ] = 0;
+      values[ index ++ ] = 0;
+
       values[ index ++ ] = c.g * 2 -1;
       values[ index ++ ] = 0;
       values[ index ++ ] = c.b* 2 -1;
-
-      values[ index ++ ] = 0;
-      values[ index ++ ] = 0;
-      values[ index ++ ] = 0;
 
       values[ index ++ ] = x;
       values[ index ++ ] = y;

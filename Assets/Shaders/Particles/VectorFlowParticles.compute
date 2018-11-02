@@ -1,0 +1,93 @@
+﻿#pragma kernel Flow
+
+
+struct Vert{
+  float3 pos;
+  float3 vel;
+  float3 nor;
+  float3 ogPos;
+  float2 uv;
+  float2 debug;
+};
+
+
+struct Vector{
+
+  float3 pos;
+  float3 nor;
+  float3 tang;
+  float2 uv;
+  float debug;
+
+};
+
+
+float4x4 _Transform;
+
+RWStructuredBuffer<Vert> _VertBuffer;
+RWStructuredBuffer<Vector> _VectorBuffer;
+
+Texture2D<float4> _HeightMap;
+SamplerState sampler_HeightMap;
+float _MapSize;
+float _MapHeight;
+
+float3 worldPos( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    pos.y =  c.x * _MapHeight + 1;
+    return pos;
+}
+
+
+float3 directionVector( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    return 2*float3(c.g,0,c.b)-1;
+}
+
+
+
+int _VertBuffer_COUNT;
+int _SkeletonBuffer_COUNT;
+
+#include "../Chunks/safeID.cginc"
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+  int pID = threadID + u3GroupID.x * NR_THREADS;
+
+  pID = safeID(pID,_VertBuffer_COUNT);
+  Vert vert = _VertBuffer[pID];
+
+  
+
+  if( vert.debug.x < 0 ){
+    float3 pos = float3(vert.uv.x/_MapSize,0, vert.uv.y/_MapSize );
+    vert.pos = worldPos(pos);
+    vert.debug.x += 1;
+    vert.vel = float3(0,0,0);
+  }else{
+
+    float3 vec = directionVector( vert.pos );
+
+    vert.vel += vec * .004;
+
+    vert.debug.x -= .01;
+
+    vert.pos += vert.vel;
+
+    vert.vel *= .9;
+
+    vert.pos = worldPos(vert.pos);
+
+  }
+
+
+
+
+
+  
+  _VertBuffer[pID] = vert;
+//}
+}
