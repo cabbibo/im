@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Page : MonoBehaviour {
+public class Page : Cycle {
 
-  public RotateXY controls;
-  public float speed;
-  public Transform camera;
-  public Transform subject;
+  public float gestateSpeed = 1;
+  public float birthSpeed = 1;
+  public float deathSpeed = 1;
+
   public Transform subjectTarget;
   public MeshRenderer textMesh;
   public Frame frame;
-
-  public Vector3 offset;
-  public bool trackSubject;
-  public bool active;
 
   public float animationState;
   public Book book;
@@ -24,68 +20,63 @@ public class Page : MonoBehaviour {
   private float startTime;
   private float endTime;
   // Use this for initialization
-  void Awake () {
-    Deactivate();
-
-    frame.borderLine.enabled = false;
-    
-  }
   
-  // Update is called once per frame
-  void Update () {
-    
-    if( active ){
-      camera.position = Vector3.Lerp( camera.position , transform.position , Time.deltaTime * speed );
-      camera.rotation = Quaternion.Lerp( camera.rotation , transform.rotation , Time.deltaTime * speed );
-      subject.position = Vector3.Lerp( subject.position , subjectTarget.position , Time.deltaTime * speed );
-      book.animationState = Mathf.Lerp( book.animationState , animationState , Time.deltaTime * speed );
-      Activating( (Time.time - startTime) / speed );
-    }else{
-      Deactivating( (Time.time - endTime) / speed );
-    }
 
-
-    if( trackSubject ){
-      transform.position = subject.position + offset;   
-    }
+  public override void _Create(){
+  
+    textMesh.enabled = false;
+    frame.borderLine.enabled = false;
+    frame.borderLine.material.SetFloat("_Cutoff" , .65f);
+    DoCreate();
+  
   }
 
-  public void Activate(){
-    active = true;
+
+  public override void _OnGestate(){
+    frame.borderLine.enabled = true;
+    DoGestate();
+  }
+
+  public override void _WhileGestating(float v){
+    print(v);
+    print("gestating");
+    frame.borderLine.material.SetFloat("_Cutoff" , .65f - v *.2f);
+    DoGestating(v);
+  }
+
+  public override  void _OnBirth(){
+    print("_BRITHS");
     collider.enabled = false;
     textMesh.enabled = true;
     startTime = Time.time;
+    DoBirth();
   }
 
-  void Activating( float v ){
-
-    if( v < 1 ){
-      frame.borderLine.material.SetFloat("_Cutoff" , .55f - v *.3f);
-    }
+  public override void _WhileBirthing( float v ){
+    frame.borderLine.material.SetFloat("_Cutoff" , .55f - v *.3f);
+    DoBirthing(v);
+    print("BIRthign");
+    print(v);
   }
 
 
-  void Deactivating( float v ){
-    if( v < 1 ){
-      frame.borderLine.material.SetFloat("_Cutoff" , .3f + v *.2f);
-    }
-  }
-
-  void Finalize(){
-
-  }
-
-  public void Deactivate(){
-
-    active = false;
+  public override  void _OnDie(){
     textMesh.enabled = false;
     endTime = Time.time;
+    DoDie();
   }
 
-  public void Prepare(){
-    frame.borderLine.enabled = true;
-
+  public override void _WhileDying( float v ){
+    if( v < 1 ){ frame.borderLine.material.SetFloat("_Cutoff" , .3f + v *.2f); }
+    DoDying(v);
   }
+
+
+  public override void _Destroy(){
+    frame.borderLine.enabled = false;
+    DoDestroy();
+  }
+
 
   
 }

@@ -27,6 +27,7 @@ public class Cycle : MonoBehaviour{
 
   public bool debug = false;
   public bool active = false;
+  public bool stifle = false;
 
   public List<Cycle> Cycles;
 
@@ -74,9 +75,11 @@ public class Cycle : MonoBehaviour{
     _Bind();
 
     OnGestate();
+
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._OnGestate();
-    }
+    }}
 
     gestating = true;
 
@@ -90,9 +93,10 @@ public class Cycle : MonoBehaviour{
 
   protected void DoGestating(float v){
     WhileGestating(v);
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._WhileGestating(v);
-    }
+    }}
   }
   
 
@@ -106,9 +110,10 @@ public class Cycle : MonoBehaviour{
     if( debug ){ DebugThis("DoGestated"); }
     gestating = false;
     OnGestated();
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._OnGestated();
-    }
+    }}
     gestated = true;
 
   }
@@ -130,9 +135,10 @@ public class Cycle : MonoBehaviour{
     if( debug ){ DebugThis("DoBirth"); }
     begunBirth = true;
     OnBirth();
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._OnBirth();
-    }
+    }}
     birthing = true;
   }
 
@@ -143,9 +149,11 @@ public class Cycle : MonoBehaviour{
 
   protected void DoBirthing(float v){
     WhileBirthing(v); 
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._WhileBirthing(v);
-    }
+    }}
+
   }
   
 
@@ -156,9 +164,10 @@ public class Cycle : MonoBehaviour{
     if( birthed ){ DebugThis("On Birthed Multiple Times"); }
     birthing = false;
     OnBirthed();
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._OnBirthed();
-    }
+    }}
     birthed = true;
   }
 
@@ -176,9 +185,10 @@ public class Cycle : MonoBehaviour{
     if( living ){ DebugThis("BegunLive Multiple Times"); }
     begunLive = true;
     OnLive();
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._OnLive();
-    }
+    }}
     living = true;
   }
   
@@ -187,9 +197,10 @@ public class Cycle : MonoBehaviour{
 
   protected void DoLiving(float v){
     WhileLiving(v);
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._WhileLiving(v);
-    }
+    }}
   }
   
   public virtual void _OnLived(){ DoLived(); }
@@ -199,9 +210,10 @@ public class Cycle : MonoBehaviour{
     if( lived ){ DebugThis("on lived Multiple Times"); }
     living = false;
     OnLived();
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._OnLived();
-    }
+    }}
     lived = true;
   }
 
@@ -221,9 +233,10 @@ public class Cycle : MonoBehaviour{
     if( begunDeath ){ DebugThis("On Die Multiple Times"); }
     begunDeath = true;
     OnDie();
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._OnDie();
-    }
+    }}
     dying = true;
   }
   
@@ -233,9 +246,10 @@ public class Cycle : MonoBehaviour{
   protected void DoDying(float v){
 
     WhileDying(v);    
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._WhileDying(v);
-    }
+    }}
   }
   
   public virtual void _OnDied(){ DoDied(); }
@@ -245,9 +259,10 @@ public class Cycle : MonoBehaviour{
     if( died ){ DebugThis("On Died Multiple Times"); }
     dying = false;
     OnDied();
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._OnDied();
-    }
+    }}
     died = true;
   }
 
@@ -262,9 +277,10 @@ public class Cycle : MonoBehaviour{
 
   protected void DoDestroy(){
     SetStates();
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._Destroy();
-    }
+    }}
     Destroy();
   }
 
@@ -278,25 +294,27 @@ public class Cycle : MonoBehaviour{
 
 public virtual void _Activate(){
   Activate();
+  if( stifle == false ){
   foreach( Cycle c in Cycles ){
     c._Activate();
-  }
+  }}
   active = true;
 }
 public virtual void Activate(){}
 
 public virtual void _Deactivate(){
   Deactivate();
-   foreach( Cycle c in Cycles ){
+  if( stifle == false ){
+  foreach( Cycle c in Cycles ){
     c._Deactivate();
-  }
+  }}
   active = false;
 }
 public virtual void Deactivate(){}
 
 
 void SetStates(){
-      created = false;
+    created = false;
     begunGestation = false;
     gestating = false;
     gestated = false;
@@ -323,9 +341,10 @@ void SetStates(){
     
     if( debug ){ WhileDebug(); }
 
+    if( stifle == false ){
     foreach( Cycle c in Cycles ){
       c._WhileDebug();
-    }
+    }}
     
   }
 

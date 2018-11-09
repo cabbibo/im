@@ -35,12 +35,7 @@ public class Ursula : MonoBehaviour {
     bubbleRenderer.material.SetFloat("_Fade" , 3 );
   }
 
-  void OnMouseDown(){
 
-    if( bubbleActive ){
-      book.Release();
-    }
-  }
 
   public void ActivateBubble(){
     bubbleRenderer.enabled = true;
