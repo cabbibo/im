@@ -181,6 +181,7 @@ Shader "Custom/CloudCutoff" {
 
 
         float hit = 0;
+        int anyHit = 0;
 
         for( int i = 0; i < _NumberSteps; i++ ){
 
@@ -194,13 +195,14 @@ Shader "Custom/CloudCutoff" {
           
 
         	if( val > _Cutoff ){
-        		hit = stepVal;
+        		hit = stepVal;anyHit = 1;
         		//hit = float(i);
         		break;
         	}
 
         }
 
+if( anyHit == 0 ){ discard; }
         col = hsv( hit * _HueSize + _BaseHue, 1,1);
 
         float3 bw = float3( hit,hit,hit);

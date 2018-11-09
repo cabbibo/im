@@ -15,6 +15,11 @@ public class Vector3Event : UnityEvent<Vector3>{}
 [System.Serializable]
 public class FloatEvent : UnityEvent<float>{}
 
+
+
+[System.Serializable]
+public class RayEvent : UnityEvent<Ray>{}
+
 public class TouchToRay : MonoBehaviour {
 
   public bool sceneView;
@@ -27,6 +32,7 @@ public class TouchToRay : MonoBehaviour {
   public UnityEvent OnSwipeUp;
   public UnityEvent OnSwipeDown;
   public UnityEvent OnTap;
+  public RayEvent   RayTap;
   
 
   public Vector3 RayOrigin;
@@ -181,6 +187,7 @@ public class TouchToRay : MonoBehaviour {
      } 
     }else{
       OnTap.Invoke();
+      RayTap.Invoke( new Ray(RayOrigin,-RayDirection));
     }
 
 
