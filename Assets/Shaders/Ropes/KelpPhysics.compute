@@ -20,8 +20,8 @@ float _HairLength;
 float _UpForce;
 float _HairVariance;
 
-float3 _HandL;
-float3 _HandR;
+
+float3 _WandPos;
 
 
 Texture2D<float4> _HeightMap;
@@ -34,6 +34,12 @@ float3 worldPos( float3 pos ){
     pos.y =  c.x * _MapHeight + 1;
     return pos;
 }
+
+float grassHeight( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    return c.a;
+}
+
 
 
 float3 directionVector( float3 pos ){
@@ -182,7 +188,14 @@ void Collision (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uin
 
    force += vec*(1+snoise(vert.pos* .3+float3(0,_Time,0)));
 
+
+
+      pForce = _Player.xz-vert.pos.xz;
       float lerpSpeed = saturate((_PushRadius - length(pForce))/_PushRadius);
+      force -= lerp(0,_PushForce  , lerpSpeed) *normalize(float3(pForce.x , 0 , pForce.y ));
+      
+      pForce = _WandPos.xz-vert.pos.xz;
+      lerpSpeed = saturate((_PushRadius - length(pForce))/_PushRadius);
       force -= lerp(0,_PushForce  , lerpSpeed) *normalize(float3(pForce.x , 0 , pForce.y ));
 
     //force += .2*normalize((_HandL-vert.pos))/pow(length(_HandL-vert.pos),4);
@@ -250,7 +263,8 @@ void Collision (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uin
       vert.pos = next;
 
     }
-vert.debug.x = getLength(bID);
+
+    vert.debug.x = grassHeight(bP) * getLength(bID);
     _VertBuffer[pID] = vert;
  
 
@@ -301,7 +315,7 @@ float3 s = length(mul( transform , float4(1,1,1,0)).xyz)/3;
 
       float dropoffVal = saturate((_FalloffRadius - dToPlayer)/_FalloffRadius);
 
-      float fLength =  (v1.debug.x/float(_NumVertsPerHair)) * dropoffVal;
+      float fLength = (v1.debug.x/float(_NumVertsPerHair)) * dropoffVal;
 
       // We want to make sure that l isn't zero, 
       // or we will get some NaNs

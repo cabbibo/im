@@ -2,6 +2,7 @@
 	Properties {
 
     _Color ("Color", Color) = (1,1,1,1)
+    _VecOrGrass("vecorGrass",float) = 0
     [Toggle(Enable12Struct)] _Struct12("12 Struct", Float) = 0
     [Toggle(Enable16Struct)] _Struct16("16 Struct", Float) = 0
     [Toggle(Enable24Struct)] _Struct24("24 Struct", Float) = 0
@@ -34,6 +35,7 @@
 
 		  uniform int _Count;
       uniform float3 _Color;
+      uniform float _VecOrGrass;
 
 
       StructuredBuffer<Vert> _VertBuffer;
@@ -44,7 +46,7 @@
       //A simple input struct for our pixel shader step containing a position.
       struct varyings {
           float4 pos      : SV_POSITION;
-          float debug     : TEXCOORD0;
+          float3 debug     : TEXCOORD0;
           float3 nor     : TEXCOORD1;
       };
 
@@ -68,8 +70,17 @@
     		if( alternate == 0 ){
     			pos = v1.pos;
     		}else{
-    			pos = v1.pos  + v1.nor * 3;
-    		}
+          float3 dir = v1.tan * 3 + 3*v1.nor;
+          o.debug = v1.tan * .5 + .5;
+          if( _VecOrGrass > .5 ){
+            dir =  float3(0,1,0) * 4 * v1.debug.x;
+          o.debug = v1.debug.x;
+          }
+    			pos = v1.pos  + dir ;
+    		  
+
+
+        }
 	       o.nor = normalize(v1.nor) * .5 + .5; 
 	        o.pos = mul (UNITY_MATRIX_VP, float4(pos,1.0f));
 
@@ -83,7 +94,7 @@
       //Pixel function returns a solid color for each point.
       float4 frag (varyings v) : COLOR {
 
-          return float4( v.nor , 1 );
+          return float4( v.debug , 1 );
 
       }
 

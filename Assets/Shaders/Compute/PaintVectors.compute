@@ -68,6 +68,7 @@ void Paint(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     Vert v = _VectorBuffer[sID];
 
 
+    // paint direction
     if(_NormalOrHeight == 0){
 
       float3 newVal = float3(_PaintDirection.x , 0 , _PaintDirection.z) * _PaintOpacity;
@@ -82,18 +83,34 @@ void Paint(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
 
     //  v.pos = worldPos( v.pos );
+
+        // RaiseHeight
     }else if( _NormalOrHeight == 1 ){
   
       float l = saturate( length(v.pos - _PaintPosition ) / _PaintSize );
       v.pos.y += lerp( _PaintOpacity , 0 , l );
 
       if( v.pos.y > _MapHeight ){ v.pos.y = _MapHeight; }
-    }else{
+    
+// LowerHeight
+    }else if( _NormalOrHeight == 2 ){
       
       float l = saturate( length(v.pos - _PaintPosition ) / _PaintSize );
       v.pos.y -= lerp( _PaintOpacity , 0 , l );
       if( v.pos.y < 0 ){ v.pos.y = 0; }
 
+// Raise Grass
+    }else if( _NormalOrHeight == 3 ){
+
+      float l = saturate( length(v.pos - _PaintPosition ) / _PaintSize );
+      v.debug += .04*lerp( _PaintOpacity , 0 , l );
+      v.debug = saturate(v.debug);
+// lower Grass
+    }else{
+
+      float l = saturate( length(v.pos - _PaintPosition ) / _PaintSize );
+      v.debug -= .04*lerp( _PaintOpacity , 0 , l );
+      v.debug = saturate(v.debug);
     }
 
     v.nor = getNormal( v.pos );

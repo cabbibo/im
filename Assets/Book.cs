@@ -23,7 +23,7 @@ public class Book : LifeForm {
   private float birthTime;
   private float deathTime;
 
-
+  public Vector3 currentTargetPosition;
   private Vector3 tmpPos;
   private Quaternion tmpRot;
 
@@ -166,7 +166,7 @@ public override void _WhileLiving(float x){
 
       Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 2.2f; 
 
-      dif =new Vector3( dif.x,0 , dif.z);
+      //dif = new Vector3( dif.x,0 , dif.z);
       if( dif.magnitude > 1 ){ ursula.velocity += dif; }
       cp._WhileLiving(v);
     }
@@ -182,6 +182,8 @@ public override void _WhileLiving(float x){
       }
 
     }
+
+    currentTargetPosition = cp.subjectTarget.position;
 
 
 

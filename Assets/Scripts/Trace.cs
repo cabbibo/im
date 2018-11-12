@@ -7,6 +7,7 @@ public class Trace : MonoBehaviour {
   public TerrainEngine engine;
   public TouchToRay touch;
   public Transform marker;
+  public Vector3 targetPos;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,9 @@ public class Trace : MonoBehaviour {
 	void Update () {
 	  Vector3 p = engine.Trace(touch.RayOrigin,-touch.RayDirection);	
     marker.position = p;
+    targetPos = p;
+    
+    Shader.SetGlobalVector("_WandPosition", p);
 	}
   
 }

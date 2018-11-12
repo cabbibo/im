@@ -56,6 +56,7 @@ public class VectorPainter : LifeForm {
     }else{
       if( touch.JustUp == 1 ){ 
       
+        print("hi");
         Save(); 
       }
       life.active = false;
@@ -76,12 +77,14 @@ public class VectorPainter : LifeForm {
       // extracting height
       float h = values[ i * vectors.structSize + 1 ] / engine.height;
       
-      // extracting normals
+      // extracting flow vectors
       float x = values[ i * vectors.structSize + 6 ] * .5f + .5f;
       float z = values[ i * vectors.structSize + 8 ] * .5f + .5f;
 
 
-      colors[i] = new Color( h,x,z,1);
+      float a = values[ i * vectors.structSize + 11 ];
+
+      colors[i] = new Color( h,x,z,a);
 
 
 
@@ -96,7 +99,21 @@ public class VectorPainter : LifeForm {
 
 
 public void TogglePaint(){
-  normalOrHeight = (normalOrHeight+1)%3;
+  normalOrHeight = (normalOrHeight+1)%5;
+
+  string s = "height";
+  if( normalOrHeight == 0 ){
+    s = "paint vectors";
+  }else if(normalOrHeight == 1 ){
+    s = "raise terrain";
+  }else if(normalOrHeight == 2 ){
+    s = "lower terrain";
+  }else if(normalOrHeight == 3 ){
+    s = "raise grass";
+  }else if(normalOrHeight == 4 ){
+    s = "lower grass";
+  }
+  GameObject.FindWithTag("togglePainting").GetComponent<Text>().text = s;
 }
 
 public void SetBrushSize(Slider s){

@@ -7,6 +7,7 @@ public class HairNoise : Cycle {
   public List<Life> ToBind;
 
   public TerrainEngine engine;
+  public Trace trace;
   public float noiseSize;
   public float falloffRadius;
   public float noiseSpeed;
@@ -23,7 +24,7 @@ public class HairNoise : Cycle {
   public override void Bind () {
 
     foreach( Life l in ToBind ){
-      print(l);
+//      print(l);
       l.BindAttribute( "_NoiseSpeed" , "noiseSpeed" , this );
       l.BindAttribute( "_NoiseForce" , "noiseForce" , this );
       l.BindAttribute( "_NoiseSize" , "noiseSize" , this );
@@ -34,6 +35,7 @@ public class HairNoise : Cycle {
       l.BindAttribute("_FalloffRadius", "falloffRadius" , this );
       l.BindAttribute("_PushForce", "pushForce" , this );
       l.BindAttribute("_PushRadius", "pushRadius" , this );
+      l.BindAttribute("_WandPos", "targetPos" , trace );
       engine.BindData(l);
     }
   }

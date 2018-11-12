@@ -91,8 +91,9 @@ public class Body : MeshLifeForm {
   public virtual void BodyCreate(){}
 
   public override void Destroy(){
-    if( self == false ){ DestroyImmediate(go); }else{
-
+    if( self == false ){ 
+      DestroyImmediate(go); 
+    }else{
       DestroyImmediate( filter );
       DestroyImmediate( render );
     }

@@ -74,14 +74,14 @@
 
       float4 frag(varyings v) : COLOR {
 
-        float4 color = tex2D(_MainTex,v.uv);
+        float4 color = tex2D(_MainTex,v.uv );
     
         fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos -v.nor ) * .9 + .1 ;
 float dif = length( v.worldPos - _Player );
-        color.xyz = .4*pow(length(color.xyz),4) * hsv( v.uv.x * .1 + sin( v.debug.x) * .01 + sin(dif) * .2 + sin(_Time.y) * .1 , .7,saturate(10/dif));
 
-        
-        if( color.a < .1 ){ discard; }
+float l = saturate( (20-dif)/20);
+        color.xyz = .4*pow(length(color.xyz),4);
+        color.xyz *= l * hsv(color.x * -.3+l * 1.2 - .1,.5, 1);
         return float4( color.xyz * shadow, 1.);
       }
 

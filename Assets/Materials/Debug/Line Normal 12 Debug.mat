@@ -75,6 +75,7 @@ Material:
     - _Struct36: 0
     - _Struct9: 0
     - _UVSec: 0
+    - _VecOrGrass: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.06132078, g: 0.7465768, b: 1, a: 1}

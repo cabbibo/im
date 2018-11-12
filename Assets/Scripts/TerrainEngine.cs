@@ -28,14 +28,26 @@ public class TerrainEngine : LifeForm {
 
       if( planes[i] ){
         DestroyImmediate(planes[i].gameObject);
-        Cycles.RemoveAt(1);
+        Cycles.RemoveAt(2);
       }
     }
 
-hairController.ToBind.Clear();
+
+    // removes our hair noise
+    Cycles.RemoveAt(2);
+
+    hairController.ToBind.Clear();
   }
 
   public override void Create(){
+
+
+    Shader.SetGlobalTexture("_HeightMap", heightMap);
+    Shader.SetGlobalFloat("_TerrainSize", size);
+    Shader.SetGlobalFloat("_TerrainHeight", height);
+    Shader.SetGlobalFloat("_MapSize", size);
+    Shader.SetGlobalFloat("_MapHeight", height);
+
     planeLifes = new SetMesh[numTiles * numTiles];
     planes     = new Transform[numTiles * numTiles];
 
@@ -72,8 +84,12 @@ hairController.ToBind.Clear();
 
     plane1.sharedMesh.bounds = new Bounds (Vector3.zero,Vector3.one * 100000);
 
+
+   Shader.SetGlobalTexture("_HeightMap", heightMap);
     Shader.SetGlobalFloat("_TerrainSize", size);
     Shader.SetGlobalFloat("_TerrainHeight", height);
+    Shader.SetGlobalFloat("_MapSize", size);
+    Shader.SetGlobalFloat("_MapHeight", height);
 
 
     Vector3 oPos;

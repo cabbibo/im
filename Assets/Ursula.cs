@@ -85,6 +85,7 @@ public class Ursula : MonoBehaviour {
     
   // print( c.r );
    Shader.SetGlobalVector("_Player", transform.position );
+   Shader.SetGlobalVector("_Velocity", velocity );
   }
 
   private void FixedUpdate() {

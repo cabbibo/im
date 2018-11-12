@@ -52,8 +52,8 @@ public class PaintVectors : Form {
       values[ index ++ ] = x;
       values[ index ++ ] = y;
 
-
-      values[ index ++ ] = (float)i/(float)count;
+      values[ index ++ ] = c.a;
+    
     }
 
     SetData( values );

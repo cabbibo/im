@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEditor;
 
 
@@ -62,6 +63,7 @@ public class TouchToRay : MonoBehaviour {
     oP = p;
     oDown = Down;
 
+        p  =  GetPos();
       if (GetDown()){
         Down = 1;
         p  =  GetPos();
@@ -147,6 +149,8 @@ public class TouchToRay : MonoBehaviour {
   bool GetDown(){
     bool p;  
     #if UNITY_EDITOR  
+
+
       if( sceneView == true ){
         p = Input.GetMouseButton (0);
       }else{
@@ -156,7 +160,7 @@ public class TouchToRay : MonoBehaviour {
         p  =  (Input.touchCount > 0);
     #endif 
 
-    return p;
+    return ( p  );
   
   }
 
@@ -195,6 +199,16 @@ public class TouchToRay : MonoBehaviour {
    //print( difP );
    //print( ratio );
   }
+
+
+   private bool IsPointerOverUIObject() {
+     PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+     eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+     List<RaycastResult> results = new List<RaycastResult>();
+     EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+     
+     return results.Count > 0;
+ }
 
 
 }
