@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 114981808775769636}
   - component: {fileID: 114039364226357570}
   - component: {fileID: 114305740910608886}
+  - component: {fileID: 114143663492562240}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -253,6 +254,84 @@ MonoBehaviour:
   rotateSizeY: 0
   angle: 0
   radius: 10
+--- !u!114 &114143663492562240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840274349654544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e09e3e710d1964b80967b3cfcf406c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneView: 0
+  OnSwipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Vector2Event, NewAssembly, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnSwipeHorizontal:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: FloatEvent, NewAssembly, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnSwipeLeft:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSwipeRight:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSwipeVertical:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: FloatEvent, NewAssembly, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnSwipeUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSwipeDown:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  RayTap:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: CheckRay
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: RayEvent, NewAssembly, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  RayOrigin: {x: 0, y: 0, z: 0}
+  RayDirection: {x: 0, y: 0, z: 0}
+  Down: 0
+  oDown: 0
+  JustDown: 0
+  JustUp: 0
+  startPos: {x: 0, y: 0}
+  endPos: {x: 0, y: 0}
+  startTime: 0
+  endTime: 0
+  p: {x: 0, y: 0}
+  oP: {x: 0, y: 0}
+  vel: {x: 0, y: 0}
+  touchID: 0
 --- !u!114 &114275187439844726
 MonoBehaviour:
   m_ObjectHideFlags: 1

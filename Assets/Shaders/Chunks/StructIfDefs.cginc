@@ -32,7 +32,7 @@
       float3 pos;
       float3 vel;
       float3 nor;
-      float3 tang;
+      float3 tan;
       float2 uv;
       float used;
       float3 triIDs;
@@ -45,7 +45,7 @@
       float3 pos;
       float3 vel;
       float3 nor;
-      float3 tang;
+      float3 tan;
       float2 uv;
     
       float used;

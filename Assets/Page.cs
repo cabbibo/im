@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Page : Cycle {
 
@@ -22,6 +23,9 @@ public class Page : Cycle {
   // Use this for initialization
   
 
+
+  public UnityEvent OnDieEvent;
+
   public override void _Create(){
   
     textMesh.enabled = false;
@@ -38,14 +42,11 @@ public class Page : Cycle {
   }
 
   public override void _WhileGestating(float v){
-    print(v);
-    print("gestating");
     frame.borderLine.material.SetFloat("_Cutoff" , .65f - v *.2f);
     DoGestating(v);
   }
 
   public override  void _OnBirth(){
-    print("_BRITHS");
     collider.enabled = false;
     textMesh.enabled = true;
     startTime = Time.time;
@@ -55,14 +56,13 @@ public class Page : Cycle {
   public override void _WhileBirthing( float v ){
     frame.borderLine.material.SetFloat("_Cutoff" , .55f - v *.3f);
     DoBirthing(v);
-    print("BIRthign");
-    print(v);
   }
 
 
   public override  void _OnDie(){
     textMesh.enabled = false;
     endTime = Time.time;
+    OnDieEvent.Invoke();
     DoDie();
   }
 

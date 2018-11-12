@@ -10,6 +10,8 @@ public class RotateXY : MonoBehaviour {
   public float rotateSizeX;
   public float rotateSizeY;
 
+  public TerrainEngine engine;
+
   public float angle;
   public float radius;
   public Transform subject;
@@ -51,6 +53,8 @@ private float hDelta;
     hDelta = hDelta1; //Mathf.Lerp( hDelta , hDelta1 , Time.deltaTime * rotSpeed );
 
     target = subject.position  + Vector3.up * (height - hDelta * verticleDelta);
+
+
     transform.position = Vector3.Lerp( transform.position , target , moveSpeed * Time.deltaTime ) ;//subject.position  + Vector3.up * (height - hDelta * 3);
 
     toRotate.localPosition = Vector3.forward * radius;
@@ -63,7 +67,26 @@ private float hDelta;
 
 
     cameraHolder.rotation = Quaternion.Slerp( cameraHolder.rotation, Quaternion.LookRotation( subject.position - cameraHolder.position ), lookAtSpeed * Time.deltaTime );
+   
+
+
+
+
+
+
+    float h = engine.SampleHeight( cameraHolder.position );
+
+    Vector3 tlocalPos= Vector3.zero;
+    if( cameraHolder.position.y < h + 5 ){
+
+      float d = (h+5) - cameraHolder.position.y;
+      tlocalPos = Vector3.up * d; //target = new Vector3( target.x , h +3 , target.z );
+    }
+
+    cameraHolder.localPosition = Vector3.Lerp( cameraHolder.localPosition , tlocalPos  , lookAtSpeed * Time.deltaTime );
+
     camera.localRotation = Quaternion.Slerp( camera.localRotation , Quaternion.identity , lookAtSpeed * Time.deltaTime );
+    
     camera.localPosition = Vector3.Lerp( camera.localPosition , Vector3.zero  , lookAtSpeed * Time.deltaTime );
   
 

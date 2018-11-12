@@ -13,6 +13,7 @@ public class TerrainEngine : LifeForm {
   public int numTiles;
   public GameObject tilePrefab;
 
+  public HairNoise hairController;
   public Transform[] planes;
   public SetMesh[] planeLifes;
 
@@ -31,6 +32,7 @@ public class TerrainEngine : LifeForm {
       }
     }
 
+hairController.ToBind.Clear();
   }
 
   public override void Create(){
@@ -50,14 +52,19 @@ public class TerrainEngine : LifeForm {
         float x = (float)i-hT;
         float y = (float)j-hT;
 
+        plane.transform.parent = transform;
+
 
   
         planeLifes[id] = plane.gameObject.GetComponent<SetMesh>();
         planeLifes[id].position = new Vector3( x *tileSize, 0 , y*tileSize);
 
-        Cycles.Insert( id +2, planeLifes[id]);
+        Cycles.Insert( Cycles.Count , planeLifes[id]);
+        hairController.ToBind.Add(planeLifes[id].hairSet.HairCollision);
       }
     }
+
+    Cycles.Insert( Cycles.Count , hairController );
   }
 
 	// Use this for initialization

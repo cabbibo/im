@@ -13,6 +13,7 @@ float _Delta;
 float _Time;
 uint _Pass;
 float _SpringDistance;
+float _FalloffRadius;
 
 uint _NumVertsPerHair;
 float _HairLength;
@@ -21,6 +22,25 @@ float _HairVariance;
 
 float3 _HandL;
 float3 _HandR;
+
+
+Texture2D<float4> _HeightMap;
+SamplerState sampler_HeightMap;
+float _MapSize;
+float _MapHeight;
+
+float3 worldPos( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    pos.y =  c.x * _MapHeight + 1;
+    return pos;
+}
+
+
+float3 directionVector( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    return 2*float3(c.g,0,c.b)-1;
+}
+
 
 struct Vert{
   float3 pos;
@@ -96,7 +116,9 @@ float3 springForce( float3 p1 , float3 p2 , float sl ){
 
 }
 
-
+float getLength( int bID ){
+  return ((sin(float(bID)*10000)+ _HairVariance) / _HairVariance ) * _HairLength;
+}
 #define NR_THREADS 128
 
 [numthreads(NR_THREADS,1,1)]
@@ -119,8 +141,7 @@ void Set (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uint3 id 
     float l = float(pID % _NumVertsPerHair ) / float(_NumVertsPerHair);
 
     vert.uv = float2( l , float(bID)/float(_BaseBuffer_COUNT));
-    vert.debug.x = ((sin(float(bID)*10000)+ _HairVariance) / _HairVariance ) * _HairLength;
-
+    vert.debug.x = getLength(bID);
     vert.pos  = bP + bN * vert.uv.x * vert.debug.x;
     vert.oPos = vert.pos;//base.pos + base.nor * l + _HairLength;
 
@@ -157,7 +178,9 @@ void Collision (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uin
     force += curlNoise( vert.pos * _NoiseSize + float3(0,_Time*_NoiseSpeed,0) ) * _NoiseForce;
     force += float3(0,_UpForce*vert.uv.x,0);
     float2 pForce = _Player.xz-vert.pos.xz;//)/pow(length(_Player.xz-vert.pos.xz),4);
-   
+   float3 vec = directionVector( vert.pos );
+
+   force += vec*(1+snoise(vert.pos* .3+float3(0,_Time,0)));
 
       float lerpSpeed = saturate((_PushRadius - length(pForce))/_PushRadius);
       force -= lerp(0,_PushForce  , lerpSpeed) *normalize(float3(pForce.x , 0 , pForce.y ));
@@ -227,7 +250,7 @@ void Collision (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uin
       vert.pos = next;
 
     }
-
+vert.debug.x = getLength(bID);
     _VertBuffer[pID] = vert;
  
 
@@ -274,10 +297,16 @@ float3 s = length(mul( transform , float4(1,1,1,0)).xyz)/3;
 
       float difference = 0;
       
+      float dToPlayer = length(v1.pos.xz - _Player.xz);
+
+      float dropoffVal = saturate((_FalloffRadius - dToPlayer)/_FalloffRadius);
+
+      float fLength =  (v1.debug.x/float(_NumVertsPerHair)) * dropoffVal;
+
       // We want to make sure that l isn't zero, 
       // or we will get some NaNs
       if( l > 0.001 ){
-        difference = ((v1.debug.x/float(_NumVertsPerHair)) - l ) / l;
+        difference = ( fLength - l ) / l;
       }
 
       // Here is where the actual verlet goes down!

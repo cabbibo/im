@@ -13,6 +13,8 @@ public class Book : LifeForm {
   public int currentPage;
   public int nextPage;
   
+
+  public int skipTo = -1;
   public Transform camera;
   public Ursula ursula;
   public RotateXY controls;
@@ -37,6 +39,9 @@ public class Book : LifeForm {
 	// Use this for initialization
 	public override void Create () {
 
+        if( skipTo >=  0 ){
+      currentPage = skipTo;
+    }
     
     foreach( Page page in pages){
       page._Create();
@@ -45,6 +50,11 @@ public class Book : LifeForm {
     pages[currentPage]._OnGestate();
 
 		gestateTime = Time.time;
+
+        if( skipTo >=  0 ){
+      StartPage();
+    }
+    
 	}
 	
 
@@ -152,6 +162,12 @@ public override void _WhileLiving(float x){
 
     if( cp.living ){
       float v = 1;
+
+
+      Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 2.2f; 
+
+      dif =new Vector3( dif.x,0 , dif.z);
+      if( dif.magnitude > 1 ){ ursula.velocity += dif; }
       cp._WhileLiving(v);
     }
 
@@ -183,8 +199,7 @@ public override void _WhileLiving(float x){
   
 public void BirthLerp(Page page , float v ){
   camera.position = Vector3.Lerp( tmpPos , page.transform.position , v );
-  camera.rotation = Quaternion.Lerp( tmpRot , page.transform.rotation , v );
-  ursula.transform.position = Vector3.Lerp( tmpPos2 , page.subjectTarget.position , v );
+  camera.rotation = Quaternion.Lerp( tmpRot , page.transform.rotation , v );//Vector3.Lerp( tmpPos2 , page.subjectTarget.position , v );
   animationState = Mathf.Lerp( tmpAnimationState , page.animationState , v );
 }
 

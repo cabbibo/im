@@ -1,7 +1,7 @@
- #include "UnityCG.cginc"
+  #include "UnityCG.cginc"
 #include "../Chunks/StructIfDefs.cginc"
 
-
+sampler2D _MainTex;
   struct v2f {
         V2F_SHADOW_CASTER;
         float2 uv : TEXCOORD1;
@@ -18,7 +18,7 @@
 
       float4 frag(v2f i) : COLOR
       {
-        float4 col = tex2D(_Tex,i.uv);
-        if( col.a < .1){discard;}
+        float4 col = tex2D(_MainTex,i.uv);
+        if( col.a < .4){discard;}
         SHADOW_CASTER_FRAGMENT(i)
       }

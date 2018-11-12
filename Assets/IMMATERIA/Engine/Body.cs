@@ -31,6 +31,11 @@ public class Body : MeshLifeForm {
 
   public override void _WhileLiving(float v ){
     DoLiving(v);
+
+    if( active == true ){
+      Show();
+    }
+    
     if( active && oActive == false ){
       Show();
     }else if( oActive && active == false){

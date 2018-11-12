@@ -31,8 +31,8 @@ public class HairBasic : LifeForm {
     Cycles.Insert( 2 , HairConstraint0 );
     Cycles.Insert( 3 , HairConstraint1 );
 
+    Cycles.Insert( 4 , Hair );
     //Cycles.Insert( 4 , Base );
-    Cycles.Insert( 5 , Hair );
 
 
 
@@ -74,7 +74,7 @@ public class HairBasic : LifeForm {
 
   public void Set(){
 
-print("setting");
+//print("setting");
 SetHairPosition.active = true;
 SetHairPosition.Live();
 SetHairPosition.active = false;

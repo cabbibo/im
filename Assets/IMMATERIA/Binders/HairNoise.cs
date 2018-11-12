@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class HairNoise : Cycle {
 
-  public Life toBind;
+  public List<Life> ToBind;
 
-    public float noiseSize;
+  public TerrainEngine engine;
+  public float noiseSize;
+  public float falloffRadius;
   public float noiseSpeed;
   public float noiseForce;
   public float normalForce;
@@ -15,23 +17,29 @@ public class HairNoise : Cycle {
   public float pushForce;
   public float pushRadius;
   public Vector3 player;
-  public GameObject p;
+  public GameObject subject;
 
   // Use this for initialization
   public override void Bind () {
-    toBind.BindAttribute( "_NoiseSpeed" , "noiseSpeed" , this );
-    toBind.BindAttribute( "_NoiseForce" , "noiseForce" , this );
-    toBind.BindAttribute( "_NoiseSize" , "noiseSize" , this );
-    toBind.BindAttribute( "_NormalForce" , "normalForce" , this );
-    toBind.BindAttribute( "_Dampening" , "dampening" , this );
-    toBind.BindAttribute( "_UpForce" , "upForce" , this );
-    toBind.BindAttribute("_Player", "player" , this );
-    toBind.BindAttribute("_PushForce", "pushForce" , this );
-    toBind.BindAttribute("_PushRadius", "pushRadius" , this );
+
+    foreach( Life l in ToBind ){
+      print(l);
+      l.BindAttribute( "_NoiseSpeed" , "noiseSpeed" , this );
+      l.BindAttribute( "_NoiseForce" , "noiseForce" , this );
+      l.BindAttribute( "_NoiseSize" , "noiseSize" , this );
+      l.BindAttribute( "_NormalForce" , "normalForce" , this );
+      l.BindAttribute( "_Dampening" , "dampening" , this );
+      l.BindAttribute( "_UpForce" , "upForce" , this );
+      l.BindAttribute("_Player", "player" , this );
+      l.BindAttribute("_FalloffRadius", "falloffRadius" , this );
+      l.BindAttribute("_PushForce", "pushForce" , this );
+      l.BindAttribute("_PushRadius", "pushRadius" , this );
+      engine.BindData(l);
+    }
   }
 
   public void FixedUpdate(){
-    player = p.transform.position;
+    player = subject.transform.position;
   }
 
 

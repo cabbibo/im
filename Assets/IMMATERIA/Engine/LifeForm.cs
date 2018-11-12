@@ -48,7 +48,12 @@ public void OnDestruction(){
   _Destroy();
 }
 
+
+public void Awake(){
+//  print("hi");
+}
 public void OnEnable(){
+  //print("hmmm");
   if( auto ){ OnCreation(); }
 }
 

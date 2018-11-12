@@ -6,7 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class MoveCharacterHeightMap : MonoBehaviour {
 
   public TerrainEngine engine;
-    public Animator animator;
+  public Animator animator;
   private Transform m_Cam;                  // A reference to the main camera in the scenes transform
   private Vector3 m_CamForward;             // The current forward direction of the camera
   private Vector3 m_Move;
@@ -20,7 +20,12 @@ public class MoveCharacterHeightMap : MonoBehaviour {
 	void Update () {
 	 
   float h = engine.SampleHeight( transform.position );
+
+  if( transform.position.y < h ){
    transform.position = new Vector3( transform.position.x , h , transform.position.z );
+  }else{
+    //transform.position = new Vector3( transform.position.x , transform.position.y - .1f , transform.position.z );
+  }
   // print( c.r );
    Shader.SetGlobalVector("_Player", transform.position );
 	}
