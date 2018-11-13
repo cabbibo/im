@@ -339,7 +339,7 @@ void SetStates(){
 
   protected void DoDebug(){
     
-    if( debug ){ WhileDebug(); }
+    if( debug ){  WhileDebug(); }
 
     if( stifle == false ){
     foreach( Cycle c in Cycles ){

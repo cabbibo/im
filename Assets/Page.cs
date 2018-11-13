@@ -31,6 +31,7 @@ public class Page : Cycle {
     textMesh.enabled = false;
     frame.borderLine.enabled = false;
     frame.borderLine.material.SetFloat("_Cutoff" , .65f);
+    print("pageCreate");
     DoCreate();
   
   }

@@ -9,6 +9,9 @@ public class ParticleTransferVerts: Form {
   public override void SetStructSize(){ structSize = 16; }
 
   public override void SetCount(){
+
+    print("PARTSzz");
+    print(particles.count);
     // 0-1
     // |/|
     // 2-3

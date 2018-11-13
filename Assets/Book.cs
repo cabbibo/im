@@ -39,11 +39,12 @@ public class Book : LifeForm {
 	// Use this for initialization
 	public override void Create () {
 
-        if( skipTo >=  0 ){
+    if( skipTo >=  0 ){
       currentPage = skipTo;
     }
     
     foreach( Page page in pages){
+     // Cycles.Add(page);
       page._Create();
     }
 
@@ -91,7 +92,12 @@ public class Book : LifeForm {
   }
 
  
-
+public override void _WhileDebug(){
+  foreach( Page p in pages){
+    p._WhileDebug();
+  }
+  DoDebug();
+}
 public void StartPage(){
 
   pages[currentPage]._OnBirth();
@@ -124,8 +130,6 @@ public void EndPage(){
     currentPage += 1;
     nextPage = currentPage + 1;
     gestateTime = Time.time;
-
-    pages[currentPage]._Create();
     pages[currentPage]._OnGestate();
   }else{
     print("END");
@@ -137,7 +141,11 @@ public void EndPage(){
 
 public override void _WhileLiving(float x){
 
-    Page cp = pages[currentPage];
+
+
+
+    Page cp = pages[currentPage];  
+
     if( cp.gestating ){
       float v = (Time.time - gestateTime ) / cp.gestateSpeed;
       cp._WhileGestating(v);
@@ -145,6 +153,8 @@ public override void _WhileLiving(float x){
         cp._OnGestated();
       }
     }
+
+
 
 
     if( cp.birthing ){

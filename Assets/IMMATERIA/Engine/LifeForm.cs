@@ -32,6 +32,7 @@ public void OnUpdating(){
 }
 
 public void OnDebugging(){
+
   if( created ){ _WhileDebug(); }
 }
 

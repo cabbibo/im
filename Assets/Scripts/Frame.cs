@@ -22,15 +22,22 @@ public class Frame : MonoBehaviour {
   public Vector3 topLeft;
   public Vector3 topRight;
 
+  public float width;
+  public Vector3 normal;
+
 
   // Use this for initialization
   void Start () {
-    
-      borderLine = GetComponent<LineRenderer>();
+    borderLine = GetComponent<LineRenderer>();
   }
   
   // Update is called once per frame
   void LateUpdate () {
+
+    SetFrame();
+  }
+
+  void SetFrame(){
 
     _ratio = (float)Screen.width / (float)Screen.height;
 
@@ -55,11 +62,17 @@ public class Frame : MonoBehaviour {
 
     transform.localPosition = new Vector3( 0, 0, distance);
     transform.localRotation = Quaternion.identity;
+    normal = transform.forward;
 
     transform.localScale = new Vector3( (bottomLeft - bottomRight).magnitude , (bottomLeft - topLeft).magnitude , .1f );
+
+    width = (bottomLeft - bottomRight).magnitude;
+    
 
     cam.transform.position = tmpP;
     cam.transform.rotation = tmpR;
 
   }
+
+
 }

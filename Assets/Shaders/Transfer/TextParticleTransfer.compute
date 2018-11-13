@@ -1,0 +1,70 @@
+﻿
+#pragma kernel Transfer
+
+struct Output{
+    float3 pos;
+    float3 glyph1;
+    float3 nor;
+    float3 tangent;
+    float2 uv;
+    float2 glyph2;
+};
+
+
+struct Vert{
+    float3 pos;
+    float3 nor;
+    float4 glyph;
+    float2 debug;
+};
+
+
+RWStructuredBuffer<Output> _VertBuffer;
+RWStructuredBuffer<Vert> _SkeletonBuffer;
+
+int _VertBuffer_COUNT;
+int _SkeletonBuffer_COUNT;
+#include "../Chunks/safeID.cginc"
+
+
+float3 _CameraUp;
+float3 _CameraLeft;
+float _Radius;
+
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+    int pID = threadID + u3GroupID.x * NR_THREADS;
+
+    int particleID = pID / 4;
+
+
+    Vert p = _SkeletonBuffer[safeID(particleID,_SkeletonBuffer_COUNT)];
+
+    int idInParticle = pID % 4;
+    int row = idInParticle / 2;
+    int col = pID % 2;
+
+    float3 l = normalize(cross(p.nor,float3(0,1,0)));
+    float3 u = normalize(cross(p.nor,l));
+
+    l *= (float(col)-.5);
+    u *= (float(row)-.5);
+
+    float3 fPos = p.pos + (l + u) *  1;
+
+    float2 fUV = float2( float(row) , float(col) );
+
+    int sID = safeID(pID,_VertBuffer_COUNT);
+
+    Output v = _VertBuffer[sID];
+
+    v.pos = fPos;
+    v.uv = fUV;
+    v.nor = p.nor;
+
+    _VertBuffer[sID] = v;
+
+}

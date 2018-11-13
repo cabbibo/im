@@ -21,10 +21,11 @@ public class Form : Cycle {
   public Material debugMaterial;
 
   public override void _Create(){
-    DoCreate();
+    
     SetStructSize();
     SetCount();
     SetBufferType();
+    DoCreate();
     Create();
   }
 
