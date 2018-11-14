@@ -8,6 +8,7 @@ public class Book : LifeForm {
 
   public Animator anim;
   public float animationState;
+  public BookTextParticles text;
 
   public int lastPage;
   public int currentPage;
@@ -31,6 +32,13 @@ public class Book : LifeForm {
   private Quaternion tmpRot2;
 
   private float tmpAnimationState;
+
+  public float pageActive;
+
+  [HideInInspector]public Vector3 up;
+  [HideInInspector]public Vector3 right;
+  [HideInInspector]public Vector3 forward;
+  [HideInInspector]public Vector3 ursulaPos;
 
 
   // STIFLE IS TRUE!
@@ -101,6 +109,8 @@ public override void _WhileDebug(){
 public void StartPage(){
 
   pages[currentPage]._OnBirth();
+  pageActive = 1;
+  text.Set(pages[currentPage].text);
   birthTime = Time.time;
   tmpPos = camera.position;
   tmpRot = camera.rotation;
@@ -125,6 +135,7 @@ public void EndPage(){
 
   lastPage = currentPage;
   deathTime = Time.time;
+  pageActive = 0;
   
   if( currentPage < (pages.Count-1) ){
     currentPage += 1;
@@ -143,6 +154,10 @@ public override void _WhileLiving(float x){
 
 
 
+    right = camera.right;
+    up = camera.up;
+    forward = camera.forward;
+    ursulaPos = ursula.soul.position;
 
     Page cp = pages[currentPage];  
 
@@ -162,6 +177,9 @@ public override void _WhileLiving(float x){
       cp._WhileBirthing(v);
 
       BirthLerp( cp , v );
+   
+      Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 2.2f; 
+      if( dif.magnitude > 1 ){ ursula.velocity += dif; }
 
       if( v >= 1 ){
         cp._OnBirthed();
@@ -175,9 +193,8 @@ public override void _WhileLiving(float x){
 
 
       Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 2.2f; 
-
-      //dif = new Vector3( dif.x,0 , dif.z);
       if( dif.magnitude > 1 ){ ursula.velocity += dif; }
+      
       cp._WhileLiving(v);
     }
 
@@ -188,7 +205,8 @@ public override void _WhileLiving(float x){
       
       if( v >= 1 ){
         lp._OnDied();
-        lp._Destroy();
+        //lp._Destroy();
+       // text.Set(cp.text);
       }
 
     }

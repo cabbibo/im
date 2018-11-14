@@ -3,19 +3,20 @@
 
 struct Output{
     float3 pos;
-    float3 glyph1;
+    float3 vel;
     float3 nor;
     float3 tangent;
     float2 uv;
-    float2 glyph2;
+    float2 debug;
 };
 
 
 struct Vert{
     float3 pos;
     float3 nor;
-    float4 glyph;
-    float2 debug;
+    float2 position;
+    float2 dimensions;
+    float2 offset;
 };
 
 
@@ -47,15 +48,43 @@ void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     int row = idInParticle / 2;
     int col = pID % 2;
 
-    float3 l = normalize(cross(p.nor,float3(0,1,0)));
-    float3 u = normalize(cross(p.nor,l));
+    float3 u = -normalize(cross(p.nor,float3(0,1,0)));
+    float3 l = normalize(cross(p.nor,u));
 
-    l *= (float(col)-.5);
-    u *= (float(row)-.5);
+    float3 l1 =l* (float(col)-.5);
+    float3 u1 =u* (float(row)-.5);
 
-    float3 fPos = p.pos + (l + u) *  1;
+    float glyphWidth = 80.5 / 1024.;
+    float glyphHeight = 145. / 1024.;
+    float glyphBelow =   29. / 1024.;
+    float totalSize = glyphHeight;
+    
+    float widthOffset = (glyphHeight - glyphWidth)/2.;
+    float wOPercent = widthOffset / totalSize;
+
+    float belowP = glyphBelow / totalSize;
+
+    float wO = (glyphHeight - glyphWidth)/2.;
+
+
+    float wh = glyphWidth / glyphHeight;
+
+
+
+    float3 fPos = p.pos + (l1*p.dimensions.y) + (u1*p.dimensions.x);
+    fPos -= .5*l*p.dimensions.y;
+    fPos += 1*l*p.offset.y;
+    //fPos -= l*p.dimensions.y;
+    //fPos += u*p.offset.x; //-.5*p.offset.y) + u*(p.dimensions.x+p.offset.x)) *  1;
 
     float2 fUV = float2( float(row) , float(col) );
+
+
+
+    float x = fUV.x * p.dimensions.x  + p.position.x;
+    float y = fUV.y * p.dimensions.y  - p.position.y - p.dimensions.y;
+
+    fUV = float2(x,y);
 
     int sID = safeID(pID,_VertBuffer_COUNT);
 

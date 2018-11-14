@@ -29,6 +29,7 @@ public class glyph{
   public Frame frame;
 
   public float characterSize;
+  public float lineHeight;
   public float padding;
 
   public List<glyph> glyphs;
@@ -91,7 +92,7 @@ public class glyph{
 
       //print(glyphs[i]);
 
-      p = frame.topLeft + dir * ( padding + glyphs[i].column * characterSize ) + down * (padding + glyphs[i].row * characterSize );
+      p = frame.topLeft + dir * ( padding + glyphs[i].column * characterSize ) + down * (padding + glyphs[i].row * lineHeight );
 
       // position
       values[ index ++ ] = p.x;
@@ -139,13 +140,14 @@ public class glyph{
       newIndex[i] = index[i] / 1024;
     }
 
+
     return newIndex;//new Vector4(left,top,width,height);
 
   }
 
   public override void WhileDebug(){
-    SetCount();
-    Embody();
+    //SetCount();
+    //Embody();
     debugMaterial.SetPass(0);
     debugMaterial.SetBuffer("_VertBuffer", _buffer);
     debugMaterial.SetInt("_Count",count);

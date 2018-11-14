@@ -72,7 +72,6 @@ public class Cycle : MonoBehaviour{
     if( debug ){ DebugThis("DoGestate"); }
     begunGestation = true;
 
-    _Bind();
 
     OnGestate();
 
@@ -80,6 +79,9 @@ public class Cycle : MonoBehaviour{
     foreach( Cycle c in Cycles ){
       c._OnGestate();
     }}
+
+
+    _Bind();
 
     gestating = true;
 

@@ -53,7 +53,6 @@ public class WandParticles : LifeForm{
 
 
     simulation.BindPrimaryForm("_VertBuffer",particles);
-    simulation.BindAttribute("_WandPos", "wandPos",this);
     simulation.BindAttribute("_Down", "Down",touch);
     simulation.BindAttribute("_CurrentTarget", "currentTargetPosition",book);
 

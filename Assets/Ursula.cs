@@ -10,6 +10,7 @@ public class Ursula : MonoBehaviour {
   public TerrainEngine engine;
   public Animator animator;
   public Transform camera;
+  public Transform soul;
 
 
   public Collider bubble;

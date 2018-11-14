@@ -73,6 +73,8 @@ public class Form : Cycle {
     if( intBuffer == true ){
       return new ComputeBuffer( count, sizeof(int) * structSize );
     }else{
+
+      DebugThis(""+structSize);
       return new ComputeBuffer( count, sizeof(float) * structSize );
     }
   }

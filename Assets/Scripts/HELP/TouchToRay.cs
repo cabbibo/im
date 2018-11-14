@@ -38,6 +38,7 @@ public class TouchToRay : MonoBehaviour {
 
   public Vector3 RayOrigin;
   public Vector3 RayDirection;
+  public Ray ray;
   public float Down;
   public float oDown;
   public float JustDown;
@@ -104,7 +105,7 @@ public class TouchToRay : MonoBehaviour {
 
     if( sceneView == true ){
       if( Event.current != null){
-        print(Event.current.mousePosition);
+      print(Event.current.mousePosition);
       Ray r = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
       RayOrigin = r.origin;
       RayDirection = r.direction;
@@ -112,6 +113,8 @@ public class TouchToRay : MonoBehaviour {
     }else{
       RayOrigin = Camera.main.ScreenToWorldPoint( new Vector3( p.x , p.y , Camera.main.nearClipPlane ) );
       RayDirection = (Camera.main.transform.position - RayOrigin).normalized;
+      ray.origin = RayOrigin;
+      ray.direction = RayDirection;
 
     }
 

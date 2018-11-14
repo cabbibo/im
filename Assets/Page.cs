@@ -10,7 +10,7 @@ public class Page : Cycle {
   public float deathSpeed = 1;
 
   public Transform subjectTarget;
-  public MeshRenderer textMesh;
+  public TextParticles text;
   public Frame frame;
 
   public float animationState;
@@ -28,7 +28,7 @@ public class Page : Cycle {
 
   public override void _Create(){
   
-    textMesh.enabled = false;
+    
     frame.borderLine.enabled = false;
     frame.borderLine.material.SetFloat("_Cutoff" , .65f);
     print("pageCreate");
@@ -49,7 +49,6 @@ public class Page : Cycle {
 
   public override  void _OnBirth(){
     collider.enabled = false;
-    textMesh.enabled = true;
     startTime = Time.time;
     DoBirth();
   }
@@ -61,7 +60,6 @@ public class Page : Cycle {
 
 
   public override  void _OnDie(){
-    textMesh.enabled = false;
     endTime = Time.time;
     OnDieEvent.Invoke();
     DoDie();
@@ -75,6 +73,7 @@ public class Page : Cycle {
 
   public override void _Destroy(){
     frame.borderLine.enabled = false;
+    //OnDestroyEvent.Invoke();
     DoDestroy();
   }
 

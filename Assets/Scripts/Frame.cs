@@ -24,6 +24,7 @@ public class Frame : MonoBehaviour {
 
   public float width;
   public Vector3 normal;
+  public Vector3 up;
 
 
   // Use this for initialization
@@ -63,6 +64,7 @@ public class Frame : MonoBehaviour {
     transform.localPosition = new Vector3( 0, 0, distance);
     transform.localRotation = Quaternion.identity;
     normal = transform.forward;
+
 
     transform.localScale = new Vector3( (bottomLeft - bottomRight).magnitude , (bottomLeft - topLeft).magnitude , .1f );
 

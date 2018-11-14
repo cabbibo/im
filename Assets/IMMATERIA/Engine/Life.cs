@@ -61,6 +61,16 @@ public class Life : Cycle {
     boundForms.Add( name ,form );
   }
 
+  public void RebindForm(string name , Form form ){
+//    print(boundForms[name]);
+  if( boundForms[name] ){
+    print("RESET");
+    boundForms[name] = form;
+  }else{
+    print("BORKS");
+  }
+  }
+
    public void BindInt( string name , int form ){
     boundInts.Add( name ,form );
   }
@@ -125,6 +135,13 @@ public class Life : Cycle {
   public virtual void SetShaderValues(){}
 
   private void SetBuffer(string name , Form form){
+    //print(form);
+    //print(name);
+
+
+    if( form != null){
+
+
       if( form._buffer != null ){
         shader.SetBuffer( kernel , name , form._buffer);
         shader.SetInt(name+"_COUNT" , form.count );
@@ -132,6 +149,10 @@ public class Life : Cycle {
       }else{
         allBuffersSet = false;
         print("YOUR BUFFER : " + name +  " IS NULL!");
+      }
+      }else{
+        print("WAHT YR FORM IS NULL");
+        print( name );
       }
   }
 
@@ -201,4 +222,3 @@ public class Life : Cycle {
   }
 
 }
-

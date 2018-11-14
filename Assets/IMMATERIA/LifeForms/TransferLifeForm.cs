@@ -26,7 +26,7 @@ public class TransferLifeForm : MeshLifeForm {
   }
 
   public override void _Bind(){
-        transfer.BindPrimaryForm("_VertBuffer", verts);
+    transfer.BindPrimaryForm("_VertBuffer", verts);
     transfer.BindForm("_SkeletonBuffer", skeleton); 
 
     transfer.BindAttribute("_CameraRight" , "right" , this); 

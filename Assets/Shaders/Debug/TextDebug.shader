@@ -2,8 +2,7 @@
 	Properties {
     _Color ("Color", Color) = (1,1,1,1)
     _Size ("Size", float) = .01
-
-       _TextMap ("Textmap", 2D) = "white" {}
+    _TextMap ("Textmap", 2D) = "white" {}
 	}
 
 
@@ -104,7 +103,7 @@
       	float3 c = float3(0,1,0);
 
       	//float x = v.textPos.x - v.offset.x
-  				float2 fUV = (v.uv* (145.0/1024.0)  + float2(0,1)+float2(1,-1)*v.textPos );
+  				float2 fUV = (v.uv *v.dimensions-v.offset + float2(0,1)+float2(1,-1)*v.textPos );
 
 
       	c = tex2D(_TextMap,fUV).xyz;
