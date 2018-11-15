@@ -26,7 +26,6 @@ public class Trace : MonoBehaviour {
       p = engine.Trace(touch.RayOrigin,-touch.RayDirection);	
     }
 
-    marker.position = p;
     targetPos = p;
     Shader.SetGlobalVector("_WandPosition", p);
 	}

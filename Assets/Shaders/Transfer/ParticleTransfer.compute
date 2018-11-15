@@ -50,5 +50,6 @@ void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
     _VertBuffer[safeID(pID,_VertBuffer_COUNT)].pos = fPos;
     _VertBuffer[safeID(pID,_VertBuffer_COUNT)].uv = fUV;
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].nor = p.nor;
 
 }

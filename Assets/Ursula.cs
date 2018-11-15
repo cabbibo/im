@@ -11,8 +11,11 @@ public class Ursula : MonoBehaviour {
   public Animator animator;
   public Transform camera;
   public Transform soul;
+  public Transform head;
 
 
+  public SkinnedMeshRenderer bodyRenderer;
+  public SkinnedMeshRenderer shoeRenderer;
   public Collider bubble;
   public MeshRenderer bubbleRenderer;
   public bool bubbleActive;
@@ -30,9 +33,15 @@ public class Ursula : MonoBehaviour {
   public Vector3 velocity;
   public Vector3 force;
 
+  // for use when binding!
+  public Vector3 soulPosition;
+  public Vector3 up;
+  public Vector3 position;
+
   public float moveForce;
   public float gravityForce;
   public float dampening;
+
 
 
 
@@ -50,15 +59,14 @@ public class Ursula : MonoBehaviour {
   */
 
   void OnMouseOver(){
-    bubbleRenderer.material.SetColor("_OutlineColor" , activeColor );
-    bubbleRenderer.material.SetFloat("_Threshold" , .01f );
-    bubbleRenderer.material.SetFloat("_Fade" , .2f );
+    print("hello");
+    bodyRenderer.sharedMaterial.SetColor("_OutlineColor",activeColor);
+    shoeRenderer.sharedMaterial.SetColor("_OutlineColor",activeColor);
   }
   
   void OnMouseExit(){
-    bubbleRenderer.material.SetColor("_OutlineColor" , passiveColor );
-    bubbleRenderer.material.SetFloat("_Threshold" , .1f );
-    bubbleRenderer.material.SetFloat("_Fade" , 3 );
+    bodyRenderer.sharedMaterial.SetColor("_OutlineColor",passiveColor);
+    shoeRenderer.sharedMaterial.SetColor("_OutlineColor",passiveColor);
   }
 
 
@@ -91,6 +99,7 @@ public class Ursula : MonoBehaviour {
 
   private void FixedUpdate() {
     DoMovement();   
+    UpdateValues();
   }
   
 
@@ -170,14 +179,24 @@ public class Ursula : MonoBehaviour {
   }
 
 
-      void Rotate(float f  , float t)
-    {
-      // help the character turn faster (this is in addition to root rotation in the animation)
-      float turnSpeed = Mathf.Lerp(180, 360, f);
-      transform.Rotate(0, t * turnSpeed * Time.deltaTime, 0);
-    }
+  void Rotate(float f  , float t){
+
+    // help the character turn faster (this is in addition to root rotation in the animation)
+    float turnSpeed = Mathf.Lerp(180, 360, f);
+    transform.Rotate(0, t * turnSpeed * Time.deltaTime, 0);
+  
+  }
 
 
+
+
+  void UpdateValues(){
+
+    soulPosition = soul.transform.position;
+    position = transform.position;
+    up = head.transform.position - soulPosition;
+
+  }
 
     public void SetGravity(){ gravity = true; }
 

@@ -30,7 +30,7 @@ public class Page : Cycle {
   
     
     frame.borderLine.enabled = false;
-    frame.borderLine.material.SetFloat("_Cutoff" , .65f);
+    frame.borderLine.material.SetFloat("_Cutoff" , 1 );
     print("pageCreate");
     DoCreate();
   
@@ -38,12 +38,13 @@ public class Page : Cycle {
 
 
   public override void _OnGestate(){
+    print("pageGestated");
     frame.borderLine.enabled = true;
     DoGestate();
   }
 
   public override void _WhileGestating(float v){
-    frame.borderLine.material.SetFloat("_Cutoff" , .65f - v *.2f);
+    frame.borderLine.material.SetFloat("_Cutoff" , 1 - .5f * v );
     DoGestating(v);
   }
 
@@ -54,7 +55,7 @@ public class Page : Cycle {
   }
 
   public override void _WhileBirthing( float v ){
-    frame.borderLine.material.SetFloat("_Cutoff" , .55f - v *.3f);
+    frame.borderLine.material.SetFloat("_Cutoff" , .5f - v *.5f);
     DoBirthing(v);
   }
 
@@ -66,7 +67,7 @@ public class Page : Cycle {
   }
 
   public override void _WhileDying( float v ){
-    if( v < 1 ){ frame.borderLine.material.SetFloat("_Cutoff" , .3f + v *.2f); }
+    if( v < 1 ){ frame.borderLine.material.SetFloat("_Cutoff" ,  v ); }
     DoDying(v);
   }
 

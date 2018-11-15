@@ -158,12 +158,26 @@ public class Life : Cycle {
 
   public void BindAttribute( string nameInShader, string attributeName , System.Object obj ){
     BoundAttribute a = new BoundAttribute();
-
     a.nameInShader = nameInShader;
     a.attributeName = attributeName;
     a.boundObject = obj;
     a.info = obj.GetType().GetField(attributeName);
-    boundAttributes.Add(a);
+
+    bool replaced = false;
+    int id = 0;
+    foreach( BoundAttribute ba in boundAttributes){
+
+      if( ba.nameInShader == nameInShader ){
+        boundAttributes[id] = a;
+        DebugThis( ba.nameInShader + " is being rebound" );
+        replaced = true;
+        break;
+      }
+
+      id ++;
+    }
+
+    if( replaced == false ){  boundAttributes.Add(a); }
   }
 
   public void BindAttributes(){
@@ -219,6 +233,12 @@ public class Life : Cycle {
       }
 
     }
+  }
+
+  public void YOLO(){
+    active = true;
+    _WhileLiving(1);
+    active = false;
   }
 
 }

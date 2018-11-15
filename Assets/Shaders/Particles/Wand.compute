@@ -6,8 +6,8 @@ struct Vert{
   float3 vel;
   float3 nor;
   float3 ogPos;
-  float2 uv;
-  float2 debug;
+  float3 axis;
+  float life;
 };
 
 
@@ -17,6 +17,7 @@ Texture2D<float4> _HeightMap;
 SamplerState sampler_HeightMap;
 float _MapSize;
 float _MapHeight;
+
 float _Down;
 float3 _WandPos;
 
@@ -42,6 +43,7 @@ int _SkeletonBuffer_COUNT;
 
 #include "../Chunks/safeID.cginc"
 #include "../Chunks/snoise.cginc"
+#include "../Chunks/hash.cginc"
 #include "../Chunks/curlNoise.cginc"
 
 
@@ -92,6 +94,34 @@ float3 rodForce(float r , float3 pos ){
 
 }
 
+float3 ring( float id , float r ){
+
+  float3 x = normalize(_Frame1 - _Frame2);
+  float3 y = normalize(_Frame4 - _Frame2);
+
+
+  float a = hash(id*100) * 6.28;
+
+  float3 p = r*(-sin( a )*x +cos(a)*y);
+
+  return p; 
+}
+
+
+float4x4 rotation(float3 axis, float angle)
+{
+    axis = normalize(axis);
+    float s = sin(angle);
+    float c = cos(angle);
+    float oc = 1.0 - c;
+    
+    return float4x4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,
+                oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,
+                oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,
+                0.0,                                0.0,                                0.0,                                1.0);
+}
+
+
 
 #define NR_THREADS 128
 [numthreads(NR_THREADS,1,1)]
@@ -104,26 +134,37 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
   
 
-  if( vert.debug.x < 0 && _Down > .5 ){
-    float3 pos = float3(vert.uv.x/_MapSize,0, vert.uv.y/_MapSize );
+  if( vert.life < 0.1 && _Down > .5 ){
+   // float3 pos = float3(vert.uv.x/_MapSize,0, vert.uv.y/_MapSize );
     float p = float(pID);
-    float3 r = float3(sin(p*113.1),sin(p*3512.34),sin(p*4123.42));
-    vert.pos = _WandPos + r + float3(0,1,0); //worldPos(pos);
-    vert.debug.x = abs(vert.debug.x)+1;
-    vert.debug.x %= 1;
-    vert.debug.x += 1;
-    vert.vel =.4 * (r* .4+float3(0,.4,0));
+    
+    float3 r = ring(p,.04);
+    vert.pos = _WandPos + r ;// + float3(0,1,0); //worldPos(pos);
+    vert.life = abs(vert.life)+1;
+    vert.life %= 1;
+    vert.life += 1;
+
+    float3 axis = normalize(float3((2* hash(p*10)-1)
+                                 ,(2* hash(p*20)-1)
+                                 ,(2* hash(p*30)-1)));
+
+    vert.axis = axis;
+    
+
+    //vert.vel =.4 * (r* .4+float3(0,.4,0));
   }else{
 
-    float3 force = directionVector( vert.pos );
+    float3 force = float3(0,0,0);
+    //force += directionVector( vert.pos );
 
-    force += float3(0,-.5,0);
-    force += curlNoise(vert.pos * .1);
+    //force += float3(0,-.5,0);
+    force += .1*curlNoise(vert.pos * 1.1);
 
-    force += 1.1*-rodForce(1,vert.pos);
-   vert.vel += force * .01;
+    //force += 1.4*-rodForce(1,vert.pos);
+    vert.vel += force * .01;
 
-   vert.debug.x -= .01 * (1+sin(float(pID)));
+   vert.life -= .01 * (1+sin(float(pID)));
+   if( vert.life < 0 ){ vert.life += 1; }
 
    vert.pos += vert.vel;
 
@@ -132,6 +173,9 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
   vert.pos = worldPos(vert.pos);
 
   }
+  
+  
+  vert.nor = mul(rotation(vert.axis,vert.life*(hash(float(pID*123))+1)),float4(0,0,1,0)).xyz;
 
 
 

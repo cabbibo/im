@@ -54,7 +54,7 @@
       ENDCG
 
 			
-
+/*
 			CGPROGRAM
       
        float _Threshold;
@@ -102,7 +102,7 @@
          return fixed4(_OutlineColor,1);//half4(s.Albedo, s.Alpha);
      }
 
-      ENDCG
+      ENDCG*/
 
 
       

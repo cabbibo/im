@@ -1,6 +1,7 @@
 ﻿
 #pragma kernel SetGlyph
 #pragma kernel SetAnchor
+#pragma kernel SetPage
 #pragma kernel Simulation 
 #pragma kernel Transfer 
 
@@ -39,6 +40,7 @@ int _TransferBuffer_COUNT;
 float3 _CameraUp;
 float3 _CameraLeft;
 float _Radius;
+float _Time;
 
 float3 _RayOrigin;
 float3 _RayDirection;
@@ -138,6 +140,21 @@ void SetAnchor(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
 }
 
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void SetPage(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+    int pID = threadID + u3GroupID.x * NR_THREADS;
+    int sID =safeID(pID,_VertBuffer_COUNT);
+    Vert v = _VertBuffer[sID];
+
+    v.pos = _UrsulaPos;
+    v.vel = float3(0,0,0);
+
+    _VertBuffer[sID] = v;
+
+}
+
 float sdCapsule( float3 p, float3 a, float3 b, float r )
 {
     float3 pa = p - a, ba = b - a;
@@ -170,14 +187,20 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     float3 force = 0;
     float m = 3 + sin(float(sID));
     
-    if( _Active > .5 && pID <= _AnchorBuffer_COUNT){
-      force += (v.pos - v.lockPosition)*.004 *m;
+    if( _Active > .5 ){
+      force += (v.pos - v.lockPosition)*.002 *m;
 
       float3 d = getProj( v.pos , _RayOrigin + _RayDirection * 100 , _RayOrigin - _RayDirection * 100 );
       float l = length(d);
       force += .01*normalize(d) * -saturate(( (1 - l ) /1 ));
+
+      d = v.pos - _UrsulaPos;
+      l = length(d);
+      force += .01*normalize(d) * -saturate(( (3 - l*l ) /3 ));
+
+      force += curlNoise(v.pos * 1 + _Time ) * .0001;
     }else{
-      //force += curlNoise(v.pos * .1) * .01;
+      force += curlNoise(v.pos * .3) * .004;
       //if(pID <= _AnchorBuffer_COUNT ){
         
       //}
@@ -218,9 +241,10 @@ void Transfer(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     //l = l* (float(col)-.5);
     //u = u* (float(row)-.5);
 
-    float3 fPos = p.pos + ((l*v.offset.y) + (u*v.offset.x))*1;
+    float3 fPos = p.pos + ((l*v.offset.y) + (u*v.offset.x))*_Radius;
 
     v.pos = fPos;
+    v.vel = p.vel;
     //v.uv = v.uv;
     //v.nor = p.nor;
 

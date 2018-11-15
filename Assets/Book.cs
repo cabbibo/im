@@ -15,7 +15,7 @@ public class Book : LifeForm {
   public int nextPage;
   
 
-  public int skipTo = -1;
+  public int startPage = -1;
   public Transform camera;
   public Ursula ursula;
   public RotateXY controls;
@@ -34,6 +34,7 @@ public class Book : LifeForm {
   private float tmpAnimationState;
 
   public float pageActive;
+  public float fade;
 
   [HideInInspector]public Vector3 up;
   [HideInInspector]public Vector3 right;
@@ -47,25 +48,26 @@ public class Book : LifeForm {
 	// Use this for initialization
 	public override void Create () {
 
-    if( skipTo >=  0 ){
-      currentPage = skipTo;
-    }
+    currentPage = startPage;
     
+    int id = 0;
     foreach( Page page in pages){
-     // Cycles.Add(page);
       page._Create();
+      print( id);
+      id++;
     }
 
     pages[currentPage]._OnGestate();
 
 		gestateTime = Time.time;
 
-        if( skipTo >=  0 ){
-      StartPage();
-    }
     
 	}
 	
+
+  public override void OnBirthed(){
+    StartPage();
+  }
 
 
 	// Update is called once per frame
@@ -80,7 +82,9 @@ public class Book : LifeForm {
    
     if( pages[currentPage].living ){
 
-      if( ursula.bubble.Raycast( ray , out hit, 100)){
+
+      LayerMask mask = LayerMask.GetMask("Ursula");
+      if( Physics.Raycast( ray , out hit, 100 ,mask)){
         EndPage();
       }else{
         print("NAH2");
@@ -106,11 +110,19 @@ public override void _WhileDebug(){
   }
   DoDebug();
 }
+
+
 public void StartPage(){
+
+  if( currentPage == 0 ){
+    text.Set(pages[currentPage].text);
+    text.PageStart();
+  }else{
+    text.PageStart();
+  }
 
   pages[currentPage]._OnBirth();
   pageActive = 1;
-  text.Set(pages[currentPage].text);
   birthTime = Time.time;
   tmpPos = camera.position;
   tmpRot = camera.rotation;
@@ -178,8 +190,8 @@ public override void _WhileLiving(float x){
 
       BirthLerp( cp , v );
    
-      Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 2.2f; 
-      if( dif.magnitude > 1 ){ ursula.velocity += dif; }
+      Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 1.2f; 
+      if( dif.magnitude > .2f ){ ursula.velocity += dif; }
 
       if( v >= 1 ){
         cp._OnBirthed();
@@ -192,8 +204,8 @@ public override void _WhileLiving(float x){
       float v = 1;
 
 
-      Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 2.2f; 
-      if( dif.magnitude > 1 ){ ursula.velocity += dif; }
+      Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 1.2f; 
+      if( dif.magnitude > .2f ){ ursula.velocity += dif; }
       
       cp._WhileLiving(v);
     }
@@ -206,7 +218,7 @@ public override void _WhileLiving(float x){
       if( v >= 1 ){
         lp._OnDied();
         //lp._Destroy();
-       // text.Set(cp.text);
+        text.Set(cp.text);
       }
 
     }
@@ -228,6 +240,8 @@ public override void _WhileLiving(float x){
 */
   
 public void BirthLerp(Page page , float v ){
+
+  v = v * v * (3 - 2 * v);
   camera.position = Vector3.Lerp( tmpPos , page.transform.position , v );
   camera.rotation = Quaternion.Lerp( tmpRot , page.transform.rotation , v );//Vector3.Lerp( tmpPos2 , page.subjectTarget.position , v );
   animationState = Mathf.Lerp( tmpAnimationState , page.animationState , v );

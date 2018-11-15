@@ -14,14 +14,19 @@ public class BookTextParticles : LifeForm{
 
   public Life setAnchor;
   public Life setGlyph;
+  public Life setPage;
 
   public Life simulate;
   public Life transfer;
+  private float pageStart;
+
+  public float radius;
 
   public override void _Create(){
     Cycles.Insert(Cycles.Count,particles);
     Cycles.Insert(Cycles.Count,setAnchor);
     Cycles.Insert(Cycles.Count,setGlyph);
+    Cycles.Insert(Cycles.Count,setPage);
     Cycles.Insert(Cycles.Count,simulate);
     Cycles.Insert(Cycles.Count,transfer);
     Cycles.Insert(Cycles.Count,body);
@@ -36,15 +41,22 @@ public class BookTextParticles : LifeForm{
     setAnchor.BindPrimaryForm("_VertBuffer",particles);
     setAnchor.BindForm("_AnchorBuffer",anchor);
 
+    setPage.BindPrimaryForm("_VertBuffer",particles);
+
     simulate.BindPrimaryForm("_VertBuffer",particles);
 
     transfer.BindPrimaryForm("_TransferBuffer",transferVerts);
     transfer.BindForm("_VertBuffer",particles);
+    transfer.BindAttribute("_Radius","radius",this);//.BindForm("_VertBuffer",particles);
+
 
     simulate.BindAttribute("_Active","pageActive",book);
     simulate.BindAttribute("_CameraForward","forward",book);
     simulate.BindAttribute("_CameraUp","up",book);
     simulate.BindAttribute("_UrsulaPos","ursulaPos" , book );
+    
+    simulate.BindAttribute("_Fade","fade" , book );
+
     simulate.BindAttribute("_RayOrigin", "RayOrigin",touch);
     simulate.BindAttribute("_RayDirection", "RayDirection",touch);
 
@@ -60,15 +72,13 @@ public class BookTextParticles : LifeForm{
 //
     setGlyph.RebindForm("_AnchorBuffer",anchor);
     setAnchor.RebindForm("_AnchorBuffer",anchor);
-//
-   setAnchor.active = true;
-   setAnchor._WhileLiving(1);
-   setAnchor.active = false;
-//
-   setGlyph.active = true;
-   setGlyph._WhileLiving(1);
-   setGlyph.active = false;
 
+    setAnchor.YOLO();
+    setGlyph.YOLO();
+  }
+
+  public void PageStart(){
+    setPage.YOLO();
   }
 
 }

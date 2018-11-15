@@ -10,6 +10,8 @@ public class WandParticles : LifeForm{
 
   public Book book;
 
+  public Wand wand;
+
   public float radius;
 
   public TerrainEngine engine;
@@ -17,7 +19,6 @@ public class WandParticles : LifeForm{
   public TouchToRay touch;
   public Life transferLife;
 
-  public Vector3 wandPos;
 
   public Vector3 frame1;
   public Vector3 frame2;
@@ -40,7 +41,6 @@ public class WandParticles : LifeForm{
 	
 
   public override void WhileLiving(float v){
-    wandPos = trace.marker.position;
        
     frame1 = book.pages[book.currentPage].frame.bottomLeft;
     frame2 = book.pages[book.currentPage].frame.bottomRight;
@@ -56,6 +56,7 @@ public class WandParticles : LifeForm{
     simulation.BindAttribute("_Down", "Down",touch);
     simulation.BindAttribute("_CurrentTarget", "currentTargetPosition",book);
 
+    simulation.BindAttribute( "_WandPos", "position" , wand );
 
     simulation.BindAttribute("_Frame1" , "frame1", this);
     simulation.BindAttribute("_Frame2" , "frame2", this);
@@ -65,6 +66,7 @@ public class WandParticles : LifeForm{
     transferLife.BindAttribute("_Radius","radius", this);
     
     engine.BindData(simulation);
+
   }
 
 }
