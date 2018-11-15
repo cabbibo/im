@@ -1,10 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[InitializeOnLoad]
+//[InitializeOnLoad]
 class EditorMagic:MonoBehaviour
 {
-    public static bool created;
+/*    public static bool created;
     public static LifeForm God;
     static EditorMagic ()
     {
@@ -31,5 +31,5 @@ class EditorMagic:MonoBehaviour
       Debug.Log("destroy");
       God.OnDestruction();
       created = false;
-    }
+    }*/
 }

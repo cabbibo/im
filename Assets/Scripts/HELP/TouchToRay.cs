@@ -106,12 +106,12 @@ public class TouchToRay : MonoBehaviour {
 
 
     if( sceneView == true ){
-      if( Event.current != null){
-      print(Event.current.mousePosition);
-      Ray r = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
-      RayOrigin = r.origin;
-      RayDirection = r.direction;
-    }
+    //  if( Event.current != null){
+    //  print(Event.current.mousePosition);
+    //  Ray r = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+    //  RayOrigin = r.origin;
+    //  RayDirection = r.direction;
+    //}
     }else{
       RayOrigin = Camera.main.ScreenToWorldPoint( new Vector3( p.x , p.y , Camera.main.nearClipPlane ) );
       RayDirection = -(Camera.main.transform.position - RayOrigin).normalized;
@@ -134,7 +134,7 @@ public class TouchToRay : MonoBehaviour {
 
     Vector2 p;
     
-    #if UNITY_EDITOR  
+   // #if UNITY_EDITOR  
       if( sceneView == true ){
         if( Event.current != null){
         p = Event.current.mousePosition;
@@ -144,9 +144,9 @@ public class TouchToRay : MonoBehaviour {
       }else{
         p  =  Input.mousePosition;///Input.GetTouch(0).position;
       }
-    #else
-        p  =  Input.GetTouch(0).position;
-    #endif 
+   // #else
+    //    p  =  Input.GetTouch(0).position;
+    //#endif 
 
     return p;
 
@@ -154,7 +154,7 @@ public class TouchToRay : MonoBehaviour {
 
   bool GetDown(){
     bool p;  
-    #if UNITY_EDITOR  
+    //#if UNITY_EDITOR  
 
 
       if( sceneView == true ){
@@ -162,9 +162,9 @@ public class TouchToRay : MonoBehaviour {
       }else{
         p  =  Input.GetMouseButton (0);///Input.GetTouch(0).position;
       }
-    #else
-        p  =  (Input.touchCount > 0);
-    #endif 
+    //#else
+    //    p  =  (Input.touchCount > 0);
+    //#endif 
 
     return ( p  );
   

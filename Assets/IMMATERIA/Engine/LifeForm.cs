@@ -50,11 +50,10 @@ public void OnDestruction(){
 }
 
 
-public void Awake(){
-//  print("hi");
-}
-public void OnEnable(){
-  //print("hmmm");
+
+
+public void Start(){
+  //Debug.Log("hmmm");
   if( auto ){ OnCreation(); }
 }
 

@@ -77,7 +77,7 @@ Material:
     - _OutlineExtrusion: 0.01
     - _OutlineOut: 0.01
     - _Parallax: 0.02
-    - _RampSize: 0.1
+    - _RampSize: 3
     - _RampStart: -0.03
     - _Saturation: 0.8
     - _SmoothnessTextureChannel: 0

@@ -23,7 +23,7 @@ public class Trace : MonoBehaviour {
     if( book.pageActive > .5f ){
       p = touch.ray.origin - touch.ray.direction;
     }else{
-      p = engine.Trace(touch.RayOrigin,-touch.RayDirection);	
+      p = engine.Trace(touch.RayOrigin,touch.RayDirection);	
     }
 
     targetPos = p;
