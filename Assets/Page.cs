@@ -31,14 +31,14 @@ public class Page : Cycle {
     
     frame.borderLine.enabled = false;
     frame.borderLine.material.SetFloat("_Cutoff" , 1 );
-    print("pageCreate");
+//    print("pageCreate");
     DoCreate();
   
   }
 
 
   public override void _OnGestate(){
-    print("pageGestated");
+   // print("pageGestated");
     frame.borderLine.enabled = true;
     DoGestate();
   }

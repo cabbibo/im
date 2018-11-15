@@ -34,6 +34,8 @@ public class TouchToRay : MonoBehaviour {
   public UnityEvent OnSwipeDown;
   public UnityEvent OnTap;
   public RayEvent   RayTap;
+  public RayEvent   RayWhileDown;
+  public RayEvent   RayMove;
   
 
   public Vector3 RayOrigin;
@@ -112,9 +114,10 @@ public class TouchToRay : MonoBehaviour {
     }
     }else{
       RayOrigin = Camera.main.ScreenToWorldPoint( new Vector3( p.x , p.y , Camera.main.nearClipPlane ) );
-      RayDirection = (Camera.main.transform.position - RayOrigin).normalized;
+      RayDirection = -(Camera.main.transform.position - RayOrigin).normalized;
       ray.origin = RayOrigin;
       ray.direction = RayDirection;
+      RayMove.Invoke( ray );
 
     }
 
@@ -194,7 +197,7 @@ public class TouchToRay : MonoBehaviour {
      } 
     }else{
       OnTap.Invoke();
-      RayTap.Invoke( new Ray(RayOrigin,-RayDirection));
+      RayTap.Invoke(ray);
     }
 
 

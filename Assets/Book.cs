@@ -41,6 +41,9 @@ public class Book : LifeForm {
   [HideInInspector]public Vector3 forward;
   [HideInInspector]public Vector3 ursulaPos;
 
+  public bool ursulaHovered = false;
+  public bool frameHovered = false;
+
 
   // STIFLE IS TRUE!
 
@@ -53,7 +56,6 @@ public class Book : LifeForm {
     int id = 0;
     foreach( Page page in pages){
       page._Create();
-      print( id);
       id++;
     }
 
@@ -76,29 +78,59 @@ public class Book : LifeForm {
     anim.SetFloat("Test", animationState );
 	}
 
+
+  public void RayMove(Ray ray){
+
+      LayerMask mask = LayerMask.GetMask("Ursula");
+
+      RaycastHit hit;
+      if( Physics.Raycast( ray , out hit, 100 ,mask)){
+        if( ursulaHovered == false ){ UrsulaHoverOver(); }
+      }else{
+        if( ursulaHovered == true ){ UrsulaHoverOut(); }
+      }
+
+      if( pages[currentPage].collider.Raycast( ray , out hit, 100)){
+        if( frameHovered == false ){ FrameHoverOver(); }
+      }else{
+        if( frameHovered == true ){ FrameHoverOut(); }
+      }
+
+  }
+
+
+  public void FrameHoverOver(){
+    frameHovered = true;
+    pages[currentPage].frame.borderLine.material.SetFloat("_Hovered" , 1 );
+  }
+
+  public void FrameHoverOut(){
+    frameHovered = false;
+    pages[currentPage].frame.borderLine.material.SetFloat("_Hovered" , 0 );
+  }
+
+
+  public void UrsulaHoverOver(){
+    ursulaHovered = true;
+    ursula.HoverOver();
+  }
+
+  public void UrsulaHoverOut(){
+    ursulaHovered = false;
+    ursula.HoverOut();
+ }
+
+
+
+
   public void CheckRay( Ray ray ){
 
     RaycastHit hit;
    
     if( pages[currentPage].living ){
-
-
-      LayerMask mask = LayerMask.GetMask("Ursula");
-      if( Physics.Raycast( ray , out hit, 100 ,mask)){
-        EndPage();
-      }else{
-        print("NAH2");
-      }
-
-
+      if(ursulaHovered) EndPage();
     }else{
-
-      if( pages[currentPage].collider.Raycast( ray , out hit, 100)){
-        StartPage();
-      }else{
-        print("NAH");
-      }
-
+      if(frameHovered) StartPage();
     }
 
   }
@@ -122,7 +154,6 @@ public void StartPage(){
   }
 
   pages[currentPage]._OnBirth();
-  pageActive = 1;
   birthTime = Time.time;
   tmpPos = camera.position;
   tmpRot = camera.rotation;
@@ -133,7 +164,6 @@ public void StartPage(){
   tmpAnimationState = animationState;
 
   controls.enabled = false;
-  ursula.ActivateBubble();
  
 }
 
@@ -142,7 +172,6 @@ public void EndPage(){
   pages[currentPage]._OnLived();
   pages[currentPage]._OnDie();
 
-  ursula.DeactivateBubble();
   controls.enabled = true;
 
   lastPage = currentPage;
@@ -203,6 +232,7 @@ public override void _WhileLiving(float x){
     if( cp.living ){
       float v = 1;
 
+  pageActive = 1;
 
       Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 1.2f; 
       if( dif.magnitude > .2f ){ ursula.velocity += dif; }

@@ -64,10 +64,9 @@ public class Life : Cycle {
   public void RebindForm(string name , Form form ){
 //    print(boundForms[name]);
   if( boundForms[name] ){
-    print("RESET");
     boundForms[name] = form;
   }else{
-    print("BORKS");
+    print("BORKEN no form reset");
   }
   }
 

@@ -90,7 +90,7 @@ Shader "Final/Body"
 				// finds location on ramp texture that we should sample
 				// based on angle between surface normal and light direction
 				float ramp = clamp(dot(input.normal, lightDir), 0, 1.0);
-				float3 lighting = (.1 + 1.5 * tex2D(_RampTex, float2(ramp * _RampSize + _RampStart, 0.5)).rgb) * ramp;
+				float3 lighting = (.8 + .2 * tex2D(_RampTex, float2(ramp * _RampSize + _RampStart, 0.5)).rgb) * ramp;
 				
 				// sample texture for color
 				float4 albedo = tex2D(_MainTex, input.texCoord.xy);

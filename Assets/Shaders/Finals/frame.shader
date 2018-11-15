@@ -43,6 +43,7 @@ Shader "Final/Frame" {
       uniform float _BaseHue;
 
       float _Cutoff;
+      float _Hovered;
 
 
       struct VertexIn{
@@ -158,7 +159,7 @@ Shader "Final/Frame" {
 					float val = getFogVal(normalize(rd), p * _NoiseSize );	
 
 
-          col += hsv( stepVal * _HueSize + _BaseHue, 1 , val*val);
+          col += hsv( stepVal * _HueSize * (1 + _Hovered * .5 ) - _HueSize * .5* _Hovered + _BaseHue, 1 , val*val);
 
 
         }
@@ -166,6 +167,7 @@ Shader "Final/Frame" {
         //col *= col;
         col /= _NumberSteps;
         col *= (1-_Cutoff);
+        col *= ( 1 +_Hovered*2);
 
        if( length(col ) < .2 ){
         discard;

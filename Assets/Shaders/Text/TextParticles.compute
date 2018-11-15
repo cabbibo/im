@@ -35,6 +35,7 @@ int _TransferBuffer_COUNT;
 #include "../Chunks/safeID.cginc"
 #include "../Chunks/snoise.cginc"
 #include "../Chunks/curlNoise.cginc"
+#include "../Chunks/hash.cginc"
 
 
 float3 _CameraUp;
@@ -46,6 +47,33 @@ float3 _RayOrigin;
 float3 _RayDirection;
 
 float3 _UrsulaPos;
+float3 _Up;
+
+
+
+float3 getProj( float3 pos , float3 sp , float3 ep ){
+  float3 dif = sp-ep;
+  float dot1 = dot( pos-sp , normalize(dif));
+
+  float3 proj = normalize(dif) * dot1;
+  float dotProj = dot( proj, ep-sp);
+  
+  float3 lineToPoint = pos-sp-proj;
+
+  return lineToPoint;
+}
+
+
+float3 CurlForce( float3 v , float3 rO , float3 rD ){
+
+
+  float3 toLine = getProj( v , rO , rO + rD );
+
+  float3 curl = cross( toLine , rD );
+
+  return curl; 
+
+} 
 
 
 float _Active;
@@ -140,6 +168,13 @@ void SetAnchor(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
 }
 
+
+float3 randDir( float l ){
+
+  return float3((2*hash(l * 123.)-1),
+                (2*hash(l * 226.)-1),
+                (2*hash(l * 317.)-1));
+}
 #define NR_THREADS 128
 [numthreads(NR_THREADS,1,1)]
 void SetPage(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
@@ -147,9 +182,14 @@ void SetPage(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     int pID = threadID + u3GroupID.x * NR_THREADS;
     int sID =safeID(pID,_VertBuffer_COUNT);
     Vert v = _VertBuffer[sID];
+    
+    float3 d = v.pos - _UrsulaPos;
+    float l = length(d);
 
-    v.pos = _UrsulaPos;
-    v.vel = float3(0,0,0);
+    if(l > 2 ){
+      v.pos = _UrsulaPos + randDir(float(pID)) * .4;
+      v.vel = randDir(float(pID)) * .1;//float3(0,0,0);
+    }
 
     _VertBuffer[sID] = v;
 
@@ -163,17 +203,6 @@ float sdCapsule( float3 p, float3 a, float3 b, float r )
 }
 
 
-float3 getProj( float3 pos , float3 sp , float3 ep ){
-  float3 dif = sp-ep;
-  float dot1 = dot( pos-sp , normalize(dif));
-
-  float3 proj = normalize(dif) * dot1;
-  float dotProj = dot( proj, ep-sp);
-  
-  float3 lineToPoint = pos-sp-proj;
-
-  return lineToPoint;
-}
 
 
 #define NR_THREADS 128
@@ -199,20 +228,40 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
       force += .01*normalize(d) * -saturate(( (3 - l*l ) /3 ));
 
       force += curlNoise(v.pos * 1 + _Time ) * .0001;
+   
+
+   
     }else{
+
+      float3 d = v.pos - _UrsulaPos;
+      float l = length(d);
+      /*force +=.01*d;// * -saturate(( (3 - l*l ) /3 ));
+
+      force += CurlForce( v.pos , _UrsulaPos - _Up , _Up );
       force += curlNoise(v.pos * .3) * .004;
       //if(pID <= _AnchorBuffer_COUNT ){
         
       //}
+
+
+      d = v.pos - _UrsulaPos;
+      l = length(d);*/
+
+      d = getProj( v.pos , _UrsulaPos - _Up , _UrsulaPos + _Up );
+      l = length(d);
+      force +=.01*normalize(d) * (l-1);// * -saturate(( (3 - l*l ) /3 ));
+      force += .01 * CurlForce( v.pos , _UrsulaPos - _Up , _Up );
+      force += randDir( float(sID)) * .001;
+
     }
    // force += (v.pos - _UrsulaPos) *.1 *m;
 
     if( length(force) > 3){ force = normalize(force) * 3;}
     if( length(v.vel) > 3){ v.vel = normalize(v.vel) * 3;}
   
-    v.vel -= force;
+    v.vel -= force * .5;
     v.pos += v.vel;
-    v.vel *= .8;
+    v.vel *= .9;
     _VertBuffer[sID] = v;
 
 }

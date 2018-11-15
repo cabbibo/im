@@ -128,7 +128,18 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
     float3 fAnchor = v.anchor + _CenterPos1;
 
+
+
     force += .01*(v.pos- fAnchor);
+
+    if( length( v.pos - fAnchor ) > 5  ){
+
+        v.pos = fAnchor;
+        v.vel = float3(0,0,0);
+        force = 0;
+
+    }
+
     //force += float3(0,1,0);
 
     if( length(force) > 3){ force = normalize(force) * 3;}

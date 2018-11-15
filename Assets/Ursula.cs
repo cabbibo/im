@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -16,9 +16,6 @@ public class Ursula : MonoBehaviour {
 
   public SkinnedMeshRenderer bodyRenderer;
   public SkinnedMeshRenderer shoeRenderer;
-  public Collider bubble;
-  public MeshRenderer bubbleRenderer;
-  public bool bubbleActive;
 
   public Color activeColor;
   public Color passiveColor;
@@ -49,38 +46,23 @@ public class Ursula : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
     velocity = Vector3.zero;
-		DeactivateBubble();
 	}
 
-  /*
 
-  BUBBLE STUFF 
-
-  */
-
-  void OnMouseOver(){
-    print("hello");
+  public void HoverOver(){
+    bodyRenderer.sharedMaterial.SetFloat("_OutlineExtrusion",.03f);
+    shoeRenderer.sharedMaterial.SetFloat("_OutlineExtrusion",.03f);   
     bodyRenderer.sharedMaterial.SetColor("_OutlineColor",activeColor);
     shoeRenderer.sharedMaterial.SetColor("_OutlineColor",activeColor);
   }
   
-  void OnMouseExit(){
+  public void HoverOut(){
+    bodyRenderer.sharedMaterial.SetFloat("_OutlineExtrusion",.01f);
+    shoeRenderer.sharedMaterial.SetFloat("_OutlineExtrusion",.01f);
     bodyRenderer.sharedMaterial.SetColor("_OutlineColor",passiveColor);
     shoeRenderer.sharedMaterial.SetColor("_OutlineColor",passiveColor);
   }
 
-
-
-  public void ActivateBubble(){
-    bubbleRenderer.enabled = true;
-    bubbleActive = true;
-  }
-
-
-    public void DeactivateBubble(){
-    bubbleRenderer.enabled = false;
-    bubbleActive = false;
-  }
 
 
 
@@ -98,10 +80,12 @@ public class Ursula : MonoBehaviour {
   }
 
   private void FixedUpdate() {
+    
     DoMovement();   
     UpdateValues();
   }
-  
+
+
 
 
 /*
@@ -193,7 +177,7 @@ public class Ursula : MonoBehaviour {
   void UpdateValues(){
 
     soulPosition = soul.transform.position;
-    position = transform.position;
+    position = soul.transform.position;
     up = head.transform.position - soulPosition;
 
   }
