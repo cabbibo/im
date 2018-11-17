@@ -15,6 +15,7 @@ public class TerrainEngine : LifeForm {
 
   public HairNoise hairController;
   public Transform[] planes;
+  public Transform[] waters;
   public SetMesh[] planeLifes;
 
   public MeshFilter plane1;
@@ -50,6 +51,7 @@ public class TerrainEngine : LifeForm {
 
     planeLifes = new SetMesh[numTiles * numTiles];
     planes     = new Transform[numTiles * numTiles];
+    waters     = new Transform[numTiles * numTiles];
 
     t = (float)numTiles;
     hT = t /2;
@@ -67,9 +69,13 @@ public class TerrainEngine : LifeForm {
         plane.transform.parent = transform;
 
 
+
   
         planeLifes[id] = plane.gameObject.GetComponent<SetMesh>();
         planeLifes[id].position = new Vector3( x *tileSize, 0 , y*tileSize);
+
+         waters[id] = planeLifes[id].water;//.GetComponent<Water>();
+         waters[id].position = planeLifes[id].position;
 
         Cycles.Insert( Cycles.Count , planeLifes[id]);
         hairController.ToBind.Add(planeLifes[id].hairSet.HairCollision);
@@ -117,6 +123,8 @@ public class TerrainEngine : LifeForm {
       if( oPos != planeLifes[i].position ){
         planeLifes[i].Set( (planeLifes[i].position-oPos) );
       }
+
+      waters[i].position = new Vector3( planeLifes[i].position.x , planeLifes[i].waterHeight,planeLifes[i].position.z);
     }
 		
 	}

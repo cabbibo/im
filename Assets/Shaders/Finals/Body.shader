@@ -117,15 +117,17 @@ Shader "Final/Body"
 
 				float3 tCol = texCUBE(_CubeMap,refl);
 
-				float3 lighting = (.3 + .7 * tex2D(_ColorMap, float2(.75 + _RampStart - (ramp*ramp) * .1  + match * .04, 0.5)).rgb);// * ramp;
+				ramp = (floor(ramp * 5 ))/5;
+				match = (floor(match * 5 ))/5;
+				float3 lighting = (.3 + .7 * tex2D(_ColorMap, float2( _RampStart - max(match,ramp) * .5  + match * .04, 0.5)).rgb);// * ramp;
 				
 				// sample texture for color
 				float4 albedo = tex2D(_MainTex, v.texCoord.xy);
 
 				float attenuation = LIGHT_ATTENUATION(v); // shadow value
-				float3 rgb =  tCol *lighting*attenuation*ramp;//lbedo.rgb * _LightColor0.rgb * lighting * _Color.rgb * attenuation;
+				float3 rgb = lighting*attenuation*ramp;//lbedo.rgb * _LightColor0.rgb * lighting * _Color.rgb * attenuation;
 				
-				rgb += tCol * .2;
+				rgb += lighting * .3;//tCol * .2;
 
 			//rgb = v.tan * .5 + .5;
 

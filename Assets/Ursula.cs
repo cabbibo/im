@@ -43,6 +43,9 @@ public class Ursula : MonoBehaviour {
   public AudioClip hoverOver;
   public AudioClip hoverOut;
 
+  public Vector3 trailPos1;
+  public Vector3 trailPos2;
+  public Vector3 trailPos3;
 
 
 
@@ -50,6 +53,9 @@ public class Ursula : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
     velocity = Vector3.zero;
+    trailPos1 = Vector3.zero;
+    trailPos2 = Vector3.zero;
+    trailPos3 = Vector3.zero;
 	}
 
 
@@ -80,10 +86,15 @@ public class Ursula : MonoBehaviour {
   // Update is called once per frame
   void Update () {
    
-    
+    trailPos1 = Vector3.Lerp( trailPos1 , position , .15f );
+    trailPos2 = Vector3.Lerp( trailPos2 , trailPos1 , .15f );
+    trailPos3 = Vector3.Lerp( trailPos3 , trailPos2 , .15f );
   // print( c.r );
-   Shader.SetGlobalVector("_Player", transform.position );
+   Shader.SetGlobalVector("_Player", position );
    Shader.SetGlobalVector("_Velocity", velocity );
+   Shader.SetGlobalVector("_TrailPos1",trailPos1 );
+   Shader.SetGlobalVector("_TrailPos2",trailPos2 );
+   Shader.SetGlobalVector("_TrailPos3",trailPos3 );
   }
 
   private void FixedUpdate() {

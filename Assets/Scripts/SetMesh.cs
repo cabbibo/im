@@ -11,6 +11,8 @@ public class SetMesh : LifeForm{
   public Body body;
   public HairBasic hairSet;
   public PlaceParticles particlesSet;
+  public Transform water;
+  public float waterHeight;
 
   public GameObject sphere;
 
