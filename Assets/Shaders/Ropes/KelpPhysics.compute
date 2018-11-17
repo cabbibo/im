@@ -344,6 +344,9 @@ float3 s = length(mul( transform , float4(1,1,1,0)).xyz)/3;
       }
         
 
+      v1.debug.y = fLength;
+      v2.debug.y = fLength;
+
               // Set both the values in the proper buffer location!
       _VertBuffer[ pID ] = v1;
       _VertBuffer[ pUp ] = v2;

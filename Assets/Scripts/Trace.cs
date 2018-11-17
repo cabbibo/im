@@ -20,11 +20,11 @@ public class Trace : MonoBehaviour {
     
     Vector3 p; 
     
-    if( book.pageActive > .5f ){
-      p = touch.ray.origin - touch.ray.direction;
-    }else{
-      p = engine.Trace(touch.RayOrigin,touch.RayDirection);	
-    }
+    //if( book.pageActive > .5f ){
+    //  p = touch.ray.origin + 4*touch.ray.direction;
+    //}else{
+      p = engine.Trace(touch.ray.origin,touch.ray.direction);	
+    //}
 
     targetPos = p;
     Shader.SetGlobalVector("_WandPosition", p);

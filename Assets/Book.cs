@@ -9,6 +9,15 @@ public class Book : LifeForm {
   public Animator anim;
   public float animationState;
   public BookTextParticles text;
+  public AudioPlayer audio;
+
+  public AudioClip frameHoverOverClip;
+  public AudioClip frameHoverOutClip;
+  public AudioClip pageLockedClip;
+  public AudioClip pageStartClip;
+  public AudioClip pageEndClip;
+
+
 
   public int lastPage;
   public int currentPage;
@@ -35,6 +44,7 @@ public class Book : LifeForm {
 
   public float pageActive;
   public float fade;
+  public float pageAlive;
 
   [HideInInspector]public Vector3 up;
   [HideInInspector]public Vector3 right;
@@ -101,11 +111,14 @@ public class Book : LifeForm {
 
   public void FrameHoverOver(){
     frameHovered = true;
+
+     audio.Play(frameHoverOverClip);
     pages[currentPage].frame.borderLine.material.SetFloat("_Hovered" , 1 );
   }
 
   public void FrameHoverOut(){
     frameHovered = false;
+     audio.Play(frameHoverOutClip);
     pages[currentPage].frame.borderLine.material.SetFloat("_Hovered" , 0 );
   }
 
@@ -164,6 +177,8 @@ public void StartPage(){
   tmpAnimationState = animationState;
 
   controls.enabled = false;
+
+   audio.Play(pageStartClip);
  
 }
 
@@ -186,6 +201,8 @@ public void EndPage(){
   }else{
     print("END");
   }
+
+  audio.Play(pageEndClip);
 
 
 }
@@ -213,6 +230,8 @@ public override void _WhileLiving(float x){
 
 
 
+
+
     if( cp.birthing ){
       float v = (Time.time - birthTime ) / cp.birthSpeed;
       cp._WhileBirthing(v);
@@ -225,6 +244,7 @@ public override void _WhileLiving(float x){
       if( v >= 1 ){
         cp._OnBirthed();
         cp._OnLive();
+        audio.Play(pageLockedClip);
       }
 
     }
@@ -232,13 +252,20 @@ public override void _WhileLiving(float x){
     if( cp.living ){
       float v = 1;
 
-  pageActive = 1;
+      pageActive = 1;
 
       Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 1.2f; 
       if( dif.magnitude > .2f ){ ursula.velocity += dif; }
       
       cp._WhileLiving(v);
+
+      pageAlive += .01f;
+    }else{
+
+      pageAlive -= .01f;
     }
+
+    pageAlive = Mathf.Clamp( pageAlive , 0 , 1 );
 
     Page lp = pages[lastPage];
     if( lp.dying ){

@@ -39,6 +39,10 @@ public class Ursula : MonoBehaviour {
   public float gravityForce;
   public float dampening;
 
+  public AudioPlayer audio;
+  public AudioClip hoverOver;
+  public AudioClip hoverOut;
+
 
 
 
@@ -54,6 +58,7 @@ public class Ursula : MonoBehaviour {
     shoeRenderer.sharedMaterial.SetFloat("_OutlineExtrusion",.03f);   
     bodyRenderer.sharedMaterial.SetColor("_OutlineColor",activeColor);
     shoeRenderer.sharedMaterial.SetColor("_OutlineColor",activeColor);
+    audio.Play(hoverOver, Random.Range(.8f,1.2f));
   }
   
   public void HoverOut(){
@@ -61,6 +66,8 @@ public class Ursula : MonoBehaviour {
     shoeRenderer.sharedMaterial.SetFloat("_OutlineExtrusion",.01f);
     bodyRenderer.sharedMaterial.SetColor("_OutlineColor",passiveColor);
     shoeRenderer.sharedMaterial.SetColor("_OutlineColor",passiveColor);
+  
+    audio.Play(hoverOut,Random.Range(.8f,1.2f) , .4f);
   }
 
 

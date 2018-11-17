@@ -9,6 +9,7 @@ public class WandParticles : LifeForm{
   public Life simulation;
 
   public Book book;
+  public Ursula ursula;
 
   public Wand wand;
 
@@ -57,6 +58,8 @@ public class WandParticles : LifeForm{
     simulation.BindAttribute("_CurrentTarget", "currentTargetPosition",book);
 
     simulation.BindAttribute( "_WandPos", "position" , wand );
+    simulation.BindAttribute( "_UrsulaPos", "position" , ursula );
+    simulation.BindAttribute( "_UrsulaUp", "up" , ursula );
 
     simulation.BindAttribute("_Frame1" , "frame1", this);
     simulation.BindAttribute("_Frame2" , "frame2", this);

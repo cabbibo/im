@@ -55,6 +55,7 @@ public class Frame : MonoBehaviour {
     topLeft = Camera.main.ViewportToWorldPoint(new Vector3(border,1-_ratio * border,distance));
     topRight = Camera.main.ViewportToWorldPoint(new Vector3(1-border,1-_ratio * border,distance));
 
+
     borderLine.SetPosition( 0 , bottomLeft );
     borderLine.SetPosition( 1 , bottomRight );
     borderLine.SetPosition( 2 , topRight );

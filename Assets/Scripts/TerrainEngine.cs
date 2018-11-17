@@ -138,18 +138,21 @@ public class TerrainEngine : LifeForm {
 
   public Vector3 Trace( Vector3 ro , Vector3 rd ){
 
-    for( int i = 0; i < 1000; i++ ){
+    for( int i = 0; i < 100; i++ ){
 
-      Vector3 pos = ro+ rd * i * 1;
+      Vector3 pos = ro +rd * i *.4f;
       float h = SampleHeight( pos );
+
       if( pos.y < h ){
+
+       // print( h);
         return pos;
 //        break;
       }
 
     }
 
-    return ro + rd * 100;
+    return ro + rd * 4;
 
 
 

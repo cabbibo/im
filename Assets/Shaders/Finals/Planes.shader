@@ -4,11 +4,12 @@
     _Color ("Color", Color) = (1,1,1,1)
 
     _MainTex ("Texture", 2D) = "white" {}
+
+    _ColorMap ("ColorMap", 2D) = "white" {}
+    _NormalMap ("NormalMap", 2D) = "white" {}
+    _CubeMap( "Cube Map" , Cube )  = "defaulttexture" {}
     
     [Toggle(Enable12Struct)] _Struct12("12 Struct", Float) = 0
-    [Toggle(Enable16Struct)] _Struct16("16 Struct", Float) = 0
-    [Toggle(Enable24Struct)] _Struct24("24 Struct", Float) = 0
-    [Toggle(Enable36Struct)] _Struct36("36 Struct", Float) = 0
   }
 
   SubShader {
@@ -26,16 +27,27 @@
 
       #include "UnityCG.cginc"
       #include "AutoLight.cginc"
+    
+    struct Vert{
+      float3 pos;
+      float3 nor;
+      float3 tan;
+      float2 uv;
+      float debug;
+    };
 
-
-#pragma multi_compile  Enable12Struct Enable16Struct Enable24Struct Enable36Struct
-
-      #include "../Chunks/StructIfDefs.cginc"
       #include "../Chunks/hsv.cginc"
+      #include "../Chunks/noise.cginc"
 
       float3 _Color;
       float3 _Player;
       sampler2D _MainTex;
+      sampler2D _ColorMap;
+      sampler2D _NormalMap;
+      samplerCUBE _CubeMap;
+
+
+  StructuredBuffer<Vert> _TransferBuffer;
 
 
       struct varyings {
@@ -74,15 +86,57 @@
 
       float4 frag(varyings v) : COLOR {
 
-        float4 color = tex2D(_MainTex,v.uv );
+        float4 color = tex2D(_MainTex,v.worldPos.xz * .1 );
+
+        float3 fNor = normalize(float3(
+            2*noise(v.worldPos* 2 )-1,
+            2*noise(v.worldPos* 2 +50)-1,
+            2*noise(v.worldPos* 2 +20 )-1
+        ));
+
+        fNor += 2*normalize(float3(
+            2*noise(v.worldPos* .4 )-1,
+            2*noise(v.worldPos* .4 +50)-1,
+            2*noise(v.worldPos* .4 +20 )-1
+        ));
+
+        fNor += .4 * normalize(float3(
+            2*noise(v.worldPos* 10 )-1,
+            2*noise(v.worldPos* 10 +50)-1,
+            2*noise(v.worldPos* 10 +20 )-1
+        ));
+
+        fNor = tex2D(_NormalMap , v.worldPos.xz * .1 );
+       // fNor += 2*v.nor;
+        
+
+        fNor = normalize(v.nor * fNor.z + float3(1,0,0) * (fNor.x)  + float3(0,0,1) * (fNor.y-.5));//normalize( fNor );
+
+        float3 glint = tex2D(_NormalMap , v.worldPos.xz * .04 ) + tex2D(_NormalMap , v.worldPos.xz * .14 );
+
+        glint = normalize((glint)-1);
+
+        float eyeM = abs(dot(fNor, normalize(v.eye)));
     
-        fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos -v.nor ) * .9 + .1 ;
+        fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos ) * .9 + .1 ;
 float dif = length( v.worldPos - _Player );
 
 float l = saturate( (20-dif)/20);
         color.xyz = .4*pow(length(color.xyz),4);
-        color.xyz *= l * hsv(color.x * -.3+l * 1.2 - .1,.5, 1);
-        return float4( color.xyz * shadow, 1.);
+
+        float match = dot( fNor, _WorldSpaceLightPos0 );
+
+        float3 refl = reflect( normalize(v.eye) , fNor );
+        float reflM = dot( refl , _WorldSpaceLightPos0 );
+        color.xyz = tex2D(_ColorMap, float2(  l*.1 + .17   , 0)) * l;
+
+
+
+        float3 tCol = texCUBE(_CubeMap,refl) * color;
+
+
+        tCol *=color;// pow(eyeM,100)  * 20;
+        return float4( tCol *shadow , 1.);
       }
 
       ENDCG

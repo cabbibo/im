@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HexParticleTransferVerts : MonoBehaviour {
+public class HexParticleTransferVerts: Form {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+  public Form particles;
+  public override void SetStructSize(){ structSize = 16; }
+
+  public override void SetCount(){
+    count = particles.count * 7;
+  }
+
 }
+
+
+

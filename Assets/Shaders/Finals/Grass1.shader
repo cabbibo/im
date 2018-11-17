@@ -5,6 +5,8 @@
     _FalloffRadius ("Falloff", float) = 20
 
     _MainTex ("Texture", 2D) = "white" {}
+
+       _ColorMap ("ColorMap", 2D) = "white" {}
     
     [Toggle(Enable16Struct)] _Struct16("16 Struct", Float) = 0
     [Toggle(Enable24Struct)] _Struct24("24 Struct", Float) = 0
@@ -33,6 +35,7 @@
       float3 _Player;
       float _FalloffRadius;
       sampler2D _MainTex;
+      sampler2D _ColorMap;
 
 
 			struct varyings {
@@ -76,16 +79,21 @@
 
 				float4 color = tex2D(_MainTex,v.uv );
 		
-				fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos - v.nor * 10 ) * .9 + .1 ;
+				fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos  ) * .9 + .1 ;
 float dif = saturate((_FalloffRadius -  length( v.worldPos - _Player ))/_FalloffRadius);
 				
         float col =.2*pow(length(color.xyz) , 10);
-        color.xyz *= 1* hsv(color.a +v.uv.x *.3+.1+saturate(100*length(v.vel)) * .2 - .4,.3,dif);//col*hsv( v.uv.x * .4 + sin( v.debug.x) * .1 + sin(dif) * 1+ sin(_Time.y) * .1 , .7,dif);
+        //color.xyz *= 1* hsv(color.a +v.uv.x *.3+.1+saturate(100*length(v.vel)) * .2 - .4,.3,dif);//col*hsv( v.uv.x * .4 + sin( v.debug.x) * .1 + sin(dif) * 1+ sin(_Time.y) * .1 , .7,dif);
        // color.xyz *= col;
 
-        color.xyz *=   saturate(100*length(v.vel));
-				
-				if( color.a < .1 ){ discard; }
+       float vSat =  saturate(40*length(v.vel) + .3);
+       float hue =  -saturate(length( v.worldPos - _Player ) * .3) * .3 + .1+color.z  * color.z  * .4  + saturate(length(v.vel) * 20) * .2 ;
+       color.xyz = tex2D(_ColorMap , float2( hue,0 ));;
+        color.xyz *=  vSat;
+			 	
+				if( color.a < .6 ){ discard; }
+color *= dif;
+        if( v.debug.y < .3 ){ discard; }
         return float4( color.xyz * shadow, 1.);
 			}
 

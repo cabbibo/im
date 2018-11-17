@@ -5,6 +5,10 @@ Shader "Final/Water"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+
+    _ColorMap ("ColorMap", 2D) = "white" {}
+    _NormalMap ("NormalMap", 2D) = "white" {}
+    _CubeMap( "Cube Map" , Cube )  = "defaulttexture" {}
     }
     SubShader
     {
@@ -32,6 +36,7 @@ Shader "Final/Water"
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
                 float3 worldPos : TEXCOORD3;
+                float3 normal : TEXCOORD3;
             };
 
             sampler2D _MainTex;
@@ -42,6 +47,13 @@ Shader "Final/Water"
 		float _MapSize;
 		float _MapHeight;
 		float3 _Player;
+
+
+
+      sampler2D _ColorMap;
+      sampler2D _NormalMap;
+      samplerCUBE _CubeMap;
+
       
 
 	float getHeight( float3 pos ){
@@ -57,6 +69,11 @@ Shader "Final/Water"
 	#include "../Chunks/noise.cginc"
 
 
+            float3 getFPos( float3 pos ){
+
+
+            }
+
             
             varyings vert (appdata v)
             {
@@ -64,8 +81,17 @@ Shader "Final/Water"
 
                 float3 wP = mul(unity_ObjectToWorld, v.vertex).xyz;
                	float h = getHeightLOD(wP);
+              
+
                 wP.y +=  .4*(1+noise(float3(wP.x, wP.y-_Time.y, wP.z) * .4 ));
+              
+
+
+
                 wP = mul( unity_WorldToObject , float4(wP,1)).xyz;
+              
+
+
                 o.vertex = UnityObjectToClipPos(float4(wP,1));
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                	o.worldPos = mul(unity_ObjectToWorld, float4(wP,1)).xyz;

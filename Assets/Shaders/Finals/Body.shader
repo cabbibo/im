@@ -1,16 +1,18 @@
-﻿
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+
 Shader "Final/Body"
 {
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-		_RampTex("Ramp", 2D) = "white" {}
+		_ColorMap("Ramp", 2D) = "white" {}
 		_Color("Color", Color) = (1, 1, 1, 1)
 		_OutlineExtrusion("Outline Extrusion", float) = 0
 		_OutlineColor("Outline Color", Color) = (0, 0, 0, 1)
-		_OutlineDot("Outline Dot", float) = 0.25
-		_RampSize("Ramp Size", float) = 0.25
-		_RampStart("Ramp Start", float) = 0.25
+		_RampStart("Start", float)= 0
+		_CubeMap( "Cube Map" , Cube )  = "defaulttexture" {}
+    
 	}
 
 	SubShader
@@ -38,10 +40,12 @@ Shader "Final/Body"
 			#pragma multi_compile_fwdbase // shadows
 			#include "AutoLight.cginc"
 			#include "UnityCG.cginc"
+			#include "../Chunks/noise.cginc"
 
 			// Properties
 			sampler2D _MainTex;
-			sampler2D _RampTex;
+			sampler2D _ColorMap;  
+			 samplerCUBE _CubeMap;
 			float4 _Color;
 			float4 _LightColor0; // provided by Unity
 
@@ -53,6 +57,7 @@ Shader "Final/Body"
 			{
 				float4 vertex : POSITION;
 				float3 normal : NORMAL;
+				float4 tan : TANGENT;
 				float3 texCoord : TEXCOORD0;
 			};
 
@@ -61,6 +66,8 @@ Shader "Final/Body"
 				float4 pos : SV_POSITION;
 				float3 normal : NORMAL;
 				float3 texCoord : TEXCOORD0;
+				float3 world : TEXCOORD3;
+				float3 tan : TEXCOORD4;
 				LIGHTING_COORDS(1,2) // shadows
 			};
 
@@ -72,16 +79,26 @@ Shader "Final/Body"
 				output.pos = UnityObjectToClipPos(input.vertex);
 				float4 normal4 = float4(input.normal, 0.0); // need float4 to mult with 4x4 matrix
 				output.normal = normalize(mul(normal4, unity_WorldToObject).xyz);
-
+				output.tan = input.tan.w * normalize(mul(input.tan, unity_WorldToObject).xyz);
+				output.world = mul(unity_ObjectToWorld, input.vertex).xyz;
 				output.texCoord = input.texCoord;
+
 
                 TRANSFER_VERTEX_TO_FRAGMENT(output); // shadows
 				return output;
 			}
 
-			float4 frag(vertexOutput input) : COLOR
+			float4 frag(vertexOutput v) : COLOR
 			{
 				// lighting mode
+
+
+								float3 n = normalize(float3(noise(v.world * 20),
+																		noise(v.world * 20+10),
+																		noise(v.world * 20+20)));
+
+
+				float3 fNor = v.normal;//normalize(v.normal + noise(float3( v.texCoord.xy * 100  + float2(_Time.y * 1.4 , _Time.y * 2), _Time.y )) * v.tan);
 				
 				// convert light direction to world space & normalize
 				// _WorldSpaceLightPos0 provided by Unity
@@ -89,14 +106,30 @@ Shader "Final/Body"
 
 				// finds location on ramp texture that we should sample
 				// based on angle between surface normal and light direction
-				float ramp = clamp(dot(input.normal, lightDir), 0, 1.0);
-				float3 lighting = (.8 + .2 * tex2D(_RampTex, float2(ramp * _RampSize + _RampStart, 0.5)).rgb) * ramp;
+				float ramp = clamp(dot(fNor, lightDir), 0, 1.0);
+		
+				float3 eye = normalize(_WorldSpaceCameraPos - v.world);
+				float3 refl = reflect( eye , fNor );
+
+
+				float match = dot( eye , fNor );
+
+
+				float3 tCol = texCUBE(_CubeMap,refl);
+
+				float3 lighting = (.3 + .7 * tex2D(_ColorMap, float2(.75 + _RampStart - (ramp*ramp) * .1  + match * .04, 0.5)).rgb);// * ramp;
 				
 				// sample texture for color
-				float4 albedo = tex2D(_MainTex, input.texCoord.xy);
+				float4 albedo = tex2D(_MainTex, v.texCoord.xy);
 
-				float attenuation = LIGHT_ATTENUATION(input); // shadow value
-				float3 rgb = albedo.rgb * _LightColor0.rgb * lighting * _Color.rgb * attenuation;
+				float attenuation = LIGHT_ATTENUATION(v); // shadow value
+				float3 rgb =  tCol *lighting*attenuation*ramp;//lbedo.rgb * _LightColor0.rgb * lighting * _Color.rgb * attenuation;
+				
+				rgb += tCol * .2;
+
+			//rgb = v.tan * .5 + .5;
+
+
 				return float4(rgb, 1.0);
 			}
 

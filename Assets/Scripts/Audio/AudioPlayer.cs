@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioPlayer : MonoBehaviour {
 
@@ -8,13 +9,21 @@ public class AudioPlayer : MonoBehaviour {
   public int numSources;
 
     public static AudioPlayer Instance { get; private set; }
+    
+    public float db;
 
+    public AudioMixerGroup output;
+    public AudioMixer mixer;
     private static AudioPlayer _instance;
 
     private GameObject[] objects;
     private AudioSource[] sources;
 
 
+
+void Update(){
+//    mixer.SetFloat("Volume",db);
+}
     void Start () {
 
         if( Instance == null ){
@@ -34,6 +43,7 @@ public class AudioPlayer : MonoBehaviour {
             sources[i] = objects[i].AddComponent<AudioSource>() as AudioSource;
             sources[i].dopplerLevel = 0;
             sources[i].playOnAwake = false;
+            sources[i].outputAudioMixerGroup = output;
         }
     }
 

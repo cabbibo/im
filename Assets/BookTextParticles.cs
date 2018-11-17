@@ -55,6 +55,7 @@ public class BookTextParticles : LifeForm{
     simulate.BindAttribute("_Up","up",book.ursula);
     simulate.BindAttribute("_CameraForward","forward",book);
     simulate.BindAttribute("_CameraUp","up",book);
+    simulate.BindAttribute("_PageAlive","pageAlive",book);
     simulate.BindAttribute("_UrsulaPos","position" , book.ursula );
     
     simulate.BindAttribute("_Fade","fade" , book );
