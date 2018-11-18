@@ -118,7 +118,7 @@
 
         float eyeM = abs(dot(fNor, normalize(v.eye)));
     
-        fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos ) * .9 + .1 ;
+        fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos) * .9 + .1 ;
 float dif = length( v.worldPos - _Player );
 
 float l = saturate( (20-dif)/20);

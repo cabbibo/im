@@ -117,20 +117,25 @@ Shader "Final/Body"
 
 				float3 tCol = texCUBE(_CubeMap,refl);
 
-				ramp = (floor(ramp * 5 ))/5;
-				match = (floor(match * 5 ))/5;
-				float3 lighting = (.3 + .7 * tex2D(_ColorMap, float2( _RampStart - max(match,ramp) * .5  + match * .04, 0.5)).rgb);// * ramp;
+				ramp = (floor(ramp * 3 ))/3;
+				match = (floor(match * 3 ))/3;
+				float3 lighting = (.1 + .9 * tex2D(_ColorMap, float2( _RampStart -  match * .4, 0.5)).rgb);// * ramp;
+				//lighting = max(lighting,(.1 + .9 * tex2D(_ColorMap, float2( _RampStart - ramp * .5  , 0.5)).rgb));// * ramp;
 				
 				// sample texture for color
-				float4 albedo = tex2D(_MainTex, v.texCoord.xy);
+				float4 albedo = tex2D(_MainTex, v.texCoord.xy );
+
+				float val = floor(pow(albedo.y,.5)*8)/3;
+				lighting = tex2D(_ColorMap,float2(val * .3 + .3,0));//floor(albedo*10)/3;
 
 				float attenuation = LIGHT_ATTENUATION(v); // shadow value
 				float3 rgb = lighting*attenuation*ramp;//lbedo.rgb * _LightColor0.rgb * lighting * _Color.rgb * attenuation;
 				
 				rgb += lighting * .3;//tCol * .2;
-
+				rgb = min(floor((attenuation*3))/3 + .1 , ramp);//tex2D(_ColorMap, float2(-attenuation * .9 ,0));
 			//rgb = v.tan * .5 + .5;
 
+				//rgb= pow(length(rgb),4)/10;
 
 				return float4(rgb, 1.0);
 			}
@@ -175,7 +180,7 @@ Shader "Final/Body"
 		{
 			// Won't draw where it sees ref value 4
 			Cull OFF
-			ZWrite OFF
+			ZWrite ON
 			ZTest ON
 			Stencil
 			{

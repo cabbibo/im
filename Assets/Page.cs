@@ -71,6 +71,11 @@ public class Page : Cycle {
     DoDying(v);
   }
 
+  public override void _OnDied(){
+    frame.borderLine.enabled = false;
+    DoDied();
+  }
+
 
   public override void _Destroy(){
     frame.borderLine.enabled = false;

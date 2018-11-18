@@ -29,7 +29,8 @@
 			#include "UnityCG.cginc"
 			#include "AutoLight.cginc"
 			#include "../Chunks/StructIfDefs.cginc"
-			#include "../Chunks/hsv.cginc"
+      #include "../Chunks/hsv.cginc"
+			#include "../Chunks/hash.cginc"
 
       float3 _Color;
       float3 _Player;
@@ -67,7 +68,9 @@
 				o.eye = _WorldSpaceCameraPos - fPos;
         o.nor = fNor;
 				o.vel = fVel;
-				o.uv =  float2(.9,1)-fUV;
+
+        float offset = floor(hash(debug.x) * 6) /6;
+				o.uv =  fUV.yx * float2(1./6.,.999) + float2(offset,0);
 				o.debug = float3(debug.x,debug.y,0);
 
 				UNITY_TRANSFER_SHADOW(o,o.worldPos);
@@ -77,21 +80,25 @@
 
 			float4 frag(varyings v) : COLOR {
 
-				float4 color = tex2D(_MainTex,v.uv );
+        float4 color = float4(0,0,0,0);// = tex2D(_MainTex,v.uv );
+				float4 tcol = tex2D(_MainTex,v.uv );
 		
 				fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos  ) * .9 + .1 ;
 float dif = saturate((_FalloffRadius -  length( v.worldPos - _Player ))/_FalloffRadius);
 				
-        float col =.2*pow(length(color.xyz) , 10);
+        float col =.2*pow(length(tcol.xyz) , 10);
         //color.xyz *= 1* hsv(color.a +v.uv.x *.3+.1+saturate(100*length(v.vel)) * .2 - .4,.3,dif);//col*hsv( v.uv.x * .4 + sin( v.debug.x) * .1 + sin(dif) * 1+ sin(_Time.y) * .1 , .7,dif);
        // color.xyz *= col;
 
        float vSat =  saturate(40*length(v.vel) + .3);
-       float hue =  -saturate(length( v.worldPos - _Player ) * .3) * .3 + .1+color.z  * color.z  * .4  + saturate(length(v.vel) * 20) * .2 ;
+       float hue = -saturate(length( v.worldPos - _Player ) * .3) * .1 + .3 + tcol.r   * .1  +saturate(length(v.vel) * 20) * .1 ;
        color.xyz = tex2D(_ColorMap , float2( hue,0 ));;
         color.xyz *=  vSat;
+        color.xyz *=  v.uv.y * 1.1;
+
 			 	
-				if( color.a < .6 ){ discard; }
+        color *= (tcol+1);
+				if( tcol.a < .8 ){ discard; }
 color *= dif;
         if( v.debug.y < .3 ){ discard; }
         return float4( color.xyz * shadow, 1.);
@@ -135,7 +142,7 @@ sampler2D _MainTex;
       {
         v2f o;
        
-        o.uv =  float2(.9,1)- _TransferBuffer[id].uv;
+        o.uv = _TransferBuffer[id].uv.yx *float2(1./6.,1);;
         o.pos = mul(UNITY_MATRIX_VP, float4(_TransferBuffer[id].pos, 1));
         return o;
       }
@@ -143,7 +150,7 @@ sampler2D _MainTex;
       float4 frag(v2f i) : COLOR
       {
         float4 col = tex2D(_MainTex,i.uv);
-        if( col.a < .4){discard;}
+        if( col.a < .8){discard;}
         SHADOW_CASTER_FRAGMENT(i)
       }
       ENDCG

@@ -209,6 +209,11 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
   pID = safeID(pID,_VertBuffer_COUNT);
   Vert vert = _VertBuffer[pID];
 
+
+  if(_Down > .5 ){
+    vert.life -= .01 * (2+sin(float(pID)));
+
+  }
   
 
   if( vert.life < 0.1 && _Down > .5 ){
@@ -226,7 +231,7 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
                                  ,(2* hash(p*30)-1)));
 
     vert.axis = axis;
-    vert.vel = axis * .01;
+    vert.vel = axis * .03;
 
 
     //vert.vel =.4 * (r* .4+float3(0,.4,0));
@@ -248,21 +253,22 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     float grass = data.w;
 
     if( vert.pos.y < height + 1 + grass * 2){
-      force += .2 * float3(0,1,0);
+      float delta =  vert.pos.y - (height + 1 + grass * 2);
+      force -= .3 * delta * float3(0,1,0);
     }else{
-      force -= .1 * float3(0,1,0);
+      //force -= .1 * float3(0,1,0);
     }
 
     float d = vert.pos.y - (height + 1 + grass * 2);
 
     force += .3 * float3(direction.x,0,direction.y) / max(1,d);
 
-    force += -.1*ursulaForce(vert.pos);
+    force += -.2*ursulaForce(vert.pos);
 
     vert.vel += force * .003 * (1+hash(pID*1021.))/2;
 
-   vert.life -= .01 * (1+sin(float(pID)));
-   if( vert.life < 0 ){ vert.life += 1; }
+   vert.life -= .001 * (2+sin(float(pID)));
+  // if( vert.life < 0 ){ vert.life += 1; }
 
    vert.pos += vert.vel;
 

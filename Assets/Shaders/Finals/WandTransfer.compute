@@ -5,7 +5,7 @@ struct Vert{
     float3 pos;
     float3 vel;
     float3 nor;
-    float3 tangent;
+    float3 tang;
     float2 uv;
     float2  debug;
 };
@@ -44,12 +44,14 @@ void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     l *= (float(col)-.5);
     u *= (float(row)-.5);
 
-    float3 fPos = p.pos + (l + u) *  _Radius * saturate(p.debug.y);
+    float3 fPos = p.pos + (l + u) *  _Radius * saturate(min((1-p.debug.y)*4,p.debug.y));
 
     float2 fUV = float2( float(row) , float(col) );
 
     _VertBuffer[safeID(pID,_VertBuffer_COUNT)].pos = fPos;
     _VertBuffer[safeID(pID,_VertBuffer_COUNT)].uv = fUV;
     _VertBuffer[safeID(pID,_VertBuffer_COUNT)].nor = p.nor;
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].tang = float3(p.uv,p.debug.x);
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].debug = float2(float(particleID), 0);
 
 }

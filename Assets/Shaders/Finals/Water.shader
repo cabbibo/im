@@ -260,7 +260,9 @@ float smin( float a, float b, float k )
 
                 col += length(bg) * float3(1,.3,.0)  * saturate(1-length(col) * .3 );
         
-                col /= max(1,.4*pDif);
+                col /= max(1,10.4*pDif);
+
+
                 return float4(col,1);
             }
 
