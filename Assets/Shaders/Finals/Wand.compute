@@ -256,7 +256,7 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
       float delta =  vert.pos.y - (height + 1 + grass * 2);
       force -= .3 * delta * float3(0,1,0);
     }else{
-      //force -= .1 * float3(0,1,0);
+      force -= .1 * float3(0,1,0);
     }
 
     float d = vert.pos.y - (height + 1 + grass * 2);
@@ -267,7 +267,7 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
     vert.vel += force * .003 * (1+hash(pID*1021.))/2;
 
-   vert.life -= .001 * (2+sin(float(pID)));
+   vert.life -= .002 * (3+sin(float(pID)));
   // if( vert.life < 0 ){ vert.life += 1; }
 
    vert.pos += vert.vel;
@@ -278,7 +278,7 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
   }
   
   
-  vert.nor = mul(rotation(vert.axis,vert.life*(hash(float(pID*123))+1)),float4(0,0,1,0)).xyz;
+  vert.nor = mul(rotation(vert.axis,vert.life*3*(hash(float(pID*123))+1)),float4(0,0,1,0)).xyz;
 
 
 

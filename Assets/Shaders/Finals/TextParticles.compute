@@ -189,8 +189,8 @@ void SetPage(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     float l = length(d);
 
     if(l > 2 ){
-      v.pos = _UrsulaPos + randDir(float(pID)) * .4;
-      v.vel = randDir(float(pID)) * .1;//float3(0,0,0);
+      v.pos = _UrsulaPos;// + randDir(float(pID)) * .4;
+      v.vel = randDir(float(pID)) * .01;//float3(0,0,0);
     }
 
     _VertBuffer[sID] = v;
@@ -237,12 +237,14 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
        d = v.pos - _UrsulaPos;
       l = length(d);
-      passiveForce +=.01*normalize(d) * (l-1);
+      //passiveForce +=.01*normalize(d) * (l-1);
 
       d = getProj( v.pos , _UrsulaPos - _Up , _UrsulaPos + _Up );
       l = length(d);
-     passiveForce +=.01*normalize(d) * (l-1);// * -saturate(( (3 - l*l ) /3 ));
-     passiveForce += .01 * CurlForce( v.pos , _UrsulaPos - _Up , _Up );
+     //passiveForce +=.01*normalize(d) * (l-1);// * -saturate(( (3 - l*l ) /3 ));
+     //passiveForce += .01 * CurlForce( v.pos , _UrsulaPos - _Up , _Up );
+     
+     passiveForce += curlNoise( v.pos * .1 ) * .01;
      passiveForce += randDir( float(sID)) * .001;
 
     

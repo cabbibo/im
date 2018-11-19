@@ -52,6 +52,6 @@ void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     _VertBuffer[safeID(pID,_VertBuffer_COUNT)].uv = fUV;
     _VertBuffer[safeID(pID,_VertBuffer_COUNT)].nor = p.nor;
     _VertBuffer[safeID(pID,_VertBuffer_COUNT)].tang = float3(p.uv,p.debug.x);
-    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].debug = float2(float(particleID), 0);
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].debug = float2(float(particleID), p.debug.y);
 
 }

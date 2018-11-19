@@ -160,7 +160,7 @@ public class TerrainEngine : LifeForm {
 
     }
 
-    return ro + rd * 4;
+    return ro + rd * 40;
 
 
 

@@ -93,23 +93,24 @@
 				fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos ) * .9 + .1 ;
 				float4 d = tex2D(_MainTex,v.uv);
         //if( d.a < .9 ){discard;}
-        //if( length(d.xyz) > 1 ){discard;}
+        if( length(d.xyz) > 1.5 ){discard;}
 
         if( length(v.tan)> .5){ discard;}
         
-        float3 fNor = normalize(v.nor + 10*v.tan);
+        float3 fNor = normalize(v.nor + 1*sin(length(v.tan) * 30) *normalize(v.tan) );
 
         float3 lDir = normalize(_Player - v.worldPos);
-        float3 refl = reflect( lDir , fNor );
+        float3 refl = reflect( lDir , v.nor );
         float rM  = dot( normalize( v.eye) , refl );
         float3 col = normalize(lDir) * .5 + .5;
 
         float3 eyeRefl = reflect( normalize(v.eye), fNor );
+        //float3 eyeRefl = refract( normalize(v.eye), fNor , .8 );
 
         float3 tCol = texCUBE( _CubeMap , eyeRefl );
 
         rM = rM*rM;
-        col =  tCol * tCol * 2;// * tex2D(_ColorMap,float2(rM*.1+.7 ,.5 )).rgb;// *(1-rM);//hsv(rM*rM*rM * 2.1,.5,rM);// + normalize(refl) * .5+.5;
+        col =  tCol*tCol * tex2D(_ColorMap,float2(rM*.1+.7 - v.debug.y * .1 ,.5 )).rgb;// *(1-rM);//hsv(rM*rM*rM * 2.1,.5,rM);// + normalize(refl) * .5+.5;
         //col = v.tan * .5 + .5;
 
         //col += hsv(dot(v.eye,v.nor) * -.1,.6,1) * (1-length(col));

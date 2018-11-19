@@ -157,7 +157,8 @@ public override void _WhileDebug(){
 }
 
 
-public void StartPage(){
+
+void SetPage(){
 
   if( currentPage == 0 ){
     text.Set(pages[currentPage].text);
@@ -165,6 +166,11 @@ public void StartPage(){
   }else{
     text.PageStart();
   }
+
+}
+public void StartPage(){
+
+
 
   pages[currentPage]._OnBirth();
   birthTime = Time.time;
@@ -244,6 +250,7 @@ public override void _WhileLiving(float x){
       if( v >= 1 ){
         cp._OnBirthed();
         cp._OnLive();
+        SetPage();
         audio.Play(pageLockedClip);
       }
 

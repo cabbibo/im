@@ -253,14 +253,19 @@ float smin( float a, float b, float k )
                 col = (bg)*(1-lookup) + aroundPerson + shore ;//tCol;//refl * .5 + .5;
                 col = aroundPerson * (lookup);
 
-                col += tex2D(_DepthRampTex,float2(-saturate(1-3*foamLine+n*4) * .3 + 1 ,0));//aw/(pDif*pDif);
+
+
+
+                float n2 = tex2D(_NoiseTex, v.world.xz * .3 + foamLine * .2 +  difP * - (_Time.y* .03)).x;
+                float fl1 = floor(foamLine * 4+n2*1 ) / 4;
+                col += 4*tex2D(_DepthRampTex,float2(-saturate(1-fl1) * .3 + 1 ,0));//aw/(pDif*pDif);
 ;
-                 col += tex2D(_DepthRampTex,float2(-saturate(1-10*foamLine) * .3 + 1 ,0))  * (saturate(1-10*foamLine));//aw/(pDif*pDif);
+                 col += 4*tex2D(_DepthRampTex,float2(-saturate(1-10*foamLine) * .3 + 1 ,0))  * (saturate(1-10*foamLine));//aw/(pDif*pDif);
 ;
 
                 col += length(bg) * float3(1,.3,.0)  * saturate(1-length(col) * .3 );
         
-                col /= max(1,10.4*pDif);
+                col /= max(1,10.4*pDif) * _Player.y * .3;
 
 
                 return float4(col,1);

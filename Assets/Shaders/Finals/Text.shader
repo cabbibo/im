@@ -11,9 +11,21 @@
 	SubShader {
 		// COLOR PASS
 
+     GrabPass
+        {
+            "_BackgroundTexture"
+        }
+
+
+        Tags
+        { 
+            "Queue" = "Transparent"
+        }
+
 		Pass {
-			Tags{ "LightMode" = "ForwardBase" }
+			//Tags{ "LightMode" = "ForwardBase" }
 			Cull Off
+      Blend OneMinusDstColor One // Soft Additive
 
 			CGPROGRAM
 			#pragma target 4.5
@@ -35,6 +47,7 @@
     	StructuredBuffer<Vert> _TransferBuffer;
       uniform sampler2D _TextMap;
       uniform sampler2D _ColorMap;
+      uniform sampler2D _BackgroundTexture;
 
       float3 _Color;
 
@@ -47,6 +60,7 @@
 				float3 worldPos : TEXCOORD6;
 				float3 debug    : TEXCOORD7;
 				float3 closest    : TEXCOORD8;
+        float4 screenPos : TEXCOORD9;
 				UNITY_SHADOW_COORDS(2)
 			};
 
@@ -65,6 +79,7 @@
 
 				o.pos = mul(UNITY_MATRIX_VP, float4(fPos,1));
 				o.worldPos = fPos;
+        o.screenPos = ComputeScreenPos( mul(UNITY_MATRIX_VP, float4(fPos,1)));
 				o.eye = _WorldSpaceCameraPos - fPos;
 				o.nor = fNor;
 				o.uv =  fUV;
@@ -79,10 +94,21 @@
 		
 				fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos -v.nor ) * .9 + .1 ;
 				float d = tex2D(_TextMap,v.uv);
-        if( d < .4 ){discard;}
 
+        float smoothing = .2;
+        float lum = smoothstep( 0.4 - smoothing , 0.4 + smoothing , d.x );
+
+        if( d < .1 ){discard;}
+float3 bg = tex2Dproj(_BackgroundTexture, v.screenPos );
         float3 c = tex2D(_ColorMap,float2(v.debug.z * 10.1 + .7 ,0) ).xyz;
-        return float4( c * d * shadow, 1.);
+        
+
+         //if( length(bg)/3 < .4 ){ c = 1; }else{
+         //c = 0;
+         //}//1-d;
+
+          c *= lum;
+        return float4(  c * 1.4 , lum);
 			}
 
 			ENDCG

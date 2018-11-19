@@ -7,6 +7,7 @@
     
 
        _ColorMap ("ColorMap", 2D) = "white" {}
+       _SpriteMap ("SpriteMap", 2D) = "white" {}
     
   }
 
@@ -36,6 +37,7 @@
 
     	StructuredBuffer<Vert> _TransferBuffer;
       uniform sampler2D _ColorMap;
+      uniform sampler2D _SpriteMap;
       samplerCUBE _CubeMap;
 
       float3 _Color;
@@ -52,7 +54,8 @@
 				float3 debug    : TEXCOORD7;
         float3 closest    : TEXCOORD8;
         float3 tan   : TEXCOORD9;
-				float3 vel   : TEXCOORD10;
+        float3 vel   : TEXCOORD10;
+				float2 sprite   : TEXCOORD11;
 				UNITY_SHADOW_COORDS(2)
 			};
 
@@ -77,6 +80,8 @@
 				o.eye = _WorldSpaceCameraPos - fPos;
 				o.nor = fNor;
 				o.uv =  fUV;
+        o.sprite = debug;//fUV * (1./6.)+ floor(float2(hash(debug.x*10), hash(debug.x*20)) * 6)/6;
+      
         o.tan = fTan;
         o.vel = fVel;
 				o.debug = float3(debug.x,debug.y,0);
@@ -89,8 +94,8 @@
 			float4 frag(varyings v) : COLOR {
 		
 				fixed shadow = UNITY_SHADOW_ATTENUATION(v,v.worldPos) * .9 + .1 ;
-				//float4 d = tex2D(_MainTex,v.uv);
-        //if( d.a < .9 ){discard;}
+				float4 d = tex2D(_SpriteMap,v.debug);
+      //  if( length(d.xyz) > 1 ){discard;}
 
         float n = noise(v.worldPos * 10);
         float3 fNor = normalize(v.nor + v.tan * 10  * (sin(10*v.uv.y  - 3*_Time.y)+3*n));
@@ -117,7 +122,7 @@ float3 tCol =   texCUBE(_CubeMap , refl2 );// * (fNor * .3 + .89);
         
          if( (v.uv.y + n * .2) > .95 ){ col= tCol * hsv(length(tCol) * .1,1,1);}//-col;}
         if( (v.uv.y + n * .2) > 1.1 ){ discard; }
-         col *= falloff;
+         col *= falloff*falloff;
         return float4(  col * shadow, 1.);
 			}
 
