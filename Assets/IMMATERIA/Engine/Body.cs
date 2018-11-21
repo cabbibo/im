@@ -12,6 +12,7 @@ public class Body : MeshLifeForm {
   public bool self;
   
   public Material material;
+  public Material debugMaterial;
   private GameObject go;
 
   private bool oActive;
@@ -71,6 +72,8 @@ public class Body : MeshLifeForm {
       go.name = gameObject.name + " : BODY";
       go.transform.parent = gameObject.transform;
     }
+
+    DebugThis("SET UP BODY ");
 
     filter = go.AddComponent<MeshFilter>();
     filter.mesh = mesh;
@@ -204,6 +207,17 @@ public class Body : MeshLifeForm {
     return uv;
 
   }
+
+
+
+  public override void WhileDebug(){
+    debugMaterial.SetPass(0);
+    debugMaterial.SetBuffer("_VertBuffer", verts._buffer);
+    debugMaterial.SetBuffer("_TriBuffer", triangles._buffer);
+    debugMaterial.SetInt("_Count",triangles.count);
+    Graphics.DrawProcedural(MeshTopology.Triangles, triangles.count * 3 * 2 );
+  }
+
 
 
 }

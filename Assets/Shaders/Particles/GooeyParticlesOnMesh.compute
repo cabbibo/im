@@ -1,0 +1,91 @@
+﻿#pragma kernel Simulation
+
+
+  struct Vert{
+
+    float3 pos;
+    float3 vel;
+    float3 nor;
+    float3 tang;
+    float2 uv;
+    float2 debug;
+  };
+
+struct Base{
+
+    float3 pos;
+    float3 nor;
+    float3 tang;
+    float2 uv;
+    float debug;
+
+
+  };
+
+
+float4x4 _Transform;
+
+RWStructuredBuffer<Vert> _VertBuffer;
+RWStructuredBuffer<Base> _BaseBuffer;
+
+int _VertBuffer_COUNT;
+int _BaseBuffer_COUNT;
+
+float3 _RayOrigin;
+float3 _RayDirection;
+
+
+float3 getProj( float3 pos , float3 sp , float3 ep ){
+  float3 dif = sp-ep;
+  float dot1 = dot( pos-sp , normalize(dif));
+
+  float3 proj = normalize(dif) * dot1;
+  float dotProj = dot( proj, ep-sp);
+  
+  float3 lineToPoint = pos-sp-proj;
+
+  return lineToPoint;
+}
+
+
+#include "../Chunks/safeID.cginc"
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+  int pID = threadID + u3GroupID.x * NR_THREADS;
+
+  pID = safeID(pID,_VertBuffer_COUNT);
+  Vert v = _VertBuffer[pID];
+
+  Base b = _BaseBuffer[safeID(pID,_BaseBuffer_COUNT)];
+
+  v.debug = float2(1,0);
+  float3 targetPos = mul( _Transform , float4(b.pos,1)); 
+    
+  float3 force = 0;
+
+  force -= (v.pos - targetPos) * .2;
+
+
+
+     float3 d = getProj( v.pos , _RayOrigin + _RayDirection * 100 , _RayOrigin - _RayDirection * 100 );
+   float l = length(d);
+  force -= .1*normalize(d) * - pow(saturate(( (4 - l ) /4 )),4);
+  v.vel += force * .1;
+  v.pos += v.vel ;
+
+
+  v.vel *= .95;
+  v.nor = normalize(mul( _Transform , float4(b.nor,0))); 
+  
+  v.uv = b.uv;
+  v.tang = b.tang;
+  
+
+
+
+  _VertBuffer[pID] = v;
+//}
+}

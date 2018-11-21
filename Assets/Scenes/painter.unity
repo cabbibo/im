@@ -531,7 +531,7 @@ MonoBehaviour:
   died: 0
   destroyed: 1
   debug: 0
-  active: 1
+  active: 0
   stifle: 0
   Cycles: []
   auto: 0
@@ -544,6 +544,7 @@ MonoBehaviour:
   filter: {fileID: 0}
   self: 0
   material: {fileID: 2100000, guid: 5215f677b727949d9877975fc3843cf7, type: 2}
+  debugMaterial: {fileID: 0}
 --- !u!1 &174787373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1019,7 @@ MonoBehaviour:
   Cycles: []
   ToBind: []
   engine: {fileID: 0}
+  trace: {fileID: 0}
   noiseSize: 3
   falloffRadius: 0
   noiseSpeed: 1
@@ -1520,6 +1522,7 @@ MonoBehaviour:
   filter: {fileID: 0}
   self: 0
   material: {fileID: 2100000, guid: 466b672a35c0ff14e8c1f06e366a8862, type: 2}
+  debugMaterial: {fileID: 0}
 --- !u!114 &403802859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1727,6 +1730,7 @@ GameObject:
   - component: {fileID: 431786787}
   - component: {fileID: 431786786}
   - component: {fileID: 431786785}
+  - component: {fileID: 431786789}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1801,6 +1805,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &431786789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 431786784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653cf437c64b1ab45a6ab58bb644093f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trace: {fileID: 1297048351}
 --- !u!1 &440426802
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,6 +3355,7 @@ MonoBehaviour:
   filter: {fileID: 0}
   self: 0
   material: {fileID: 2100000, guid: 5215f677b727949d9877975fc3843cf7, type: 2}
+  debugMaterial: {fileID: 0}
 --- !u!4 &933334452
 Transform:
   m_ObjectHideFlags: 0
@@ -3394,6 +3411,8 @@ MonoBehaviour:
   body: {fileID: 933334450}
   hairSet: {fileID: 286052479}
   particlesSet: {fileID: 1500154190}
+  water: {fileID: 0}
+  waterHeight: 0
   sphere: {fileID: 428137071}
   position: {x: 25, y: 0, z: 25}
 --- !u!114 &933334454
@@ -4435,6 +4454,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  waters: []
   planeLifes:
   - {fileID: 0}
   - {fileID: 0}
@@ -4510,6 +4530,7 @@ MonoBehaviour:
   Cycles: []
   ToBind: []
   engine: {fileID: 1297048348}
+  trace: {fileID: 0}
   noiseSize: 0
   falloffRadius: 0
   noiseSpeed: 0
@@ -4533,8 +4554,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   engine: {fileID: 1297048348}
+  book: {fileID: 0}
   touch: {fileID: 216060530}
   marker: {fileID: 431786788}
+  targetPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1323364781
 GameObject:
   m_ObjectHideFlags: 0
@@ -5927,6 +5950,7 @@ MonoBehaviour:
   filter: {fileID: 0}
   self: 0
   material: {fileID: 2100000, guid: 5215f677b727949d9877975fc3843cf7, type: 2}
+  debugMaterial: {fileID: 0}
 --- !u!1 &1766851928
 GameObject:
   m_ObjectHideFlags: 0

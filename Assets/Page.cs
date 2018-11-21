@@ -25,12 +25,14 @@ public class Page : Cycle {
 
 
   public UnityEvent OnDieEvent;
+  public UnityEvent OnGestateEvent;
 
   public override void _Create(){
   
     
     frame.borderLine.enabled = false;
     frame.borderLine.material.SetFloat("_Cutoff" , 1 );
+    collider.enabled = true;
 //    print("pageCreate");
     DoCreate();
   
@@ -40,7 +42,11 @@ public class Page : Cycle {
   public override void _OnGestate(){
    // print("pageGestated");
     frame.borderLine.enabled = true;
+    //OnGestateEvent.Invoke();
+
+    print("GETSALT");
     DoGestate();
+    OnGestateEvent.Invoke();
   }
 
   public override void _WhileGestating(float v){

@@ -19,6 +19,9 @@ public class ParticleSimulation : LifeForm {
     Cycles.Insert(Cycles.Count,binding);
 
     DoCreate();
+
+    print("DEGALT");
+    _Deactivate();
   
   }
 

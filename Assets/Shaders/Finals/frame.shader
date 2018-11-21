@@ -174,6 +174,7 @@ Shader "Final/Frame" {
        }
 col /= _NumberSteps;
 		    fixed4 color;
+        col = float3(1,0,0);
         color = fixed4( col , 1. );
         return color;
       }

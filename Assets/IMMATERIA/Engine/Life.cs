@@ -149,10 +149,10 @@ public class Life : Cycle {
         allBuffersSet = false;
         print("YOUR BUFFER : " + name +  " IS NULL!");
       }
-      }else{
-        print("WAHT YR FORM IS NULL");
-        print( name );
-      }
+    }else{
+      print("WAHT YR FORM IS NULL");
+      print( name );
+    }
   }
 
   public void BindAttribute( string nameInShader, string attributeName , System.Object obj ){
@@ -217,6 +217,10 @@ public class Life : Cycle {
         Vector4 value = (Vector4)b.info.GetValue(b.boundObject);
         if( debug == true ){ print( s + " || VALUE : " + value);}
         shader.SetVector(b.nameInShader,value);
+      }else if( b.info.FieldType == typeof(Matrix4x4)){
+        Matrix4x4 value = (Matrix4x4)b.info.GetValue(b.boundObject);
+        if( debug == true ){ print( s + " || VALUE : " + value);}
+        shader.SetMatrix(b.nameInShader,value);
       }else if( b.info.FieldType == typeof(Texture) ){
         Texture value = (Texture)b.info.GetValue(b.boundObject);
         if( debug == true ){ print( s + " || VALUE : " + value);}

@@ -54,6 +54,8 @@ public class Book : LifeForm {
   public bool ursulaHovered = false;
   public bool frameHovered = false;
 
+  public Material frameMaterial;
+
 
   // STIFLE IS TRUE!
 
@@ -66,18 +68,22 @@ public class Book : LifeForm {
     int id = 0;
     foreach( Page page in pages){
       page._Create();
+      page.frame.borderLine.material = frameMaterial;
       id++;
     }
 
-    pages[currentPage]._OnGestate();
-
-		gestateTime = Time.time;
+    //pages[currentPage]._OnGestate();
+//
+		//gestateTime = Time.time;
 
     
 	}
 	
 
   public override void OnBirthed(){
+
+    pages[currentPage]._OnGestate();
+        gestateTime = Time.time;
     StartPage();
   }
 
@@ -144,6 +150,7 @@ public class Book : LifeForm {
       if(ursulaHovered) EndPage();
     }else{
       if(frameHovered) StartPage();
+      if(ursulaHovered) controls.ToggleCloseFar();
     }
 
   }
@@ -171,8 +178,8 @@ void SetPage(){
 public void StartPage(){
 
 
-
-  pages[currentPage]._OnBirth();
+  Page p = pages[currentPage];
+  p._OnBirth();
   birthTime = Time.time;
   tmpPos = camera.position;
   tmpRot = camera.rotation;
@@ -185,7 +192,17 @@ public void StartPage(){
   controls.enabled = false;
 
    audio.Play(pageStartClip);
+
+   ursula.Lock( p , p.birthSpeed );
  
+}
+
+public void LivePage(Page cp){
+
+        cp._OnBirthed();
+        cp._OnLive();
+        SetPage();
+        audio.Play(pageLockedClip);
 }
 
 public void EndPage(){
@@ -194,10 +211,13 @@ public void EndPage(){
   pages[currentPage]._OnDie();
 
   controls.enabled = true;
+  controls.SetAfterPage();
 
   lastPage = currentPage;
   deathTime = Time.time;
   pageActive = 0;
+
+  ursula.Unlock();
   
   if( currentPage < (pages.Count-1) ){
     currentPage += 1;
@@ -211,6 +231,12 @@ public void EndPage(){
   audio.Play(pageEndClip);
 
 
+}
+
+public void DiePage( Page lp , Page cp ){
+
+  lp._OnDied();
+  text.Set(cp.text);
 }
 
 
@@ -243,29 +269,16 @@ public override void _WhileLiving(float x){
       cp._WhileBirthing(v);
 
       BirthLerp( cp , v );
-   
-      Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 1.2f; 
-      if( dif.magnitude > .2f ){ ursula.velocity += dif; }
-
       if( v >= 1 ){
-        cp._OnBirthed();
-        cp._OnLive();
-        SetPage();
-        audio.Play(pageLockedClip);
+        LivePage(cp);
       }
 
     }
 
     if( cp.living ){
       float v = 1;
-
       pageActive = 1;
-
-      Vector3 dif =  (cp.subjectTarget.position - ursula.transform.position) * 1.2f; 
-      if( dif.magnitude > .2f ){ ursula.velocity += dif; }
-      
       cp._WhileLiving(v);
-
       pageAlive += .01f;
     }else{
 
@@ -275,21 +288,19 @@ public override void _WhileLiving(float x){
     pageAlive = Mathf.Clamp( pageAlive , 0 , 1 );
 
     Page lp = pages[lastPage];
+    
     if( lp.dying ){
+    
       float v = (Time.time - deathTime ) / lp.deathSpeed;
       lp._WhileDying(v);
-      
+    
       if( v >= 1 ){
-        lp._OnDied();
-        //lp._Destroy();
-        text.Set(cp.text);
+        DiePage(lp,cp);
       }
 
     }
 
     currentTargetPosition = cp.subjectTarget.position;
-
-
 
     anim.SetFloat("Test", animationState );
 

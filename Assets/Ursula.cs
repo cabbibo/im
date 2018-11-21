@@ -13,6 +13,10 @@ public class Ursula : MonoBehaviour {
   public Transform soul;
   public Transform head;
 
+  public bool locked;
+  public Vector3 targetPosition;
+  public Quaternion targetRotation;
+
 
   public SkinnedMeshRenderer bodyRenderer;
   public SkinnedMeshRenderer shoeRenderer;
@@ -47,11 +51,27 @@ public class Ursula : MonoBehaviour {
   public Vector3 trailPos2;
   public Vector3 trailPos3;
 
+  private Vector3 oPos;
+  private Vector3 deltaPos;
+  private Quaternion oRot;
+  private Quaternion deltaRot;
+  private float lockStartTime;
+  private float lockSpeed;
+
+  private Page targetPage;
+
+  private Vector3 tmpPos;
+  private Quaternion tmpRot;
 
 
 
 	// Use this for initialization
 	void Start () {
+
+    lockStartTime = 0;
+    oRot = Quaternion.identity;
+    deltaRot = Quaternion.identity;
+    oPos = Vector3.zero;
     velocity = Vector3.zero;
     trailPos1 = Vector3.zero;
     trailPos2 = Vector3.zero;
@@ -115,6 +135,11 @@ public class Ursula : MonoBehaviour {
   void DoMovement(){
 
 
+    oPos = transform.position;
+    oRot = transform.rotation;
+
+    if( locked == false ){
+
     force = Vector3.zero;
      // read inputs
     float h = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -160,13 +185,69 @@ public class Ursula : MonoBehaviour {
     velocity *= dampening;
 
 
-    transform.position += velocity  * .001f;//m_Move  * .3f* speed;
+
+
+      transform.position += velocity  * .001f;//m_Move  * .3f* speed;
+
+
+      Vector3 m = transform.InverseTransformDirection(velocity);
+      float turn = Mathf.Atan2(m.x, m.z);
+      float forward = m.z;
+
+      Rotate(forward , turn);
+
+      animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
+      animator.SetFloat("Forward", forward, 0.1f, Time.deltaTime);
+
+
+
+    deltaPos = transform.position - oPos;
+    //deltaRot = transform.rotation - oRot;
+
+    }else{
+
+
+      float lerpVal = Mathf.Clamp( (Time.time - lockStartTime) / lockSpeed ,  0,1);
+
+      lerpVal = lerpVal * lerpVal * (3 - 2 * lerpVal);
+      transform.position = Vector3.Lerp( tmpPos , targetPage.subjectTarget.position  , lerpVal );
+      transform.rotation = Quaternion.Slerp( tmpRot ,targetPage.subjectTarget.rotation,lerpVal);
+
+
+    deltaPos = (transform.position - oPos);
+   // deltaRot = transform.rotation - oRot;
+
+     Vector3 m = transform.InverseTransformDirection(deltaPos);
+      float turn = Mathf.Atan2(m.x, m.z);
+      float forward = 40*m.z;
+
+      //animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
+      animator.SetFloat("Forward", forward, 0.1f, Time.deltaTime);
+
+
+
+    }
 
 
 
     //m_Move = transform.InverseTransformDirection(m_Move);
-    updateAnimator(transform.InverseTransformDirection(velocity));
+  }
 
+  public void Lock( Page p , float speed ){
+
+    lockSpeed = speed;
+
+
+    targetPage = p;
+    locked = true;
+    lockStartTime = Time.time;
+
+    tmpPos = transform.position;
+    tmpRot = transform.rotation;
+  }
+
+  public void Unlock(){
+    locked = false;
   }
 
   void updateAnimator( Vector3 m ){

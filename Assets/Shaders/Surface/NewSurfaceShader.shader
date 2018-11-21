@@ -22,8 +22,6 @@
       #include "../Chunks/hsv.cginc"
 
 
-#pragma multi_compile  Enable12Struct Enable16Struct Enable24Struct Enable36Struct
-
       #include "../Chunks/StructIfDefs.cginc"
 
 

@@ -133,10 +133,6 @@ void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     int bID = pID % _BaseBuffer_COUNT;
     int hairID = pID / _BaseBuffer_COUNT;
     Vert v = _BaseBuffer[safeID( bID , _BaseBuffer_COUNT )];
-
-
-
-
     Hair s = _SkeletonBuffer[safeID(hairID*_NumVertsPerHair, _SkeletonBuffer_COUNT)];
 
     float val = (v.pos.y/_MeshLength);//_MeshLength;
@@ -146,6 +142,7 @@ void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     float3 nor; float3 dir;
 
     float3 extraPos = cubicFromValue(hairID,valAlong,dir,nor);
+
 
 
 
@@ -162,12 +159,13 @@ void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     //extraPos = float3(.1 * float(bID) , v.pos.y , 0 );
 
     float3 zDir = normalize(dir);
-    float3 xDir = normalize(nor);
-    float3 yDir = normalize(cross(dir,nor));
+    float3 xDir = normalize(cross(zDir,float3(1,1,1)));
+    float3 yDir = normalize(cross(xDir,zDir));
 
    
 
     float3 fPos = -s.nor*.003 + extraPos  + _MeshSizeMultiplier * ( x * xDir + y * yDir + z * zDir);
+   // float3 fPos =s.pos+  ( x * xDir + y * yDir + z * zDir);
 
     //fPos = s.pos + v.pos;
     float3 c1 = float3( xDir.x , yDir.x , zDir.x );
@@ -182,7 +180,11 @@ void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
     pID = safeID(pID,_VertBuffer_COUNT);
 
-    _VertBuffer[pID].pos      = fPos;// = v;
+    //yDir = s.nor;
+    //xDir = normalize(cross( s.nor , float3(0,1,0)));
+    //zDir = normalize(cross( yDir , xDir));
+
+    _VertBuffer[pID].pos     = fPos;//( x * xDir + y * yDir + z * zDir) * .1;//s.pos+ v.pos.x * xDir + v.pos.y * yDir + v.pos.z * zDir;// = v;
     _VertBuffer[pID].nor      = fNor;// = v;
     _VertBuffer[pID].tangent  = fTan;// = v;
     _VertBuffer[pID].uv       = v.uv;// = v;

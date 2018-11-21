@@ -42,6 +42,8 @@ Shader "Custom/VolumeCombo" {
       uniform float _PatternSize;
       uniform float _HueSize;
 
+      float3 _Player;
+
 
       struct VertexIn{
          float4 position  : POSITION; 
@@ -57,6 +59,7 @@ Shader "Custom/VolumeCombo" {
           float4 uv     	: TEXCOORD0; 
           float3 ro     	: TEXCOORD1;
           float3 rd     	: TEXCOORD2;
+          float3 player   : TEXCOORD3;
       };
 
 
@@ -135,23 +138,25 @@ Shader "Custom/VolumeCombo" {
 
 
         float3 camPos = mul( unity_WorldToObject , float4( _WorldSpaceCameraPos , 1. )).xyz;
+        float3 pDif = mul( unity_WorldToObject , float4( _Player , 1. )).xyz;
 
         // the ray direction will use the position of the camera in local space, and 
         // draw a ray from the camera to the position shooting a ray through that point
         o.rd = normalize( v.position.xyz - camPos );
+        o.player =pDif;
 
         return o;
 
       }
 
       // Fragment Shader
-      fixed4 frag(VertexOut i) : COLOR {
+      fixed4 frag(VertexOut v) : COLOR {
 
 				// Ray origin 
-        float3 ro 			= i.ro;
+        float3 ro 			= v.ro;
 
         // Ray direction
-        float3 rd 			= i.rd;       
+        float3 rd 			= v.rd;       
 
         // Our color starts off at zero,   
         float3 col = float3( 0.0 , 0.0 , 0.0 );
@@ -174,6 +179,8 @@ Shader "Custom/VolumeCombo" {
 
 
           col += hsv( float(i)/_NumberSteps * _HueSize, 1 , 1) * val * ( 1 - float(i)/_NumberSteps) * 30;
+
+          col /=max(1,pow(length( p - v.player),2) * .1);
 
 
         }

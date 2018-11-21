@@ -1,4 +1,4 @@
-﻿Shader "Finals/Grass1" {
+﻿Shader "Final/Grass1" {
   Properties {
 
     _Color ("Color", Color) = (1,1,1,1)

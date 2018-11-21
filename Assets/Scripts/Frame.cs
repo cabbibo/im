@@ -23,8 +23,10 @@ public class Frame : MonoBehaviour {
   public Vector3 topRight;
 
   public float width;
+  public float height;
   public Vector3 normal;
   public Vector3 up;
+  public Vector3 right;
 
 
   // Use this for initialization
@@ -67,9 +69,14 @@ public class Frame : MonoBehaviour {
     normal = transform.forward;
 
 
+    up = -(bottomLeft - topLeft).normalized;
+    right = -(bottomLeft - bottomRight).normalized;
+
+
     transform.localScale = new Vector3( (bottomLeft - bottomRight).magnitude , (bottomLeft - topLeft).magnitude , .1f );
 
     width = (bottomLeft - bottomRight).magnitude;
+    height = (bottomLeft - topLeft).magnitude;
     
 
     cam.transform.position = tmpP;
