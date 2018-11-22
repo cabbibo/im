@@ -10,6 +10,7 @@ public class Book : LifeForm {
   public float animationState;
   public BookTextParticles text;
   public AudioPlayer audio;
+  public BookObject book;
 
   public AudioClip frameHoverOverClip;
   public AudioClip frameHoverOutClip;
@@ -53,6 +54,7 @@ public class Book : LifeForm {
 
   public bool ursulaHovered = false;
   public bool frameHovered = false;
+  public bool bookHovered = false;
 
   public Material frameMaterial;
 
@@ -69,6 +71,7 @@ public class Book : LifeForm {
     foreach( Page page in pages){
       page._Create();
       page.frame.borderLine.material = frameMaterial;
+      page.subjectTarget.GetComponent<MeshRenderer>().enabled = false;
       id++;
     }
 
@@ -112,6 +115,26 @@ public class Book : LifeForm {
         if( frameHovered == true ){ FrameHoverOut(); }
       }
 
+
+
+      if( book.collider.Raycast( ray , out hit, 100)){
+      
+//        print("helllo");
+        if( bookHovered == false ){ BookHoverOver(); }
+      }else{
+        if( bookHovered == true ){ BookHoverOut(); }
+      }
+
+
+
+  }
+
+  public void BookHoverOver(){
+    bookHovered=true;
+  }
+
+  public void BookHoverOut(){
+bookHovered = false;
   }
 
 
@@ -148,6 +171,7 @@ public class Book : LifeForm {
    
     if( pages[currentPage].living ){
       if(ursulaHovered) EndPage();
+      if(bookHovered) EndPage();
     }else{
       if(frameHovered) StartPage();
       if(ursulaHovered) controls.ToggleCloseFar();
@@ -178,7 +202,19 @@ void SetPage(){
 public void StartPage(){
 
 
+
   Page p = pages[currentPage];
+
+
+  if( p.grounded ){
+  ursula.SetGrounded();
+  animationState = 5;
+}
+
+ursula.lockForce = p.lockSpeed;
+ursula.forceCutoffRadiusStart = p.lockStartRadius;
+ursula.forceCutoffRadiusEnd = p.lockEndRadius;
+
   p._OnBirth();
   birthTime = Time.time;
   tmpPos = camera.position;
@@ -303,6 +339,8 @@ public override void _WhileLiving(float x){
     currentTargetPosition = cp.subjectTarget.position;
 
     anim.SetFloat("Test", animationState );
+
+    DoLiving(x);
 
 }
 

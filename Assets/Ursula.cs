@@ -27,8 +27,18 @@ public class Ursula : MonoBehaviour {
 
   private Vector3 cameraForward;             // The current forward direction of the camera
   private Vector3 m_Move;
-  public float speed;
 
+
+  public float runForce;
+  public float lockForce;
+  public float runMultiplier;
+  public float toRotLerp;
+  public float forceCutoffRadiusStart;
+  public float forceCutoffRadiusEnd;
+
+  public float trailLerp;
+  public float maxDist;
+  
   public bool gravity;
 
   public Vector3 velocity;
@@ -42,6 +52,7 @@ public class Ursula : MonoBehaviour {
   public float moveForce;
   public float gravityForce;
   public float dampening;
+
 
   public AudioPlayer audio;
   public AudioClip hoverOver;
@@ -106,9 +117,9 @@ public class Ursula : MonoBehaviour {
   // Update is called once per frame
   void Update () {
    
-    trailPos1 = Vector3.Lerp( trailPos1 , position , .15f );
-    trailPos2 = Vector3.Lerp( trailPos2 , trailPos1 , .15f );
-    trailPos3 = Vector3.Lerp( trailPos3 , trailPos2 , .15f );
+    trailPos1 = Vector3.Lerp( trailPos1 , position , trailLerp );
+    trailPos2 = Vector3.Lerp( trailPos2 , trailPos1 , trailLerp );
+    trailPos3 = Vector3.Lerp( trailPos3 , trailPos2 , trailLerp );
   // print( c.r );
    Shader.SetGlobalVector("_Player", position );
    Shader.SetGlobalVector("_Velocity", velocity );
@@ -125,6 +136,40 @@ public class Ursula : MonoBehaviour {
 
 
 
+public void SetGrounded(){
+  if( gravity == false ){
+
+    gravity = true;
+   // animator.
+
+    print("hellllooo");
+
+    if( animator.GetCurrentAnimatorStateInfo(0).IsName("Sleeping"))
+     {
+      print("hi2");
+      animator.Play("Grounded");
+     }
+
+    if( animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+     {
+      print("hi3");
+      animator.Play("Grounded");
+     }
+
+
+       if( animator.GetCurrentAnimatorStateInfo(0).IsName("Falling"))
+     {
+
+      print("fall1");
+
+      animator.SetTrigger("SleepToAwake");
+     }
+
+
+
+  }
+}
+
 
 /*
   
@@ -138,9 +183,9 @@ public class Ursula : MonoBehaviour {
     oPos = transform.position;
     oRot = transform.rotation;
 
+    force = Vector3.zero;
     if( locked == false ){
 
-    force = Vector3.zero;
      // read inputs
     float h = CrossPlatformInputManager.GetAxis("Horizontal");
     float v = CrossPlatformInputManager.GetAxis("Vertical");
@@ -179,7 +224,7 @@ public class Ursula : MonoBehaviour {
     }
     
 
-    force += m_Move * moveForce;
+    force += m_Move * moveForce * .1f  * runForce;
 
     velocity += force;
     velocity *= dampening;
@@ -187,27 +232,27 @@ public class Ursula : MonoBehaviour {
 
 
 
-      transform.position += velocity  * .001f;//m_Move  * .3f* speed;
+      transform.position += velocity;// * .001f;//m_Move  * .3f* speed;
 
 
       Vector3 m = transform.InverseTransformDirection(velocity);
-      float turn = Mathf.Atan2(m.x, m.z);
+      float turn = Mathf.Atan2(m.x, m.z) * Mathf.Clamp( Mathf.Abs( m.z  ) * 1000 , -1 ,1);
       float forward = m.z;
 
       Rotate(forward , turn);
 
       animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
-      animator.SetFloat("Forward", forward, 0.1f, Time.deltaTime);
+      animator.SetFloat("Forward", forward *runMultiplier, 0.1f, Time.deltaTime);
 
 
 
-    deltaPos = transform.position - oPos;
+      deltaPos = transform.position - oPos;
     //deltaRot = transform.rotation - oRot;
 
     }else{
 
 
-      float lerpVal = Mathf.Clamp( (Time.time - lockStartTime) / lockSpeed ,  0,1);
+     /* float lerpVal = Mathf.Clamp( (Time.time - lockStartTime) / lockSpeed ,  0,1);
 
       lerpVal = lerpVal * lerpVal * (3 - 2 * lerpVal);
       transform.position = Vector3.Lerp( tmpPos , targetPage.subjectTarget.position  , lerpVal );
@@ -219,10 +264,93 @@ public class Ursula : MonoBehaviour {
 
      Vector3 m = transform.InverseTransformDirection(deltaPos);
       float turn = Mathf.Atan2(m.x, m.z);
-      float forward = 40*m.z;
+      float forward = 1000*m.z;
 
       //animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
-      animator.SetFloat("Forward", forward, 0.1f, Time.deltaTime);
+      animator.SetFloat("Forward", forward * Time.deltaTime, 0.1f, Time.deltaTime);*/
+
+
+
+      Vector3 dif = targetPage.subjectTarget.position-transform.position;
+
+      float angle = 0;
+
+      bool inside = false;
+
+      if( dif.magnitude > maxDist ){
+        transform.position = transform.position + dif.normalized * maxDist; // = dif.normalized * .03f * lockForce;// m_Move * moveForce;
+      }
+
+      if( dif.magnitude > forceCutoffRadiusStart ){
+        inside = false;
+        force = dif.normalized * .03f * lockForce;// m_Move * moveForce;
+      }else{
+
+        inside = true;
+
+        if( dif.magnitude > forceCutoffRadiusEnd  ){
+          force = dif.normalized * .03f * lockForce  *  (  (dif.magnitude-forceCutoffRadiusEnd)  / (forceCutoffRadiusStart - forceCutoffRadiusEnd)); 
+        }
+
+
+        deltaRot = transform.rotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation ,targetPage.subjectTarget.rotation,toRotLerp );
+
+        //angle = Quaternion.Angle( transform.rotation, deltaRot %3.14f );
+        //Todo: Make a way so that we rotate properly!
+
+
+      }
+
+
+
+
+    float height = engine.SampleHeight( transform.position );
+
+    if( transform.position.y < height +.2f ){
+
+        //force += Vector3.up;
+
+        velocity = new Vector3( velocity.x , 0 , velocity.z )  * .5f;
+
+        transform.position = new Vector3( transform.position.x , height , transform.position.z );
+    }else{
+
+      if( gravity ){
+        force -= Vector3.up  * gravityForce ;
+      }
+    }
+
+
+
+      velocity += force;
+      velocity *= dampening;
+
+
+
+
+      transform.position += velocity;//  * .001f;//m_Move  * .3f* speed;
+
+
+      Vector3 m = transform.InverseTransformDirection(velocity);
+      float turn = Mathf.Atan2(m.x, m.z);
+      float forward = m.z;
+
+
+      if( inside == false ){
+
+        Rotate(forward , turn);
+        animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
+      }else{
+        animator.SetFloat("Turn", 0, 0.1f, Time.deltaTime);
+      }
+
+
+      animator.SetFloat("Forward", forward*runMultiplier, 0.1f, Time.deltaTime);
+
+
+
+      deltaPos = transform.position - oPos;
 
 
 

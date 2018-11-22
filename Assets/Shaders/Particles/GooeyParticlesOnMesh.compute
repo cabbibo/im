@@ -66,7 +66,11 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     
   float3 force = 0;
 
-  force -= (v.pos - targetPos) * .2;
+
+  float3 dif =(v.pos - targetPos)  ;
+
+  if( length( dif ) < 4 ){
+  force -= dif * .2;
 
 
 
@@ -78,13 +82,20 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
 
   v.vel *= .95;
-  v.nor = normalize(mul( _Transform , float4(b.nor,0))); 
+
+
+
+  }else{
+
+    v.pos = targetPos;
+    v.vel = float3(0,0,0);
+  }
+
   
+  v.nor = normalize(mul( _Transform , float4(b.nor,0))); 
   v.uv = b.uv;
   v.tang = b.tang;
   
-
-
 
   _VertBuffer[pID] = v;
 //}

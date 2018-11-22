@@ -24,6 +24,9 @@ float3 _WandPos;
 float3 _UrsulaPos;
 float3 _UrsulaUp;
 
+float _Emit;
+float3 _EmissionPos;
+
 float3 worldPos( float3 pos ){
     float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
     pos.y = max(pos.y, c.x * _MapHeight + 1 + c.a*2);
@@ -210,9 +213,25 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
   Vert vert = _VertBuffer[pID];
 
 
+
+  if(_Emit > .5 ){
+// float3 pos = float3(vert.uv.x/_MapSize,0, vert.uv.y/_MapSize );
+    float p = float(pID);
+        
+    float3 axis = normalize(float3((2* hash(p*10)-1)
+                                 ,(2* hash(p*20)-1)
+                                 ,(2* hash(p*30)-1)));
+    //float3 r = ring(p,.04);
+    vert.pos = _EmissionPos + axis  * .5;// + float3(0,1,0); //worldPos(pos);
+    vert.life = hash(p*1221) * .7;
+
+
+    vert.axis = axis;
+    vert.vel = axis * .05  * hash(p*1213);
+
+  }else{
   if(_Down > .5 ){
     vert.life -= .01 * (2+sin(float(pID)));
-
   }
   
 
@@ -275,7 +294,7 @@ void Flow(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
    vert.vel *= .97;
 
 
-  }
+  }}
   
   
   vert.nor = mul(rotation(vert.axis,vert.life*3*(hash(float(pID*123))+1)),float4(0,0,1,0)).xyz;

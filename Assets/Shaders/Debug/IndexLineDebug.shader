@@ -15,12 +15,6 @@
 
 		  CGPROGRAM
 
-      #pragma multi_compile __ Enable9Struct
-      #pragma multi_compile __ Enable12Struct
-      #pragma multi_compile __ Enable16Struct
-		  #pragma multi_compile __ Enable24Struct
-		  #pragma multi_compile __ Enable36Struct
-
 		  #pragma target 4.5
 
 		  #pragma vertex vert
@@ -40,8 +34,8 @@
 
 
 
-      StructuredBuffer<Vert> _vertBuffer;
-      StructuredBuffer<int> _triBuffer;
+      StructuredBuffer<Vert> _VertBuffer;
+      StructuredBuffer<int> _TriBuffer;
 
       //A simple input struct for our pixel shader step containing a position.
       struct varyings {
@@ -63,12 +57,12 @@
         // Making sure we aren't looking up into a bad areas
         if( baseTri*3+whichTri < _Count ){
 
-        	int t1 = _triBuffer[baseTri*3+ ((whichTri+0)%3)];
-        	int t2 = _triBuffer[baseTri*3+ ((whichTri+1)%3)];
+        	int t1 = _TriBuffer[baseTri*3+ ((whichTri+0)%3)];
+        	int t2 = _TriBuffer[baseTri*3+ ((whichTri+1)%3)];
 
 
-        	Vert v1 = _vertBuffer[t1];
-        	Vert v2 = _vertBuffer[t2];
+        	Vert v1 = _VertBuffer[t1];
+        	Vert v2 = _VertBuffer[t2];
 
       		float3 pos;;
       		if( alternate == 0 ){

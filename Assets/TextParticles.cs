@@ -34,9 +34,21 @@ public class glyph{
 
   public List<glyph> glyphs;
 
+  public float scale;
+  public float scaledPadding;
+  public float scaledCharacterSize;
+  public float scaledLineHeight;
+
   public override void SetStructSize(){ structSize = 12; }
   
   public override void SetCount(){
+
+
+    scale = frame.distance / 3;
+
+    scaledPadding = scale * padding;
+    scaledCharacterSize = scale  * characterSize;
+    scaledLineHeight = scale * lineHeight;
 
     //count = text.length
     glyphs = new List<glyph>();
@@ -48,28 +60,29 @@ public class glyph{
 
     int column = 0;
     int row = 0;
-    float value = padding;
+    float value = scaledPadding * 3;
 
     foreach( string word in words ){
       
       char[] letters = word.ToCharArray();
-      if( value + letters.Length * characterSize >= frame.width - padding){
+      if( value + letters.Length * scaledCharacterSize >= frame.width - scaledPadding){
           row ++;
-          value = padding;
+          value = scaledPadding;
           column = 0;
       }
 
       foreach( char c in letters ){
         glyph g = new glyph(column,row,count,c);
         glyphs.Add(g);
-        value += characterSize;
+        value += scaledCharacterSize;
         column ++;
         count ++;
         //print((int)c);
         //print(column);
       }
+
       column ++;
-      value += characterSize;
+      value += scaledCharacterSize;
 
     }
     
@@ -87,12 +100,13 @@ public class glyph{
     Vector3 down = (frame.bottomRight - frame.topRight).normalized;
     
 
+    print(scaledPadding);
     Vector3 p;
     for( int i = 0; i < count; i ++ ){
 
       //print(glyphs[i]);
 
-      p = frame.topLeft + dir * ( padding + glyphs[i].column * characterSize ) + down * (padding + glyphs[i].row * lineHeight );
+      p = frame.topLeft + dir * ( scaledPadding + glyphs[i].column * scaledCharacterSize ) + down * (scaledPadding + glyphs[i].row * scaledLineHeight );
 
       // position
       values[ index ++ ] = p.x;

@@ -31,9 +31,9 @@ public class InstancedMeshVerts : MeshVerts {
   public override void Embody(){
 
 
-    print("hey");
-    print(vertsPerMesh);
-    print(numMesh);
+ //   print("hey");
+ //   print(vertsPerMesh);
+ //   print(numMesh);
     float[] values = new float[count*structSize];
     float[] data = verts.GetData();
 

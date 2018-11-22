@@ -21,6 +21,9 @@ Shader "Final/Frame" {
     _HueSize( "Hue Size", Float ) = .3
     _BaseHue( "Base Hue", Float ) = .3
 
+                _FadeMax( "Fade Max", float ) = 25
+    _FadeMin( "Fade Min", float ) = 5
+
   }
 
   SubShader {
@@ -46,6 +49,11 @@ Shader "Final/Frame" {
       float _Hovered;
 
 
+      float3 _Player;
+      float _FadeMax;
+      float _FadeMin;
+
+
       struct VertexIn{
          float4 position  : POSITION; 
          float3 normal    : NORMAL; 
@@ -59,7 +67,8 @@ Shader "Final/Frame" {
           float3 normal 	: NORMAL; 
           float4 uv     	: TEXCOORD0; 
           float3 ro     	: TEXCOORD1;
-          float3 rd     	: TEXCOORD2;
+          float3 rd       : TEXCOORD2;
+          float3 player  	: TEXCOORD3;
       };
 
 
@@ -114,27 +123,32 @@ Shader "Final/Frame" {
         float3 mPos = mul( unity_ObjectToWorld , v.position );
 
         // The ray origin will be right where the position is of the surface
-        o.ro = v.position;
+        o.ro = mPos;
 
 
         float3 camPos = mul( unity_WorldToObject , float4( _WorldSpaceCameraPos , 1. )).xyz;
 
         // the ray direction will use the position of the camera in local space, and 
         // draw a ray from the camera to the position shooting a ray through that point
-        o.rd = normalize( v.position.xyz - camPos );
+        o.rd = mPos.xyz - _WorldSpaceCameraPos;
+
+        o.player = mPos.xyz - _Player;
 
         return o;
 
       }
 
       // Fragment Shader
-      fixed4 frag(VertexOut i) : COLOR {
+      fixed4 frag(VertexOut v) : COLOR {
+
+
+
 
 				// Ray origin 
-        float3 ro 			= i.ro;
+        float3 ro 			= v.ro;
 
         // Ray direction
-        float3 rd 			= i.rd;       
+        float3 rd 			= v.rd;       
 
         // Our color starts off at zero,   
         float3 col = float3( 0.0 , 0.0 , 0.0 );
@@ -153,13 +167,16 @@ Shader "Final/Frame" {
           p = ro + rd * stepVal * _TotalDepth ;
   	
 		
+      float pDif = length(v.player);
+      float fadeVal = 1-saturate((pDif - _FadeMin) / (_FadeMax-_FadeMin));
+
 
 					// We get our value of how much of the volumetric material we have gone through
 					// using the position
 					float val = getFogVal(normalize(rd), p * _NoiseSize );	
 
 
-          col += hsv( stepVal * 14* _HueSize * (1 + _Hovered * .5 ) - _HueSize * .5* _Hovered + _BaseHue, 0 , val*val);
+          col += hsv( stepVal * _HueSize * (1 + _Hovered * .5 ) - _HueSize * .5* _Hovered + _BaseHue, 0 , val*val) * fadeVal;
 
 
         }
@@ -170,11 +187,11 @@ Shader "Final/Frame" {
         col *= ( 1 +_Hovered*2);
 
        if( length(col ) < .2 ){
-        discard;
+        //discard;
        }
 col /= _NumberSteps;
 		    fixed4 color;
-        col = float3(1,0,0);
+        //col = float3(1,0,0);
         color = fixed4( col , 1. );
         return color;
       }

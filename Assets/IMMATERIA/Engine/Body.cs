@@ -73,7 +73,7 @@ public class Body : MeshLifeForm {
       go.transform.parent = gameObject.transform;
     }
 
-    DebugThis("SET UP BODY ");
+    //DebugThis("SET UP BODY ");
 
     filter = go.AddComponent<MeshFilter>();
     filter.mesh = mesh;

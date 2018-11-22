@@ -9,6 +9,10 @@ public class Page : Cycle {
   public float birthSpeed = 1;
   public float deathSpeed = 1;
 
+  public float lockSpeed;
+  public float lockStartRadius;
+  public float lockEndRadius;
+
   public Transform subjectTarget;
   public TextParticles text;
   public Frame frame;
@@ -20,12 +24,16 @@ public class Page : Cycle {
 
   private float startTime;
   private float endTime;
+
+  public bool grounded = true;
   // Use this for initialization
   
 
 
   public UnityEvent OnDieEvent;
   public UnityEvent OnGestateEvent;
+  public UnityEvent OnBirthEvent;
+  public UnityEvent OnLiveEvent;
 
   public override void _Create(){
   
@@ -44,10 +52,11 @@ public class Page : Cycle {
     frame.borderLine.enabled = true;
     //OnGestateEvent.Invoke();
 
-    print("GETSALT");
     DoGestate();
     OnGestateEvent.Invoke();
   }
+
+
 
   public override void _WhileGestating(float v){
     frame.borderLine.material.SetFloat("_Cutoff" , 1 - .5f * v );
@@ -58,6 +67,7 @@ public class Page : Cycle {
     collider.enabled = false;
     startTime = Time.time;
     DoBirth();
+    OnBirthEvent.Invoke();
   }
 
   public override void _WhileBirthing( float v ){
@@ -65,6 +75,10 @@ public class Page : Cycle {
     DoBirthing(v);
   }
 
+  public override void _OnLive(){
+    OnLiveEvent.Invoke();
+    DoLive();
+  }
 
   public override  void _OnDie(){
     endTime = Time.time;

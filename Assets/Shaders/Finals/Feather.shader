@@ -8,6 +8,10 @@
 
        _ColorMap ("ColorMap", 2D) = "white" {}
        _SpriteMap ("SpriteMap", 2D) = "white" {}
+
+
+            _FadeMax( "Fade Max", float ) = 25
+    _FadeMin( "Fade Min", float ) = 5
     
   }
 
@@ -47,6 +51,9 @@
       float3 _Color;
 
       float3 _Player;
+
+      float _FadeMax;
+      float _FadeMin;
 
 
 			struct varyings {
@@ -100,6 +107,11 @@
 
 				float3 dx = ddx(v.worldPos);
 				float3 dy = ddy(v.worldPos);
+
+
+      float pDif = length(_Player - v.worldPos);
+      float fadeVal = 1-saturate((pDif - _FadeMin) / (_FadeMax-_FadeMin));
+
 		
 
 			float3 fNor = -normalize(cross(dx*100,dy*100));
@@ -113,7 +125,7 @@
 				float lM = floor(dot( _WorldSpaceLightPos0 , fNor ) * 100 ) /100;
 
         float3 col =4* cCol * cCol * cCol * tex2D(_ColorMap,float2(uvVal * .1 + .65 + lM * .1,0));//v.uv.y;//shadow * float3(1,0,1);//v.nor * .5 + .5;//float3(0,1,0);
-        return float4( col *  shadow, 1.);
+        return float4( col *  shadow * fadeVal, 1.);
 			}
 
 			ENDCG

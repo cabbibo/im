@@ -80,8 +80,6 @@ GameObject:
   - component: {fileID: 114998305000166410}
   - component: {fileID: 114091097598166270}
   - component: {fileID: 114564600486071098}
-  - component: {fileID: 33103960546051516}
-  - component: {fileID: 23893680992117978}
   m_Layer: 0
   m_Name: MeshOnHair
   m_TagString: Untagged
@@ -104,8 +102,6 @@ GameObject:
   - component: {fileID: 114889650751597750}
   - component: {fileID: 114282620104605092}
   - component: {fileID: 114150343445797784}
-  - component: {fileID: 33674079220806986}
-  - component: {fileID: 23911572239464664}
   - component: {fileID: 135194617582896472}
   m_Layer: 0
   m_Name: FeatherBall
@@ -195,7 +191,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833064043140098}
-  m_LocalRotation: {x: 0.42739215, y: 0.2813165, z: 0.18098596, w: 0.8399054}
+  m_LocalRotation: {x: -0.40512002, y: -0.18810497, z: -0.22648558, w: -0.8655627}
   m_LocalPosition: {x: 64.93, y: 29.69, z: 118.16}
   m_LocalScale: {x: 200, y: 200, z: 200}
   m_Children:
@@ -252,97 +248,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23893680992117978
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1730083653337760}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!23 &23911572239464664
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833064043140098}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33103960546051516
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1730083653337760}
-  m_Mesh: {fileID: 0}
 --- !u!33 &33433912970930220
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1709000651935936}
-  m_Mesh: {fileID: 0}
---- !u!33 &33674079220806986
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833064043140098}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 1a5892b38746d84458b9c2009653857e, type: 3}
 --- !u!114 &114011603984230900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -492,9 +404,9 @@ MonoBehaviour:
   Forms: []
   verts: {fileID: 114998305000166410}
   triangles: {fileID: 114091097598166270}
-  render: {fileID: 23893680992117978}
+  render: {fileID: 0}
   mesh: {fileID: 0}
-  filter: {fileID: 33103960546051516}
+  filter: {fileID: 0}
   self: 1
   material: {fileID: 2100000, guid: 8638f16cb036ec841b46b20f0a1007ea, type: 2}
   debugMaterial: {fileID: 0}
@@ -680,8 +592,6 @@ MonoBehaviour:
   active: 1
   stifle: 0
   Cycles:
-  - {fileID: 114606077008424814}
-  - {fileID: 114014059871631750}
   - {fileID: 114946210422680816}
   auto: 0
   Lifes: []
@@ -906,11 +816,7 @@ MonoBehaviour:
   debug: 0
   active: 0
   stifle: 0
-  Cycles:
-  - {fileID: 114150343445797784}
-  - {fileID: 114889650751597750}
-  - {fileID: 114803117860003422}
-  - {fileID: 114201448864033486}
+  Cycles: []
   auto: 0
   Lifes: []
   Forms: []
@@ -921,6 +827,8 @@ MonoBehaviour:
   life: {fileID: 114150343445797784}
   body: {fileID: 114803117860003422}
   particles: {fileID: 114415203308991008}
+  meshOnHair: {fileID: 114544166966725096}
+  hair: {fileID: 114170469537751026}
   placedParticles: {fileID: 114201448864033486}
   transformMat:
   - 155.24205
@@ -940,6 +848,7 @@ MonoBehaviour:
   - 118.16
   - 1
   position: {x: 0, y: 0, z: 0}
+  triangleDebug: {fileID: 2100000, guid: 209f76675ebb9434a89b653b9ad059a3, type: 2}
 --- !u!114 &114544166966725096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -968,9 +877,7 @@ MonoBehaviour:
   debug: 0
   active: 1
   stifle: 0
-  Cycles:
-  - {fileID: 114033265137946690}
-  - {fileID: 114564600486071098}
+  Cycles: []
   auto: 0
   Lifes: []
   Forms: []
@@ -1073,7 +980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494b45262f463d34d81323e3485a469d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 0
+  slowSpeed: 0
+  fastSpeed: 40
 --- !u!114 &114803117860003422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1110,9 +1019,9 @@ MonoBehaviour:
   Forms: []
   verts: {fileID: 114415203308991008}
   triangles: {fileID: 114282620104605092}
-  render: {fileID: 23911572239464664}
+  render: {fileID: 0}
   mesh: {fileID: 0}
-  filter: {fileID: 33674079220806986}
+  filter: {fileID: 0}
   self: 1
   material: {fileID: 2100000, guid: c5fdd0665eccc9343bb5fb61a745d7b1, type: 2}
   debugMaterial: {fileID: 2100000, guid: af343a1359d2b424cab1f9a01f2fd9a2, type: 2}
@@ -1293,11 +1202,6 @@ MonoBehaviour:
   active: 0
   stifle: 0
   Cycles:
-  - {fileID: 114011603984230900}
-  - {fileID: 114424730412356762}
-  - {fileID: 114920544004055004}
-  - {fileID: 114174342245233324}
-  - {fileID: 114170469537751026}
   - {fileID: 114544166966725096}
   auto: 0
   Lifes: []
@@ -1376,7 +1280,7 @@ SphereCollider:
   m_GameObject: {fileID: 1833064043140098}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.01
   m_Center: {x: 0.000000059604645, y: 0, z: 0.000000014901161}

@@ -9,6 +9,9 @@
        _ColorMap ("ColorMap", 2D) = "white" {}
        _SpriteMap ("SpriteMap", 2D) = "white" {}
     
+
+    _FadeMax( "Fade Max", float ) = 25
+    _FadeMin( "Fade Min", float ) = 5
   }
 
 	SubShader {
@@ -49,6 +52,8 @@
       float3 _Color;
 
       float3 _Player;
+      float _FadeMax;
+      float _FadeMin;
 
 
 			struct varyings {
@@ -100,7 +105,14 @@
 				float3 dy = ddy(v.worldPos);
 		
 
+      float pDif = length(_Player - v.worldPos);
+      float fadeVal = 1-saturate((pDif - _FadeMin) / (_FadeMax-_FadeMin));
+
+
+
 			float3 fNor = normalize(cross(dx*100,dy*100));
+
+
 
 			float3 refl = reflect( normalize(v.eye) , fNor);
 
@@ -117,7 +129,7 @@
         float3 col =mCol * 2* cCol * cCol;
 
         //fNor * .5 + .5;//float3(0,1,0);
-        return float4( col*sV , 1.);
+        return float4( col*sV * fadeVal, 1.);
 			}
 
 			ENDCG

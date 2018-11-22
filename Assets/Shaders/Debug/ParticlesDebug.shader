@@ -18,14 +18,6 @@
       CGPROGRAM
 
 
-      #pragma multi_compile __ Enable9Struct
-      #pragma multi_compile __ Enable12Struct
-      #pragma multi_compile __ Enable16Struct
-      #pragma multi_compile __ Enable24Struct
-      #pragma multi_compile __ Enable36Struct
-      
-
-
       #pragma target 4.5
 
       #pragma vertex vert

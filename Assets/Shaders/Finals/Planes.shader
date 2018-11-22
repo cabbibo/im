@@ -50,6 +50,17 @@
   StructuredBuffer<Vert> _TransferBuffer;
 
 
+
+      sampler2D _HeightMap;
+    float _MapSize;
+    float _MapHeight;
+
+
+
+  float4 sampleColor( float3 pos ){
+        return tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    }
+
       struct varyings {
         float4 pos    : SV_POSITION;
         float3 nor    : TEXCOORD0;
@@ -72,8 +83,13 @@
 
         UNITY_INITIALIZE_OUTPUT(varyings, o);
 
-        o.pos = mul(UNITY_MATRIX_VP, float4(fPos,1));
+        fPos -= float3(0,1,0) * .3  * (1-saturate(.3*length( fPos - _Player)));
+
         o.worldPos = fPos;
+
+
+
+        o.pos = mul(UNITY_MATRIX_VP, float4(fPos,1));
         o.eye = _WorldSpaceCameraPos - fPos;
         o.nor = fNor;
         o.uv =  float2(.9,1)-fUV;
@@ -87,6 +103,7 @@
       float4 frag(varyings v) : COLOR {
 
         float4 color = tex2D(_MainTex,v.worldPos.xz * .1 );
+        float4 hCol = sampleColor(v.worldPos );
 
         float3 fNor = normalize(float3(
             2*noise(v.worldPos* 2 )-1,
@@ -128,7 +145,10 @@ float l = saturate( (20-dif)/20);
 
         float3 refl = reflect( normalize(v.eye) , fNor );
         float reflM = dot( refl , _WorldSpaceLightPos0 );
-        color.xyz = tex2D(_ColorMap, float2(  l*.1 + .17   , 0)) * l;
+
+
+        float grassHeight = (hCol.w * 5 + noise( v.worldPos + float3(0,_Time.y * .2,0) + fNor * _Time.y * .01 ) * .4) / 5;
+        color.xyz = tex2D(_ColorMap, float2(  l*.1 + .27 -  floor(grassHeight * 3)*.1  , 0)) * l;
 
 
 
@@ -136,6 +156,8 @@ float l = saturate( (20-dif)/20);
 
 
         tCol *=color;// pow(eyeM,100)  * 20;
+
+        //tCol = grassHeight;
         return float4( tCol *shadow , 1.);
       }
 

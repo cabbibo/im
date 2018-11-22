@@ -41,6 +41,7 @@ int _TransferBuffer_COUNT;
 float3 _CameraUp;
 float3 _CameraLeft;
 float _Radius;
+float _Scale;
 float _Time;
 
 float3 _RayOrigin;
@@ -221,17 +222,17 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
       float3 activeForce = 0;
       float3 passiveForce = 0;
 
-      activeForce += (v.pos - v.lockPosition)*.005;
+      activeForce += ((v.pos - v.lockPosition)/max(.01,_Scale))*.005;
 
       float3 d = getProj( v.pos , _RayOrigin + _RayDirection * 100 , _RayOrigin - _RayDirection * 100 );
       float l = length(d);
-      activeForce += .01*normalize(d) * -saturate(( (1 - l ) /1 ));
+      activeForce += .01*normalize(d) * -saturate(( (_Scale*_Scale*1) - l ) /(_Scale*_Scale*1) );
 
       d = v.pos - _UrsulaPos;
       l = length(d);
-      activeForce += .01*normalize(d) * -saturate(( (3 - l*l ) /3 ));
+      activeForce += .01*normalize(d) * -saturate(( (_Scale*_Scale*3) - l*l ) /(_Scale*_Scale*3) );
 
-      activeForce += curlNoise(v.pos * 1 + _Time ) * .0001;
+      activeForce += curlNoise(v.pos * 1 /(max(.01,_Scale)) + _Time * (_Scale) ) * .0001;
    
 
 
@@ -285,7 +286,7 @@ void Transfer(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     //l = l* (float(col)-.5);
     //u = u* (float(row)-.5);
 
-    float3 fPos = p.pos + ((l*v.offset.y) + (u*v.offset.x))*_Radius;
+    float3 fPos = p.pos + ((l*v.offset.y) + (u*v.offset.x))*_Radius*_Scale;
 
     v.pos = fPos;
     v.vel = p.vel;

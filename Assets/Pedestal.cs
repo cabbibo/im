@@ -33,7 +33,7 @@ public class Pedestal : MonoBehaviour {
 
 
 
-    Vector3 t1 = page.frame.topLeft + page.frame.right * buffer - page.frame.up * buffer;
+    Vector3 t1 = page.frame.topLeft + page.frame.right * buffer - page.frame.up * buffer + .5f * page.frame.normal * buttonSpacing;
     toggle1.transform.position = t1;
     toggle2.transform.position = t1 - page.frame.up * buttonSpacing;
     toggle3.transform.position = t1 - page.frame.up * buttonSpacing * 2;
@@ -44,9 +44,9 @@ public class Pedestal : MonoBehaviour {
     toggle3.lr.SetWidth(.03f,.03f);
 
 
-    toggle1.lr.SetVertexCount(6);
-    toggle2.lr.SetVertexCount(6);
-    toggle3.lr.SetVertexCount(6);
+    toggle1.lr.SetVertexCount(5);
+    toggle2.lr.SetVertexCount(5);
+    toggle3.lr.SetVertexCount(5);
 
 
     toggle1.lr.SetPosition( 0 , toggle1.transform.position );
@@ -56,10 +56,6 @@ public class Pedestal : MonoBehaviour {
 
     toggle1.lr.SetPosition( 3 , top.position - top.right  * top.localScale.x+ top.right * lineSpacing *3 -  .5f* top.forward * top.localScale.z + top.forward * lineSpacing * 4 );
     toggle1.lr.SetPosition( 4 , top.position                                 -  .5f* top.forward * top.localScale.z + top.forward * lineSpacing * 4 );
-
-
-
-    
 
 
     toggle2.lr.SetPosition( 0 , toggle2.transform.position );
@@ -76,7 +72,26 @@ public class Pedestal : MonoBehaviour {
 
     toggle3.lr.SetPosition( 3 , top.position - top.right  * top.localScale.x + top.right * lineSpacing  -  .5f* top.forward * top.localScale.z + top.forward * lineSpacing * 2 );
     toggle3.lr.SetPosition( 4 , top.position                                 -  .5f* top.forward * top.localScale.z + top.forward * lineSpacing * 2 );
+    //toggle3.lr.SetPosition( 5 , top.position);
 
 		
 	}
+
+  public void OnSelect(){
+
+  }
+
+
+  public void SetCurrentPedestal(){
+
+    //book.pedestalPAge
+
+  }
+
+
+
+
+
+
+
 }

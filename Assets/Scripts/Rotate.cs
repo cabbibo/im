@@ -6,9 +6,21 @@ public class Rotate : MonoBehaviour {
 
   public float speed;
 
+  public float slowSpeed;
+  public float fastSpeed;
+
 	// Use this for initialization
 	void Start () {
 		
+	}
+
+	public void Toggle( bool val ){
+
+		if(val){
+			speed = slowSpeed;
+		}else{
+			speed = fastSpeed;
+		}
 	}
 	
 	// Update is called once per frame

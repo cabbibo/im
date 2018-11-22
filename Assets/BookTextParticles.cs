@@ -22,6 +22,12 @@ public class BookTextParticles : LifeForm{
 
   public float radius;
 
+  public float scale;
+
+  public void HideShowParticles(bool val){
+    body.active = val;
+  }
+
   public override void _Create(){
     Cycles.Insert(Cycles.Count,particles);
     Cycles.Insert(Cycles.Count,setAnchor);
@@ -48,6 +54,7 @@ public class BookTextParticles : LifeForm{
     transfer.BindPrimaryForm("_TransferBuffer",transferVerts);
     transfer.BindForm("_VertBuffer",particles);
     transfer.BindAttribute("_Radius","radius",this);//.BindForm("_VertBuffer",particles);
+    transfer.BindAttribute("_Scale","scale",this);//.BindForm("_VertBuffer",particles);
 
 
     simulate.BindAttribute("_Active","pageActive",book);
@@ -71,8 +78,8 @@ public class BookTextParticles : LifeForm{
   public void Set(TextParticles t){
     
     anchor = t;
-    print( anchor );
-//
+    scale = t.scale;
+
     setGlyph.RebindForm("_AnchorBuffer",anchor);
     setAnchor.RebindForm("_AnchorBuffer",anchor);
 
@@ -81,9 +88,8 @@ public class BookTextParticles : LifeForm{
   }
 
   public void PageStart(){
-
-    print( "FAFA" );
     setPage.YOLO();
   }
+
 
 }

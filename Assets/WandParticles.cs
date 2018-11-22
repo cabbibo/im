@@ -72,4 +72,12 @@ public class WandParticles : LifeForm{
 
   }
 
+  public void Emit(Vector3 pos){
+
+    simulation.shader.SetFloat("_Emit" , 1 );
+    simulation.shader.SetVector("_EmissionPos" , pos );
+    simulation._WhileLiving(1);
+    simulation.shader.SetFloat("_Emit" , 0 );
+  }
+
 }

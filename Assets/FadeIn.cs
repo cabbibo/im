@@ -3,36 +3,34 @@
  public class FadeIn : MonoBehaviour
  {
      public float alpha = 1f;
-     public float speed;
-     
-     private Shader fadeShader = null;
-     private Material fadeMaterial = null;
+     public float speed;     
+     public bool fadingIn;
+
+     public Material fadeMaterial;
  
      float start;
      void Awake()
      {
-         fadeMaterial = (fadeShader != null) ? new Material(fadeShader) : new Material(Shader.Find("Transparent/Diffuse"));
-      start = Time.time;
+        //fadeMaterial = (fadeShader != null) ? new Material(fadeShader) : new Material(Shader.Find("Transparent/Diffuse"));
+        start = Time.time;
      }
      
-     void OnDestroy()
-     {
-         if (fadeMaterial != null)
-         {
-             Destroy(fadeMaterial);
-         }
-     }
+
  
      void OnPostRender()
      {
 
-        alpha = 1-Mathf.Clamp( (Time.time -start) / speed , 0 , 1 );
+        if(fadingIn){
+            alpha = 1-Mathf.Clamp( (Time.time -start) / speed , 0 , 1 );
+        }
+
          if (alpha > 0)
          {
 
 
+
              fadeMaterial.color = new Color(0f, 0f, 0f, alpha);
- 
+            
              fadeMaterial.SetPass(0);
              GL.PushMatrix();
              GL.LoadOrtho();
@@ -46,4 +44,17 @@
              GL.PopMatrix();
          }
      }
+
+
+
+    public void FadeInEvent(){
+        alpha = 1;
+        start = Time.time;
+        fadingIn = true;
+    }
+
+
+
+    
+
  }
