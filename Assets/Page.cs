@@ -17,6 +17,8 @@ public class Page : Cycle {
   public TextParticles text;
   public Frame frame;
 
+  public Page nextPage;
+
   public float animationState;
   public Book book;
 

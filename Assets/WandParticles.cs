@@ -43,10 +43,10 @@ public class WandParticles : LifeForm{
 
   public override void WhileLiving(float v){
        
-    frame1 = book.pages[book.currentPage].frame.bottomLeft;
-    frame2 = book.pages[book.currentPage].frame.bottomRight;
-    frame3 = book.pages[book.currentPage].frame.topLeft;
-    frame4 = book.pages[book.currentPage].frame.topRight;
+    frame1 = book.currentPage.frame.bottomLeft;
+    frame2 = book.currentPage.frame.bottomRight;
+    frame3 = book.currentPage.frame.topLeft;
+    frame4 = book.currentPage.frame.topRight;
     
   }
 

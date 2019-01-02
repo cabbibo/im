@@ -62,7 +62,6 @@ public class Life : Cycle {
   }
 
   public void RebindForm(string name , Form form ){
-//    print(boundForms[name]);
   if( boundForms[name] ){
     boundForms[name] = form;
   }else{

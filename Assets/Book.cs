@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Book : LifeForm {
 
-  public List<Page> pages;
+  public List<Chapter> chapters;
 
   public Animator anim;
   public float animationState;
@@ -20,12 +20,15 @@ public class Book : LifeForm {
 
 
 
-  public int lastPage;
-  public int currentPage;
-  public int nextPage;
-  
+  public Page currentPage;
+  public Page lastPage;
 
-  public int startPage = -1;
+  public int startChapter;
+
+  public Chapter currentChapter;
+  public Chapter lastChapter;
+
+
   public Transform camera;
   public Ursula ursula;
   public RotateXY controls;
@@ -56,7 +59,6 @@ public class Book : LifeForm {
   public bool frameHovered = false;
   public bool bookHovered = false;
 
-  public Material frameMaterial;
 
 
   // STIFLE IS TRUE!
@@ -64,36 +66,32 @@ public class Book : LifeForm {
 
 	// Use this for initialization
 	public override void Create () {
-
-    currentPage = startPage;
-    
-    int id = 0;
-    foreach( Page page in pages){
-      page._Create();
-      page.frame.borderLine.material = frameMaterial;
-      page.subjectTarget.GetComponent<MeshRenderer>().enabled = false;
-      id++;
+    foreach( Chapter c in chapters){
+      Cycles.Add(c);
     }
-
-    //pages[currentPage]._OnGestate();
-//
-		//gestateTime = Time.time;
-
-    
+    chapters[startChapter].ActivateChapter();
 	}
 	
 
-  public override void OnBirthed(){
+  public void SetChapter( Chapter chapter ){
+    lastChapter = currentChapter;
+    lastPage = currentPage;
+  }
+  public void SetPage(Page page){
+    lastPage = currentPage;
+    currentPage = page;
+  }
 
-    pages[currentPage]._OnGestate();
-        gestateTime = Time.time;
+  public override void OnBirthed(){
+    currentPage._OnGestate();
+    LivePage(currentPage);
+    gestateTime = Time.time;
     StartPage();
   }
 
 
 	// Update is called once per frame
 	void Update () {
-		
     anim.SetFloat("Test", animationState );
 	}
 
@@ -103,23 +101,22 @@ public class Book : LifeForm {
       LayerMask mask = LayerMask.GetMask("Ursula");
 
       RaycastHit hit;
+
       if( Physics.Raycast( ray , out hit, 100 ,mask)){
         if( ursulaHovered == false ){ UrsulaHoverOver(); }
       }else{
         if( ursulaHovered == true ){ UrsulaHoverOut(); }
       }
 
-      if( pages[currentPage].collider.Raycast( ray , out hit, 100)){
+
+      if( currentPage.collider.Raycast( ray , out hit, 100)){
         if( frameHovered == false ){ FrameHoverOver(); }
       }else{
         if( frameHovered == true ){ FrameHoverOut(); }
       }
 
 
-
       if( book.collider.Raycast( ray , out hit, 100)){
-      
-//        print("helllo");
         if( bookHovered == false ){ BookHoverOver(); }
       }else{
         if( bookHovered == true ){ BookHoverOut(); }
@@ -130,25 +127,25 @@ public class Book : LifeForm {
   }
 
   public void BookHoverOver(){
-    bookHovered=true;
+    bookHovered = true;
   }
 
   public void BookHoverOut(){
-bookHovered = false;
+    bookHovered = false;
   }
 
 
   public void FrameHoverOver(){
     frameHovered = true;
 
-     audio.Play(frameHoverOverClip);
-    pages[currentPage].frame.borderLine.material.SetFloat("_Hovered" , 1 );
+    audio.Play(frameHoverOverClip);
+    currentPage.frame.borderLine.material.SetFloat("_Hovered" , 1 );
   }
 
   public void FrameHoverOut(){
     frameHovered = false;
-     audio.Play(frameHoverOutClip);
-    pages[currentPage].frame.borderLine.material.SetFloat("_Hovered" , 0 );
+    audio.Play(frameHoverOutClip);
+    currentPage.frame.borderLine.material.SetFloat("_Hovered" , 0 );
   }
 
 
@@ -169,7 +166,8 @@ bookHovered = false;
 
     RaycastHit hit;
    
-    if( pages[currentPage].living ){
+
+    if( currentPage.living ){
       if(ursulaHovered) EndPage();
       if(bookHovered) EndPage();
     }else{
@@ -180,40 +178,28 @@ bookHovered = false;
   }
 
  
-public override void _WhileDebug(){
-  foreach( Page p in pages){
-    p._WhileDebug();
+ // propogate debug
+/*public override void _WhileDebug(){
+  foreach( Chapter c in chapters){
+    c._WhileDebug();
   }
   DoDebug();
-}
+}*/
 
-
-
-void SetPage(){
-
-  if( currentPage == 0 ){
-    text.Set(pages[currentPage].text);
-    text.PageStart();
-  }else{
-    text.PageStart();
-  }
-
-}
 public void StartPage(){
 
+  Page p = currentPage;
 
-
-  Page p = pages[currentPage];
-
-
+// TODO this is hacky af
   if( p.grounded ){
-  ursula.SetGrounded();
-  animationState = 5;
-}
+    ursula.SetGrounded();
+    animationState = 5;
+  }
 
-ursula.lockForce = p.lockSpeed;
-ursula.forceCutoffRadiusStart = p.lockStartRadius;
-ursula.forceCutoffRadiusEnd = p.lockEndRadius;
+
+  ursula.lockForce = p.lockSpeed;
+  ursula.forceCutoffRadiusStart = p.lockStartRadius;
+  ursula.forceCutoffRadiusEnd = p.lockEndRadius;
 
   p._OnBirth();
   birthTime = Time.time;
@@ -227,42 +213,54 @@ ursula.forceCutoffRadiusEnd = p.lockEndRadius;
 
   controls.enabled = false;
 
-   audio.Play(pageStartClip);
+  audio.Play(pageStartClip);
 
-   ursula.Lock( p , p.birthSpeed );
+  ursula.Lock( p , p.birthSpeed );
  
 }
 
 public void LivePage(Page cp){
 
-        cp._OnBirthed();
-        cp._OnLive();
-        SetPage();
-        audio.Play(pageLockedClip);
+  cp._OnBirthed();
+  cp._OnLive();
+      
+  text.Set(currentPage.text);
+  text.PageStart();
+
+  audio.Play(pageLockedClip);
+
 }
 
 public void EndPage(){
   
-  pages[currentPage]._OnLived();
-  pages[currentPage]._OnDie();
+  currentPage._OnLived();
+  currentPage._OnDie();
 
-  controls.enabled = true;
-  controls.SetAfterPage();
 
-  lastPage = currentPage;
   deathTime = Time.time;
   pageActive = 0;
 
   ursula.Unlock();
   
-  if( currentPage < (pages.Count-1) ){
-    currentPage += 1;
-    nextPage = currentPage + 1;
-    gestateTime = Time.time;
-    pages[currentPage]._OnGestate();
+
+  if ( currentPage.nextPage != null ){
+
+    print( "hasNExtPAge");
+    SetPage( currentPage.nextPage );
+    currentPage._OnGestate();
+    StartPage();
+
   }else{
-    print("END");
+
+    print( "No More Pages" );
+    controls.enabled = true;
+    controls.SetAfterPage();
+
+  ursula.Unlock();
+  
+
   }
+
 
   audio.Play(pageEndClip);
 
@@ -270,22 +268,13 @@ public void EndPage(){
 }
 
 public void DiePage( Page lp , Page cp ){
-
   lp._OnDied();
   text.Set(cp.text);
 }
 
+public void currentPageLiving(){
 
-public override void _WhileLiving(float x){
-
-
-
-    right = camera.right;
-    up = camera.up;
-    forward = camera.forward;
-    ursulaPos = ursula.soul.position;
-
-    Page cp = pages[currentPage];  
+    Page cp = currentPage;  
 
     if( cp.gestating ){
       float v = (Time.time - gestateTime ) / cp.gestateSpeed;
@@ -294,10 +283,6 @@ public override void _WhileLiving(float x){
         cp._OnGestated();
       }
     }
-
-
-
-
 
 
     if( cp.birthing ){
@@ -317,15 +302,26 @@ public override void _WhileLiving(float x){
       cp._WhileLiving(v);
       pageAlive += .01f;
     }else{
-
       pageAlive -= .01f;
     }
 
+}
+
+
+public override void _WhileLiving(float x){
+
+    right = camera.right;
+    up = camera.up;
+    forward = camera.forward;
+    ursulaPos = ursula.soul.position;
+    Page cp = currentPage;  
+    currentPageLiving();
+
     pageAlive = Mathf.Clamp( pageAlive , 0 , 1 );
 
-    Page lp = pages[lastPage];
+    Page lp = lastPage;
     
-    if( lp.dying ){
+    if( lp != null && lp.dying ){
     
       float v = (Time.time - deathTime ) / lp.deathSpeed;
       lp._WhileDying(v);
@@ -353,16 +349,11 @@ public override void _WhileLiving(float x){
 */
   
 public void BirthLerp(Page page , float v ){
-
   v = v * v * (3 - 2 * v);
   camera.position = Vector3.Lerp( tmpPos , page.transform.position , v );
   camera.rotation = Quaternion.Lerp( tmpRot , page.transform.rotation , v );//Vector3.Lerp( tmpPos2 , page.subjectTarget.position , v );
   animationState = Mathf.Lerp( tmpAnimationState , page.animationState , v );
 }
-
-
-
-
 
 
 }
