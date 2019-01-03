@@ -1,0 +1,1711 @@
+fileFormatVersion: 2
+guid: bbf37ceb5df4b894796a56e669008cfb
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: directionalLight1
+    100002: Eyes
+    100004: Face
+    100006: //RootNode
+    100008: Finti_Ctrl_ChestEndEffector
+    100010: Finti_Ctrl_ChestOriginEffector
+    100012: Finti_Ctrl_Head
+    100014: Finti_Ctrl_HeadEffector
+    100016: Finti_Ctrl_Hips
+    100018: Finti_Ctrl_HipsEffector
+    100020: Finti_Ctrl_LeftAnkleEffector
+    100022: Finti_Ctrl_LeftArm
+    100024: Finti_Ctrl_LeftElbowEffector
+    100026: Finti_Ctrl_LeftFoot
+    100028: Finti_Ctrl_LeftFootEffector
+    100030: Finti_Ctrl_LeftForeArm
+    100032: Finti_Ctrl_LeftHand
+    100034: Finti_Ctrl_LeftHandIndex1
+    100036: Finti_Ctrl_LeftHandIndex2
+    100038: Finti_Ctrl_LeftHandIndex3
+    100040: Finti_Ctrl_LeftHandIndex4
+    100042: Finti_Ctrl_LeftHandIndexEffector
+    100044: Finti_Ctrl_LeftHandMiddle1
+    100046: Finti_Ctrl_LeftHandMiddle2
+    100048: Finti_Ctrl_LeftHandMiddle3
+    100050: Finti_Ctrl_LeftHandMiddle4
+    100052: Finti_Ctrl_LeftHandMiddleEffector
+    100054: Finti_Ctrl_LeftHandPinky1
+    100056: Finti_Ctrl_LeftHandPinky2
+    100058: Finti_Ctrl_LeftHandPinky3
+    100060: Finti_Ctrl_LeftHandPinky4
+    100062: Finti_Ctrl_LeftHandPinkyEffector
+    100064: Finti_Ctrl_LeftHandRing1
+    100066: Finti_Ctrl_LeftHandRing2
+    100068: Finti_Ctrl_LeftHandRing3
+    100070: Finti_Ctrl_LeftHandRing4
+    100072: Finti_Ctrl_LeftHandRingEffector
+    100074: Finti_Ctrl_LeftHandThumb1
+    100076: Finti_Ctrl_LeftHandThumb2
+    100078: Finti_Ctrl_LeftHandThumb3
+    100080: Finti_Ctrl_LeftHandThumb4
+    100082: Finti_Ctrl_LeftHandThumbEffector
+    100084: Finti_Ctrl_LeftHipEffector
+    100086: Finti_Ctrl_LeftKneeEffector
+    100088: Finti_Ctrl_LeftLeg
+    100090: Finti_Ctrl_LeftShoulder
+    100092: Finti_Ctrl_LeftShoulderEffector
+    100094: Finti_Ctrl_LeftToeBase
+    100096: Finti_Ctrl_LeftUpLeg
+    100098: Finti_Ctrl_LeftWristEffector
+    100100: Finti_Ctrl_Neck
+    100102: Finti_Ctrl_Reference
+    100104: Finti_Ctrl_RightAnkleEffector
+    100106: Finti_Ctrl_RightArm
+    100108: Finti_Ctrl_RightElbowEffector
+    100110: Finti_Ctrl_RightFoot
+    100112: Finti_Ctrl_RightFootEffector
+    100114: Finti_Ctrl_RightForeArm
+    100116: Finti_Ctrl_RightHand
+    100118: Finti_Ctrl_RightHandIndex1
+    100120: Finti_Ctrl_RightHandIndex2
+    100122: Finti_Ctrl_RightHandIndex3
+    100124: Finti_Ctrl_RightHandIndex4
+    100126: Finti_Ctrl_RightHandIndexEffector
+    100128: Finti_Ctrl_RightHandMiddle1
+    100130: Finti_Ctrl_RightHandMiddle2
+    100132: Finti_Ctrl_RightHandMiddle3
+    100134: Finti_Ctrl_RightHandMiddle4
+    100136: Finti_Ctrl_RightHandMiddleEffector
+    100138: Finti_Ctrl_RightHandPinky1
+    100140: Finti_Ctrl_RightHandPinky2
+    100142: Finti_Ctrl_RightHandPinky3
+    100144: Finti_Ctrl_RightHandPinky4
+    100146: Finti_Ctrl_RightHandPinkyEffector
+    100148: Finti_Ctrl_RightHandRing1
+    100150: Finti_Ctrl_RightHandRing2
+    100152: Finti_Ctrl_RightHandRing3
+    100154: Finti_Ctrl_RightHandRing4
+    100156: Finti_Ctrl_RightHandRingEffector
+    100158: Finti_Ctrl_RightHandThumb1
+    100160: Finti_Ctrl_RightHandThumb2
+    100162: Finti_Ctrl_RightHandThumb3
+    100164: Finti_Ctrl_RightHandThumb4
+    100166: Finti_Ctrl_RightHandThumbEffector
+    100168: Finti_Ctrl_RightHipEffector
+    100170: Finti_Ctrl_RightKneeEffector
+    100172: Finti_Ctrl_RightLeg
+    100174: Finti_Ctrl_RightShoulder
+    100176: Finti_Ctrl_RightShoulderEffector
+    100178: Finti_Ctrl_RightToeBase
+    100180: Finti_Ctrl_RightUpLeg
+    100182: Finti_Ctrl_RightWristEffector
+    100184: Finti_Ctrl_Spine
+    100186: Finti_Ctrl_Spine1
+    100188: Finti_Ctrl_Spine2
+    100190: Finti_Head
+    100192: Finti_Hips
+    100194: Finti_LeftArm
+    100196: Finti_LeftFoot
+    100198: Finti_LeftForeArm
+    100200: Finti_LeftHand
+    100202: Finti_LeftHandIndex1
+    100204: Finti_LeftHandIndex2
+    100206: Finti_LeftHandIndex3
+    100208: Finti_LeftHandIndex4
+    100210: Finti_LeftHandMiddle1
+    100212: Finti_LeftHandMiddle2
+    100214: Finti_LeftHandMiddle3
+    100216: Finti_LeftHandMiddle4
+    100218: Finti_LeftHandPinky1
+    100220: Finti_LeftHandPinky2
+    100222: Finti_LeftHandPinky3
+    100224: Finti_LeftHandPinky4
+    100226: Finti_LeftHandRing1
+    100228: Finti_LeftHandRing2
+    100230: Finti_LeftHandRing3
+    100232: Finti_LeftHandRing4
+    100234: Finti_LeftHandThumb1
+    100236: Finti_LeftHandThumb2
+    100238: Finti_LeftHandThumb3
+    100240: Finti_LeftHandThumb4
+    100242: Finti_LeftLeg
+    100244: Finti_LeftShoulder
+    100246: Finti_LeftToeBase
+    100248: Finti_LeftUpLeg
+    100250: Finti_Mesh
+    100252: Finti_Neck
+    100254: Finti_Reference
+    100256: Finti_RightArm
+    100258: Finti_RightFoot
+    100260: Finti_RightForeArm
+    100262: Finti_RightHand
+    100264: Finti_RightHandIndex1
+    100266: Finti_RightHandIndex2
+    100268: Finti_RightHandIndex3
+    100270: Finti_RightHandIndex4
+    100272: Finti_RightHandMiddle1
+    100274: Finti_RightHandMiddle2
+    100276: Finti_RightHandMiddle3
+    100278: Finti_RightHandMiddle4
+    100280: Finti_RightHandPinky1
+    100282: Finti_RightHandPinky2
+    100284: Finti_RightHandPinky3
+    100286: Finti_RightHandPinky4
+    100288: Finti_RightHandRing1
+    100290: Finti_RightHandRing2
+    100292: Finti_RightHandRing3
+    100294: Finti_RightHandRing4
+    100296: Finti_RightHandThumb1
+    100298: Finti_RightHandThumb2
+    100300: Finti_RightHandThumb3
+    100302: Finti_RightHandThumb4
+    100304: Finti_RightLeg
+    100306: Finti_RightShoulder
+    100308: Finti_RightToeBase
+    100310: Finti_RightUpLeg
+    100312: Finti_Spine
+    100314: Finti_Spine1
+    100316: Finti_Spine2
+    100318: Hair
+    100320: Head
+    100322: LeftHand
+    100324: LeftShoe
+    100326: Legs
+    100328: Mouth
+    100330: RightHand
+    100332: RightShoe
+    100334: Scarf
+    100336: UpperBody
+    400000: directionalLight1
+    400002: Eyes
+    400004: Face
+    400006: //RootNode
+    400008: Finti_Ctrl_ChestEndEffector
+    400010: Finti_Ctrl_ChestOriginEffector
+    400012: Finti_Ctrl_Head
+    400014: Finti_Ctrl_HeadEffector
+    400016: Finti_Ctrl_Hips
+    400018: Finti_Ctrl_HipsEffector
+    400020: Finti_Ctrl_LeftAnkleEffector
+    400022: Finti_Ctrl_LeftArm
+    400024: Finti_Ctrl_LeftElbowEffector
+    400026: Finti_Ctrl_LeftFoot
+    400028: Finti_Ctrl_LeftFootEffector
+    400030: Finti_Ctrl_LeftForeArm
+    400032: Finti_Ctrl_LeftHand
+    400034: Finti_Ctrl_LeftHandIndex1
+    400036: Finti_Ctrl_LeftHandIndex2
+    400038: Finti_Ctrl_LeftHandIndex3
+    400040: Finti_Ctrl_LeftHandIndex4
+    400042: Finti_Ctrl_LeftHandIndexEffector
+    400044: Finti_Ctrl_LeftHandMiddle1
+    400046: Finti_Ctrl_LeftHandMiddle2
+    400048: Finti_Ctrl_LeftHandMiddle3
+    400050: Finti_Ctrl_LeftHandMiddle4
+    400052: Finti_Ctrl_LeftHandMiddleEffector
+    400054: Finti_Ctrl_LeftHandPinky1
+    400056: Finti_Ctrl_LeftHandPinky2
+    400058: Finti_Ctrl_LeftHandPinky3
+    400060: Finti_Ctrl_LeftHandPinky4
+    400062: Finti_Ctrl_LeftHandPinkyEffector
+    400064: Finti_Ctrl_LeftHandRing1
+    400066: Finti_Ctrl_LeftHandRing2
+    400068: Finti_Ctrl_LeftHandRing3
+    400070: Finti_Ctrl_LeftHandRing4
+    400072: Finti_Ctrl_LeftHandRingEffector
+    400074: Finti_Ctrl_LeftHandThumb1
+    400076: Finti_Ctrl_LeftHandThumb2
+    400078: Finti_Ctrl_LeftHandThumb3
+    400080: Finti_Ctrl_LeftHandThumb4
+    400082: Finti_Ctrl_LeftHandThumbEffector
+    400084: Finti_Ctrl_LeftHipEffector
+    400086: Finti_Ctrl_LeftKneeEffector
+    400088: Finti_Ctrl_LeftLeg
+    400090: Finti_Ctrl_LeftShoulder
+    400092: Finti_Ctrl_LeftShoulderEffector
+    400094: Finti_Ctrl_LeftToeBase
+    400096: Finti_Ctrl_LeftUpLeg
+    400098: Finti_Ctrl_LeftWristEffector
+    400100: Finti_Ctrl_Neck
+    400102: Finti_Ctrl_Reference
+    400104: Finti_Ctrl_RightAnkleEffector
+    400106: Finti_Ctrl_RightArm
+    400108: Finti_Ctrl_RightElbowEffector
+    400110: Finti_Ctrl_RightFoot
+    400112: Finti_Ctrl_RightFootEffector
+    400114: Finti_Ctrl_RightForeArm
+    400116: Finti_Ctrl_RightHand
+    400118: Finti_Ctrl_RightHandIndex1
+    400120: Finti_Ctrl_RightHandIndex2
+    400122: Finti_Ctrl_RightHandIndex3
+    400124: Finti_Ctrl_RightHandIndex4
+    400126: Finti_Ctrl_RightHandIndexEffector
+    400128: Finti_Ctrl_RightHandMiddle1
+    400130: Finti_Ctrl_RightHandMiddle2
+    400132: Finti_Ctrl_RightHandMiddle3
+    400134: Finti_Ctrl_RightHandMiddle4
+    400136: Finti_Ctrl_RightHandMiddleEffector
+    400138: Finti_Ctrl_RightHandPinky1
+    400140: Finti_Ctrl_RightHandPinky2
+    400142: Finti_Ctrl_RightHandPinky3
+    400144: Finti_Ctrl_RightHandPinky4
+    400146: Finti_Ctrl_RightHandPinkyEffector
+    400148: Finti_Ctrl_RightHandRing1
+    400150: Finti_Ctrl_RightHandRing2
+    400152: Finti_Ctrl_RightHandRing3
+    400154: Finti_Ctrl_RightHandRing4
+    400156: Finti_Ctrl_RightHandRingEffector
+    400158: Finti_Ctrl_RightHandThumb1
+    400160: Finti_Ctrl_RightHandThumb2
+    400162: Finti_Ctrl_RightHandThumb3
+    400164: Finti_Ctrl_RightHandThumb4
+    400166: Finti_Ctrl_RightHandThumbEffector
+    400168: Finti_Ctrl_RightHipEffector
+    400170: Finti_Ctrl_RightKneeEffector
+    400172: Finti_Ctrl_RightLeg
+    400174: Finti_Ctrl_RightShoulder
+    400176: Finti_Ctrl_RightShoulderEffector
+    400178: Finti_Ctrl_RightToeBase
+    400180: Finti_Ctrl_RightUpLeg
+    400182: Finti_Ctrl_RightWristEffector
+    400184: Finti_Ctrl_Spine
+    400186: Finti_Ctrl_Spine1
+    400188: Finti_Ctrl_Spine2
+    400190: Finti_Head
+    400192: Finti_Hips
+    400194: Finti_LeftArm
+    400196: Finti_LeftFoot
+    400198: Finti_LeftForeArm
+    400200: Finti_LeftHand
+    400202: Finti_LeftHandIndex1
+    400204: Finti_LeftHandIndex2
+    400206: Finti_LeftHandIndex3
+    400208: Finti_LeftHandIndex4
+    400210: Finti_LeftHandMiddle1
+    400212: Finti_LeftHandMiddle2
+    400214: Finti_LeftHandMiddle3
+    400216: Finti_LeftHandMiddle4
+    400218: Finti_LeftHandPinky1
+    400220: Finti_LeftHandPinky2
+    400222: Finti_LeftHandPinky3
+    400224: Finti_LeftHandPinky4
+    400226: Finti_LeftHandRing1
+    400228: Finti_LeftHandRing2
+    400230: Finti_LeftHandRing3
+    400232: Finti_LeftHandRing4
+    400234: Finti_LeftHandThumb1
+    400236: Finti_LeftHandThumb2
+    400238: Finti_LeftHandThumb3
+    400240: Finti_LeftHandThumb4
+    400242: Finti_LeftLeg
+    400244: Finti_LeftShoulder
+    400246: Finti_LeftToeBase
+    400248: Finti_LeftUpLeg
+    400250: Finti_Mesh
+    400252: Finti_Neck
+    400254: Finti_Reference
+    400256: Finti_RightArm
+    400258: Finti_RightFoot
+    400260: Finti_RightForeArm
+    400262: Finti_RightHand
+    400264: Finti_RightHandIndex1
+    400266: Finti_RightHandIndex2
+    400268: Finti_RightHandIndex3
+    400270: Finti_RightHandIndex4
+    400272: Finti_RightHandMiddle1
+    400274: Finti_RightHandMiddle2
+    400276: Finti_RightHandMiddle3
+    400278: Finti_RightHandMiddle4
+    400280: Finti_RightHandPinky1
+    400282: Finti_RightHandPinky2
+    400284: Finti_RightHandPinky3
+    400286: Finti_RightHandPinky4
+    400288: Finti_RightHandRing1
+    400290: Finti_RightHandRing2
+    400292: Finti_RightHandRing3
+    400294: Finti_RightHandRing4
+    400296: Finti_RightHandThumb1
+    400298: Finti_RightHandThumb2
+    400300: Finti_RightHandThumb3
+    400302: Finti_RightHandThumb4
+    400304: Finti_RightLeg
+    400306: Finti_RightShoulder
+    400308: Finti_RightToeBase
+    400310: Finti_RightUpLeg
+    400312: Finti_Spine
+    400314: Finti_Spine1
+    400316: Finti_Spine2
+    400318: Hair
+    400320: Head
+    400322: LeftHand
+    400324: LeftShoe
+    400326: Legs
+    400328: Mouth
+    400330: RightHand
+    400332: RightShoe
+    400334: Scarf
+    400336: UpperBody
+    2100000: GirlCelVertexMaterial
+    4300000: LeftHand
+    4300002: Scarf
+    4300004: RightHand
+    4300006: UpperBody
+    4300008: Head
+    4300010: Hair
+    4300012: Face
+    4300014: Legs
+    4300016: LeftShoe
+    4300018: RightShoe
+    4300020: Eyes
+    9500000: //RootNode
+    13700000: Eyes
+    13700002: Face
+    13700004: Hair
+    13700006: Head
+    13700008: LeftHand
+    13700010: LeftShoe
+    13700012: Legs
+    13700014: RightHand
+    13700016: RightShoe
+    13700018: Scarf
+    13700020: UpperBody
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: Finti_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandRing1
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandRing2
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandRing3
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandPinky1
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandPinky2
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_LeftHandPinky3
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandRing1
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandRing2
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandRing3
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandPinky1
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandPinky2
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_RightHandPinky3
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Finti_Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Finti(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: directionalLight1
+      parentName: Finti(Clone)
+      position: {x: -0, y: 0.04763235, z: 0}
+      rotation: {x: 0.4115271, y: -0.13204335, z: 0.09426081, w: 0.89684165}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_Reference
+      parentName: Finti(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_ChestEndEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.0000000031292438, y: 0.061017655, z: 4.0978193e-10}
+      rotation: {x: -2.7755576e-17, y: -1.7273858e-16, z: -7.97771e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_ChestOriginEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 6.519258e-11, y: 0.04224342, z: 0}
+      rotation: {x: 3.0817192e-16, y: -5.551115e-17, z: -1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_HeadEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.000000010216608, y: 0.068760715, z: 0.006507587}
+      rotation: {x: 3.0817192e-16, y: -5.551115e-17, z: -1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_Hips
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0, y: 0.03809303, z: 0}
+      rotation: {x: 3.0817192e-16, y: -5.551115e-17, z: -1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftUpLeg
+      parentName: Finti_Ctrl_Hips
+      position: {x: -0.004203956, y: -0.002388432, z: 0}
+      rotation: {x: -3.0817192e-16, y: -5.551115e-17, z: 1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftLeg
+      parentName: Finti_Ctrl_LeftUpLeg
+      position: {x: -5.551115e-19, y: -0.018888853, z: 0}
+      rotation: {x: -3.0817192e-16, y: -5.551115e-17, z: 1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftFoot
+      parentName: Finti_Ctrl_LeftLeg
+      position: {x: -0, y: -0.013794682, z: 0}
+      rotation: {x: 1.0848446e-16, y: -1.0658986e-16, z: 9.122177e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftToeBase
+      parentName: Finti_Ctrl_LeftFoot
+      position: {x: -0.000000002980232, y: -0.0023855066, z: 0.0054801586}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightUpLeg
+      parentName: Finti_Ctrl_Hips
+      position: {x: 0.004203956, y: -0.002388432, z: 0}
+      rotation: {x: -3.0817192e-16, y: -5.551115e-17, z: 1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightLeg
+      parentName: Finti_Ctrl_RightUpLeg
+      position: {x: 5.551115e-19, y: -0.018888853, z: 0}
+      rotation: {x: -3.0817192e-16, y: -5.551115e-17, z: 1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightFoot
+      parentName: Finti_Ctrl_RightLeg
+      position: {x: -0, y: -0.013794682, z: 0}
+      rotation: {x: 1.0848447e-16, y: -4.2817965e-17, z: 2.306855e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightToeBase
+      parentName: Finti_Ctrl_RightFoot
+      position: {x: 0.000000002980232, y: -0.0023855066, z: 0.0054801586}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_Spine
+      parentName: Finti_Ctrl_Hips
+      position: {x: -0, y: 0.004150386, z: 0}
+      rotation: {x: 3.0817192e-16, y: -5.551115e-17, z: -1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_Spine1
+      parentName: Finti_Ctrl_Spine
+      position: {x: -0, y: 0.006056366, z: 0}
+      rotation: {x: 3.0817192e-16, y: -5.551115e-17, z: -1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_Spine2
+      parentName: Finti_Ctrl_Spine1
+      position: {x: -0, y: 0.0060563707, z: 0}
+      rotation: {x: -2.7755576e-17, y: -1.7273858e-16, z: -7.97771e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftShoulder
+      parentName: Finti_Ctrl_Spine2
+      position: {x: -0.0042418484, y: 0.0066614915, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftArm
+      parentName: Finti_Ctrl_LeftShoulder
+      position: {x: -0.0046766275, y: 0.000000052452087, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftForeArm
+      parentName: Finti_Ctrl_LeftArm
+      position: {x: -0.013382386, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHand
+      parentName: Finti_Ctrl_LeftForeArm
+      position: {x: -0.0145815015, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandIndex1
+      parentName: Finti_Ctrl_LeftHand
+      position: {x: -0.006981027, y: -0.00035665988, z: 0.0016744541}
+      rotation: {x: 6.505213e-19, y: -3.469447e-18, z: 3.5914197e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandIndex2
+      parentName: Finti_Ctrl_LeftHandIndex1
+      position: {x: -0.0030668164, y: -0.000086555476, z: 0.000156641}
+      rotation: {x: 4.440079e-16, y: 1.0408341e-17, z: 1.30975646e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandIndex3
+      parentName: Finti_Ctrl_LeftHandIndex2
+      position: {x: -0.0026627206, y: -0.00012982845, z: -0.000015064925}
+      rotation: {x: -8.6736174e-19, y: 1.3877788e-17, z: -1.7726706e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandIndex4
+      parentName: Finti_Ctrl_LeftHandIndex3
+      position: {x: -0.0018517494, y: -0.00012982845, z: 0.00012655526}
+      rotation: {x: 1.2143064e-16, y: 2.7755576e-17, z: -5.2312755e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandMiddle1
+      parentName: Finti_Ctrl_LeftHand
+      position: {x: -0.0069553875, y: -0.000025568008, z: -0.00030755432}
+      rotation: {x: -1.2244985e-16, y: -1.1666659e-34, z: 9.527703e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandMiddle2
+      parentName: Finti_Ctrl_LeftHandMiddle1
+      position: {x: -0.0032382726, y: 0, z: 0.00005039947}
+      rotation: {x: 2.1684043e-19, y: -1.7347235e-18, z: -1.1485767e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandMiddle3
+      parentName: Finti_Ctrl_LeftHandMiddle2
+      position: {x: -0.0028998612, y: -0.00043273924, z: 0.0000503497}
+      rotation: {x: -4.2351647e-22, y: 5.0821977e-21, z: 2.1421809e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandMiddle4
+      parentName: Finti_Ctrl_LeftHandMiddle3
+      position: {x: -0.0019427871, y: -0.00038947104, z: 0.000000047087667}
+      rotation: {x: -8.4703295e-22, y: 5.0821977e-21, z: -2.2183038e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandPinky1
+      parentName: Finti_Ctrl_LeftHand
+      position: {x: -0.007104561, y: -0.000119242664, z: -0.004217129}
+      rotation: {x: -2.646978e-23, y: 4.2e-44, z: -1.6014217e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandPinky2
+      parentName: Finti_Ctrl_LeftHandPinky1
+      position: {x: -0.0024669836, y: 0.000000014305114, z: 0.00020113707}
+      rotation: {x: -5.987464e-19, y: -6.938894e-18, z: 5.966288e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandPinky3
+      parentName: Finti_Ctrl_LeftHandPinky2
+      position: {x: -0.0025120974, y: 0.000000014305114, z: 0.00025142133}
+      rotation: {x: 5.04871e-29, y: 1.323489e-23, z: 5.1991467e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandPinky4
+      parentName: Finti_Ctrl_LeftHandPinky3
+      position: {x: -0.0014896964, y: 0.0000000047683715, z: 2.9802322e-10}
+      rotation: {x: 3.2024955e-13, y: 3.4399662e-16, z: -1.6087644e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandRing1
+      parentName: Finti_Ctrl_LeftHand
+      position: {x: -0.007252781, y: 0.000101447105, z: -0.0023135087}
+      rotation: {x: -2.2106882e-16, y: -1.0408341e-17, z: 2.3035908e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandRing2
+      parentName: Finti_Ctrl_LeftHandRing1
+      position: {x: -0.003302617, y: -0.00017309665, z: 0.00010056853}
+      rotation: {x: 1.7347235e-18, y: -6.938894e-18, z: 4.8518047e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandRing3
+      parentName: Finti_Ctrl_LeftHandRing2
+      position: {x: -0.002285819, y: -0.00038946627, z: 0.00010056838}
+      rotation: {x: -5.421011e-20, y: -6.938894e-18, z: -1.4806136e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandRing4
+      parentName: Finti_Ctrl_LeftHandRing3
+      position: {x: -0.0017173195, y: -0.000043272972, z: 0.00005028397}
+      rotation: {x: 3.2526065e-19, y: -1.0408341e-17, z: -2.201337e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandThumb1
+      parentName: Finti_Ctrl_LeftHand
+      position: {x: -0.0018577098, y: -0.0013071585, z: 0.0030895525}
+      rotation: {x: 1.5265567e-16, y: -4.2283885e-17, z: -1.9428903e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandThumb2
+      parentName: Finti_Ctrl_LeftHandThumb1
+      position: {x: -0.0021136594, y: -0.00020421504, z: 0.0014260289}
+      rotation: {x: 1.1177457e-16, y: 5.2932578e-17, z: 1.6314352e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandThumb3
+      parentName: Finti_Ctrl_LeftHandThumb2
+      position: {x: -0.0014716005, y: -0.0000000047683715, z: 0.0016090998}
+      rotation: {x: -1.4326232e-16, y: 5.551115e-17, z: 2.7109255e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandThumb4
+      parentName: Finti_Ctrl_LeftHandThumb3
+      position: {x: -0.0009152794, y: 0, z: 0.001307388}
+      rotation: {x: -1.9101644e-16, y: -2.7755576e-16, z: -1.7124073e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_Neck
+      parentName: Finti_Ctrl_Spine2
+      position: {x: -0, y: 0.009453225, z: 0.0013592101}
+      rotation: {x: -8.326673e-17, y: 1.5391661e-16, z: -1.7302478e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_Head
+      parentName: Finti_Ctrl_Neck
+      position: {x: -0, y: 0.004951296, z: 0.0051483456}
+      rotation: {x: 3.0817192e-16, y: -5.551115e-17, z: -1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightShoulder
+      parentName: Finti_Ctrl_Spine2
+      position: {x: 0.0042418484, y: 0.0066614915, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightArm
+      parentName: Finti_Ctrl_RightShoulder
+      position: {x: 0.0046766275, y: 0.000000052452087, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightForeArm
+      parentName: Finti_Ctrl_RightArm
+      position: {x: 0.013382386, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHand
+      parentName: Finti_Ctrl_RightForeArm
+      position: {x: 0.0145815015, y: 0, z: 0}
+      rotation: {x: -1.2325952e-32, y: 6.123234e-17, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandIndex1
+      parentName: Finti_Ctrl_RightHand
+      position: {x: 0.006981027, y: -0.00035665988, z: 0.0016744541}
+      rotation: {x: -3.903128e-18, y: 1.3877788e-17, z: 2.032879e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandIndex2
+      parentName: Finti_Ctrl_RightHandIndex1
+      position: {x: 0.0030668164, y: -0.000086555476, z: 0.000156641}
+      rotation: {x: -3.523657e-19, y: -4.3368087e-19, z: -2.216124e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandIndex3
+      parentName: Finti_Ctrl_RightHandIndex2
+      position: {x: 0.0026627206, y: -0.00012982845, z: -0.000015064925}
+      rotation: {x: -7.523164e-36, y: 6.938894e-18, z: 1.0842022e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandIndex4
+      parentName: Finti_Ctrl_RightHandIndex3
+      position: {x: 0.0018517494, y: -0.00012982845, z: 0.00012655526}
+      rotation: {x: 4.3368087e-19, y: 6.938894e-18, z: 1.0570971e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandMiddle1
+      parentName: Finti_Ctrl_RightHand
+      position: {x: 0.0069553875, y: -0.000025568008, z: -0.00030755432}
+      rotation: {x: -2.8584264e-18, y: 1.7347235e-18, z: 1.2242019e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandMiddle2
+      parentName: Finti_Ctrl_RightHandMiddle1
+      position: {x: 0.0032382726, y: 0, z: 0.00005039947}
+      rotation: {x: -1.517883e-18, y: -3.469447e-18, z: -1.1638233e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandMiddle3
+      parentName: Finti_Ctrl_RightHandMiddle2
+      position: {x: 0.0028998612, y: -0.00043273924, z: 0.0000503497}
+      rotation: {x: -2.5410988e-21, y: -1.6940659e-21, z: -2.1275158e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandMiddle4
+      parentName: Finti_Ctrl_RightHandMiddle3
+      position: {x: 0.0019427871, y: -0.00038947104, z: 0.000000047087667}
+      rotation: {x: 1.2705494e-21, y: -3.3881318e-21, z: -2.1275146e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandPinky1
+      parentName: Finti_Ctrl_RightHand
+      position: {x: 0.007104561, y: -0.000119242664, z: -0.004217129}
+      rotation: {x: 6.0048548e-18, y: 6.938894e-18, z: 4.898299e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandPinky2
+      parentName: Finti_Ctrl_RightHandPinky1
+      position: {x: 0.0024669836, y: 0.000000014305114, z: 0.00020113707}
+      rotation: {x: -3.050552e-17, y: 1.3877788e-17, z: 2.1899192e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandPinky3
+      parentName: Finti_Ctrl_RightHandPinky2
+      position: {x: 0.0025120974, y: 0.000000014305114, z: 0.00025142133}
+      rotation: {x: 3.201803e-13, y: 1.0248834e-18, z: 6.40541e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandPinky4
+      parentName: Finti_Ctrl_RightHandPinky3
+      position: {x: 0.0014896964, y: 0.0000000047683715, z: 2.9802322e-10}
+      rotation: {x: 3.201803e-13, y: 1.0248702e-18, z: 6.426586e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandRing1
+      parentName: Finti_Ctrl_RightHand
+      position: {x: 0.007252781, y: 0.000101447105, z: -0.0023135087}
+      rotation: {x: 6.2883726e-18, y: 1.7347235e-18, z: -2.189343e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandRing2
+      parentName: Finti_Ctrl_RightHandRing1
+      position: {x: 0.003302617, y: -0.00017309665, z: 0.00010056853}
+      rotation: {x: 8.6736174e-19, y: 3.469447e-18, z: -1.9244589e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandRing3
+      parentName: Finti_Ctrl_RightHandRing2
+      position: {x: 0.002285819, y: -0.00038946627, z: 0.00010056838}
+      rotation: {x: -2.2226145e-18, y: 1.0408341e-17, z: 2.218159e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandRing4
+      parentName: Finti_Ctrl_RightHandRing3
+      position: {x: 0.0017173195, y: -0.000043272972, z: 0.00005028397}
+      rotation: {x: 1.0842022e-19, y: 6.938894e-18, z: 1.4365679e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandThumb1
+      parentName: Finti_Ctrl_RightHand
+      position: {x: 0.0018577098, y: -0.0013071585, z: 0.0030895525}
+      rotation: {x: 4.1633363e-17, y: 2.8189256e-17, z: 4.8572257e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandThumb2
+      parentName: Finti_Ctrl_RightHandThumb1
+      position: {x: 0.0021136594, y: -0.00020421504, z: 0.0014260289}
+      rotation: {x: -7.492642e-17, y: -1.3619919e-16, z: -8.192704e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandThumb3
+      parentName: Finti_Ctrl_RightHandThumb2
+      position: {x: 0.0014716005, y: -0.0000000047683715, z: 0.0016090998}
+      rotation: {x: -1.9101644e-16, y: 8.326673e-17, z: 1.7124073e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandThumb4
+      parentName: Finti_Ctrl_RightHandThumb3
+      position: {x: 0.0009152794, y: 0, z: 0.001307388}
+      rotation: {x: 1.4326232e-16, y: -5.551115e-17, z: 2.7109255e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_HipsEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 5.9604643e-10, y: 0.0357046, z: -1.094304e-10}
+      rotation: {x: 3.0817192e-16, y: -5.551115e-17, z: -1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftAnkleEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.004203959, y: 0.0030210481, z: -0.000000014044344}
+      rotation: {x: 1.0848446e-16, y: -1.0658986e-16, z: 9.122177e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftElbowEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.022300866, y: 0.06101771, z: -7.8231094e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftFootEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.004203961, y: 0.0006355415, z: 0.0054801432}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandIndexEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.051444683, y: 0.06031484, z: 0.0019425848}
+      rotation: {x: 1.2143064e-16, y: 2.7755576e-17, z: -5.2312755e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandMiddleEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.05191867, y: 0.060169935, z: -0.00020675796}
+      rotation: {x: -8.4703295e-22, y: 5.0821977e-21, z: -2.2183038e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandPinkyEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.050455708, y: 0.0608985, z: -0.0037645714}
+      rotation: {x: 3.2024955e-13, y: 3.4399662e-16, z: -1.6087644e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandRingEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.051440906, y: 0.060513325, z: -0.0020620876}
+      rotation: {x: 3.2526065e-19, y: -1.0408341e-17, z: -2.201337e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHandThumbEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.043240614, y: 0.059506334, z: 0.007432072}
+      rotation: {x: -1.9101644e-16, y: -2.7755576e-16, z: -1.7124073e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftHipEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.0042039575, y: 0.0357046, z: -3.7252902e-11}
+      rotation: {x: -3.0817192e-16, y: -5.551115e-17, z: 1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftKneeEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.004203958, y: 0.016815733, z: -9.313226e-10}
+      rotation: {x: -3.0817192e-16, y: -5.551115e-17, z: 1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftShoulderEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.008918478, y: 0.06101771, z: -7.8231094e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_LeftWristEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: -0.036882367, y: 0.06101771, z: 1.11758706e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightAnkleEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.0042039603, y: 0.0030210603, z: -0.0000000043539328}
+      rotation: {x: 1.0848447e-16, y: -4.2817965e-17, z: 2.306855e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightElbowEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.022300873, y: 0.061017703, z: -0.0000000043585895}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightFootEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.004203963, y: 0.0006355485, z: 0.005480162}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandIndexEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.0514447, y: 0.06031483, z: 0.001942589}
+      rotation: {x: 4.3368087e-19, y: 6.938894e-18, z: 1.0570971e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandMiddleEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.051918693, y: 0.06016992, z: -0.00020675655}
+      rotation: {x: 1.2705494e-21, y: -3.3881318e-21, z: -2.1275146e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandPinkyEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.050455716, y: 0.060898483, z: -0.00376457}
+      rotation: {x: 3.201803e-13, y: 1.0248702e-18, z: 6.426586e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandRingEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.051440924, y: 0.06051331, z: -0.0020620865}
+      rotation: {x: 1.0842022e-19, y: 6.938894e-18, z: 1.4365679e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHandThumbEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.043240633, y: 0.05950632, z: 0.007432074}
+      rotation: {x: 1.4326232e-16, y: -5.551115e-17, z: 2.7109255e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightHipEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.004203959, y: 0.0357046, z: -1.816079e-10}
+      rotation: {x: -3.0817192e-16, y: -5.551115e-17, z: 1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightKneeEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.004203959, y: 0.016815746, z: 0.0000000010104849}
+      rotation: {x: -3.0817192e-16, y: -5.551115e-17, z: 1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightShoulderEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.008918476, y: 0.061017707, z: 4.0978193e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Ctrl_RightWristEffector
+      parentName: Finti_Ctrl_Reference
+      position: {x: 0.036882382, y: 0.061017703, z: 4.0978193e-10}
+      rotation: {x: -1.2325952e-32, y: 6.123234e-17, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Mesh
+      parentName: Finti(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eyes
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Face
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hair
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftHand
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftShoe
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Legs
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mouth
+      parentName: Finti_Mesh
+      position: {x: 0.000000003906887, y: 0.06746487, z: 0.011854887}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightHand
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightShoe
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scarf
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperBody
+      parentName: Finti_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Reference
+      parentName: Finti(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Hips
+      parentName: Finti_Reference
+      position: {x: 5.9604643e-10, y: 0.03809303, z: -1.094304e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftUpLeg
+      parentName: Finti_Hips
+      position: {x: -0.004203956, y: -0.002388432, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftLeg
+      parentName: Finti_LeftUpLeg
+      position: {x: -0.0000000017881393, y: -0.018888853, z: -0.000000008053425}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftFoot
+      parentName: Finti_LeftLeg
+      position: {x: -0.0000000011920929, y: -0.013794682, z: -0.000000005881481}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftToeBase
+      parentName: Finti_LeftFoot
+      position: {x: -0.000000002980232, y: -0.0023855066, z: 0.0054801586}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightUpLeg
+      parentName: Finti_Hips
+      position: {x: 0.004203956, y: -0.002388432, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightLeg
+      parentName: Finti_RightUpLeg
+      position: {x: 0.0000000017881393, y: -0.018888853, z: -0.0000000024530324}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightFoot
+      parentName: Finti_RightLeg
+      position: {x: 0.000000001490116, y: -0.013794682, z: -0.0000000017914695}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightToeBase
+      parentName: Finti_RightFoot
+      position: {x: 0.000000002980232, y: -0.0023855066, z: 0.0054801586}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Spine
+      parentName: Finti_Hips
+      position: {x: -0, y: 0.004150386, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Spine1
+      parentName: Finti_Spine
+      position: {x: -0, y: 0.006056366, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Spine2
+      parentName: Finti_Spine1
+      position: {x: -0, y: 0.0060563707, z: 8.881784e-18}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftShoulder
+      parentName: Finti_Spine2
+      position: {x: -0.0042418484, y: 0.0066614915, z: 1.7763568e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftArm
+      parentName: Finti_LeftShoulder
+      position: {x: -0.0046766275, y: 0.000000052452087, z: 8.881784e-18}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftForeArm
+      parentName: Finti_LeftArm
+      position: {x: -0.013382386, y: 0, z: 1.7763568e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHand
+      parentName: Finti_LeftForeArm
+      position: {x: -0.0145815015, y: 0, z: 1.7763568e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandThumb1
+      parentName: Finti_LeftHand
+      position: {x: -0.0018577098, y: -0.0013071585, z: 0.0030895525}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandThumb2
+      parentName: Finti_LeftHandThumb1
+      position: {x: -0.0021136594, y: -0.00020421504, z: 0.0014260289}
+      rotation: {x: 0, y: -0.1179627, z: -0, w: 0.99301803}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Finti_LeftHandThumb3
+      parentName: Finti_LeftHandThumb2
+      position: {x: -0.0014716006, y: -0.00000000476837, z: 0.0016090996}
+      rotation: {x: 0.00000026575512, y: -0.024618536, z: 0.0000001860507, w: 0.9996969}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Finti_LeftHandThumb4
+      parentName: Finti_LeftHandThumb3
+      position: {x: -0.00091527804, y: 0, z: 0.001307388}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Finti_LeftHandIndex1
+      parentName: Finti_LeftHand
+      position: {x: -0.006981027, y: -0.00035665988, z: 0.0016744541}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandIndex2
+      parentName: Finti_LeftHandIndex1
+      position: {x: -0.0030668164, y: -0.000086555476, z: 0.000156641}
+      rotation: {x: 0, y: -0.000005316577, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandIndex3
+      parentName: Finti_LeftHandIndex2
+      position: {x: -0.0026627209, y: -0.00012982845, z: -0.000015036611}
+      rotation: {x: 0, y: 0.00006379892, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandIndex4
+      parentName: Finti_LeftHandIndex3
+      position: {x: -0.0018517642, y: -0.00012982845, z: 0.00012633867}
+      rotation: {x: 0, y: -0.00035089406, z: -0, w: 0.99999994}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Finti_LeftHandMiddle1
+      parentName: Finti_LeftHand
+      position: {x: -0.0069553875, y: -0.000025568008, z: -0.00030755432}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandMiddle2
+      parentName: Finti_LeftHandMiddle1
+      position: {x: -0.0032382726, y: 0, z: 0.00005039947}
+      rotation: {x: -0.0005309898, y: -0.00041131012, z: -0.03411716, w: 0.9994176}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandMiddle3
+      parentName: Finti_LeftHandMiddle2
+      position: {x: -0.0028998612, y: -0.00043273924, z: 0.0000503497}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandMiddle4
+      parentName: Finti_LeftHandMiddle3
+      position: {x: -0.0019427871, y: -0.00038947104, z: 0.000000047087667}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandRing1
+      parentName: Finti_LeftHand
+      position: {x: -0.007252781, y: 0.000101447105, z: -0.0023135087}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandRing2
+      parentName: Finti_LeftHandRing1
+      position: {x: -0.003302617, y: -0.00017309665, z: 0.00010056853}
+      rotation: {x: -0.00043212157, y: -0.0020306744, z: -0.01768577, w: 0.99984145}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandRing3
+      parentName: Finti_LeftHandRing2
+      position: {x: -0.002285819, y: -0.00038946627, z: 0.00010056838}
+      rotation: {x: 0.0008517671, y: 0.0032304188, z: 0.031870037, w: 0.99948645}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandRing4
+      parentName: Finti_LeftHandRing3
+      position: {x: -0.0017173195, y: -0.000043272972, z: 0.00005028397}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandPinky1
+      parentName: Finti_LeftHand
+      position: {x: -0.007104561, y: -0.000119242664, z: -0.004217129}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandPinky2
+      parentName: Finti_LeftHandPinky1
+      position: {x: -0.0024669836, y: 0.000000014305114, z: 0.00020113707}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandPinky3
+      parentName: Finti_LeftHandPinky2
+      position: {x: -0.0025120974, y: 0.000000014305114, z: 0.00025142133}
+      rotation: {x: 0.000000021842107, y: 0.008734413, z: -0.0000002994314, w: 0.99996185}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_LeftHandPinky4
+      parentName: Finti_LeftHandPinky3
+      position: {x: -0.0014896964, y: 0.0000000047683715, z: 2.9802322e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightShoulder
+      parentName: Finti_Spine2
+      position: {x: 0.0042418484, y: 0.0066614915, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightArm
+      parentName: Finti_RightShoulder
+      position: {x: 0.0046766275, y: 0.000000052452087, z: -8.881784e-18}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightForeArm
+      parentName: Finti_RightArm
+      position: {x: 0.013382386, y: 0, z: -1.7763568e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHand
+      parentName: Finti_RightForeArm
+      position: {x: 0.0145815015, y: 0, z: -1.7763568e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandThumb1
+      parentName: Finti_RightHand
+      position: {x: 0.0018577098, y: -0.0013071585, z: 0.0030895525}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandThumb2
+      parentName: Finti_RightHandThumb1
+      position: {x: 0.0021136594, y: -0.00020421504, z: 0.0014260289}
+      rotation: {x: 0, y: 0.1179627, z: -0, w: 0.99301803}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Finti_RightHandThumb3
+      parentName: Finti_RightHandThumb2
+      position: {x: 0.0014716006, y: -0.00000000476837, z: 0.0016090996}
+      rotation: {x: 0.00000026575512, y: 0.024618536, z: -0.0000001860507, w: 0.9996969}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Finti_RightHandThumb4
+      parentName: Finti_RightHandThumb3
+      position: {x: 0.00091527804, y: 0, z: 0.001307388}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Finti_RightHandIndex1
+      parentName: Finti_RightHand
+      position: {x: 0.006981027, y: -0.00035665988, z: 0.0016744541}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandIndex2
+      parentName: Finti_RightHandIndex1
+      position: {x: 0.0030668164, y: -0.000086555476, z: 0.000156641}
+      rotation: {x: 0, y: -0.0000053167487, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandIndex3
+      parentName: Finti_RightHandIndex2
+      position: {x: 0.0026627204, y: -0.00012982845, z: -0.000015093239}
+      rotation: {x: 0, y: 0.00006380099, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandIndex4
+      parentName: Finti_RightHandIndex3
+      position: {x: 0.0018517345, y: -0.00012982845, z: 0.00012677186}
+      rotation: {x: 0, y: -0.0003509054, z: -0, w: 0.99999994}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Finti_RightHandMiddle1
+      parentName: Finti_RightHand
+      position: {x: 0.0069553875, y: -0.000025568008, z: -0.00030755432}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandMiddle2
+      parentName: Finti_RightHandMiddle1
+      position: {x: 0.0032382726, y: 0, z: 0.00005039947}
+      rotation: {x: -0.00053080847, y: 0.00040599646, z: 0.034117166, w: 0.9994176}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandMiddle3
+      parentName: Finti_RightHandMiddle2
+      position: {x: 0.002899862, y: -0.00043273924, z: 0.000050318864}
+      rotation: {x: 0, y: 0.00006380099, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandMiddle4
+      parentName: Finti_RightHandMiddle3
+      position: {x: 0.0019427871, y: -0.00038947104, z: 0.0000002743325}
+      rotation: {x: 0, y: -0.0003509054, z: -0, w: 0.99999994}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Finti_RightHandRing1
+      parentName: Finti_RightHand
+      position: {x: 0.007252781, y: 0.000101447105, z: -0.0023135087}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandRing2
+      parentName: Finti_RightHandRing1
+      position: {x: 0.003302617, y: -0.00017309665, z: 0.00010056853}
+      rotation: {x: -0.00043202753, y: 0.0020253584, z: 0.017685771, w: 0.99984145}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandRing3
+      parentName: Finti_RightHandRing2
+      position: {x: 0.00228582, y: -0.00038946627, z: 0.00010054407}
+      rotation: {x: 0.00085346156, y: -0.003166651, z: -0.031869993, w: 0.9994867}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandRing4
+      parentName: Finti_RightHandRing3
+      position: {x: 0.0017173135, y: -0.000043272972, z: 0.00005048484}
+      rotation: {x: 0, y: -0.0003509054, z: -0, w: 0.99999994}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Finti_RightHandPinky1
+      parentName: Finti_RightHand
+      position: {x: 0.007104561, y: -0.000119242664, z: -0.004217129}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandPinky2
+      parentName: Finti_RightHandPinky1
+      position: {x: 0.0024669836, y: 0.000000014305114, z: 0.00020113707}
+      rotation: {x: 0, y: -0.0000053167487, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandPinky3
+      parentName: Finti_RightHandPinky2
+      position: {x: 0.0025121, y: 0.000000014305114, z: 0.0002513946}
+      rotation: {x: 0.000000021826187, y: -0.008670614, z: 0.00000029943257, w: 0.99996245}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_RightHandPinky4
+      parentName: Finti_RightHandPinky3
+      position: {x: 0.0014896964, y: 0.0000000047683715, z: 0.00000017454555}
+      rotation: {x: 0, y: -0.0003509054, z: -0, w: 0.99999994}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Finti_Neck
+      parentName: Finti_Spine2
+      position: {x: -0, y: 0.009453225, z: 0.0013592101}
+      rotation: {x: -0.16008456, y: -0, z: -0, w: 0.9871033}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Finti_Head
+      parentName: Finti_Neck
+      position: {x: -0, y: 0.004951296, z: 0.0051483456}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

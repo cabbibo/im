@@ -7,6 +7,8 @@ public class Ursula : MonoBehaviour {
 
 
 
+  public Wand wand;
+
   public TerrainEngine engine;
   public Animator animator;
   public Transform camera;
@@ -27,7 +29,7 @@ public class Ursula : MonoBehaviour {
 
   private Vector3 cameraForward;             // The current forward direction of the camera
   private Vector3 m_Move;
-
+  private Vector3 moveTarget;
 
   public float runForce;
   public float lockForce;
@@ -74,6 +76,7 @@ public class Ursula : MonoBehaviour {
   private Vector3 tmpPos;
   private Quaternion tmpRot;
 
+  public Life bodyParticlesSet;
 
 
 	// Use this for initialization
@@ -185,7 +188,111 @@ public void SetGrounded(){
     force = Vector3.zero;
     if( locked == false ){
 
-     // read inputs
+      //WASDMove();
+
+
+      if( moveTarget != null ){
+      MoveToPosition( moveTarget );
+}
+
+    force += m_Move * moveForce * .1f  * runForce;
+
+    //deltaRot = transform.rotation - oRot;
+
+    }else{
+
+
+     /* float lerpVal = Mathf.Clamp( (Time.time - lockStartTime) / lockSpeed ,  0,1);
+
+      lerpVal = lerpVal * lerpVal * (3 - 2 * lerpVal);
+      transform.position = Vector3.Lerp( tmpPos , targetPage.subjectTarget.position  , lerpVal );
+      transform.rotation = Quaternion.Slerp( tmpRot ,targetPage.subjectTarget.rotation,lerpVal);
+
+
+    deltaPos = (transform.position - oPos);
+   // deltaRot = transform.rotation - oRot;
+
+     Vector3 m = transform.InverseTransformDirection(deltaPos);
+      float turn = Mathf.Atan2(m.x, m.z);
+      float forward = 1000*m.z;
+
+      //animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
+      animator.SetFloat("Forward", forward * Time.deltaTime, 0.1f, Time.deltaTime);*/
+
+
+
+        MoveToPosition( targetPage.subjectTarget.position );
+
+        deltaRot = transform.rotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation ,targetPage.subjectTarget.rotation,toRotLerp );
+
+        //angle = Quaternion.Angle( transform.rotation, deltaRot %3.14f );
+        //Todo: Make a way so that we rotate properly!
+        SetMoveTarget( targetPage.subjectTarget.position );
+
+
+      }
+
+
+
+
+    float height = engine.SampleHeight( transform.position );
+
+    if( transform.position.y < height +.2f ){
+
+        //force += Vector3.up;
+
+        velocity = new Vector3( velocity.x , 0 , velocity.z )  * .5f;
+
+        transform.position = new Vector3( transform.position.x , height , transform.position.z );
+    }else{
+
+      if( gravity ){
+        force -= Vector3.up  * gravityForce ;
+      }
+    }
+
+
+
+      velocity += force;
+      velocity *= dampening;
+
+
+      transform.position += velocity;//  * .001f;//m_Move  * .3f* speed;
+
+
+      Vector3 m = transform.InverseTransformDirection(velocity);
+      float turn = Mathf.Atan2(m.x, m.z);
+      float forward = m.z;
+
+
+      if( locked == false ){
+
+        Rotate(forward , turn);
+        animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
+      }else{
+        animator.SetFloat("Turn", 0, 0.1f, Time.deltaTime);
+      }
+
+
+      animator.SetFloat("Forward", forward*runMultiplier, 0.1f, Time.deltaTime);
+
+
+
+      deltaPos = transform.position - oPos;
+
+
+
+
+
+    //m_Move = transform.InverseTransformDirection(m_Move);
+  }
+
+
+
+
+  public void WASDMove(){
+         // read inputs
     float h = CrossPlatformInputManager.GetAxis("Horizontal");
     float v = CrossPlatformInputManager.GetAxis("Vertical");
    // bool crouch = Input.GetKey(KeyCode.C);
@@ -222,55 +329,28 @@ public void SetGrounded(){
       }
     }
     
-
-    force += m_Move * moveForce * .1f  * runForce;
-
-    velocity += force;
-    velocity *= dampening;
+  }
 
 
+  public void SetMoveTarget(){
+    moveTarget = wand.position;
+  }
 
-
-      transform.position += velocity;// * .001f;//m_Move  * .3f* speed;
-
-
-      Vector3 m = transform.InverseTransformDirection(velocity);
-      float turn = Mathf.Atan2(m.x, m.z) * Mathf.Clamp( Mathf.Abs( m.z  ) * 1000 , -1 ,1);
-      float forward = m.z;
-
-      Rotate(forward , turn);
-
-      animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
-      animator.SetFloat("Forward", forward *runMultiplier, 0.1f, Time.deltaTime);
+  public void SetMoveTarget(Ray ray){
+    moveTarget = wand.position;
+  }
 
 
 
-      deltaPos = transform.position - oPos;
-    //deltaRot = transform.rotation - oRot;
-
-    }else{
-
-
-     /* float lerpVal = Mathf.Clamp( (Time.time - lockStartTime) / lockSpeed ,  0,1);
-
-      lerpVal = lerpVal * lerpVal * (3 - 2 * lerpVal);
-      transform.position = Vector3.Lerp( tmpPos , targetPage.subjectTarget.position  , lerpVal );
-      transform.rotation = Quaternion.Slerp( tmpRot ,targetPage.subjectTarget.rotation,lerpVal);
+  public void SetMoveTarget( Vector3 p ){
+    moveTarget = p;
+  }
 
 
-    deltaPos = (transform.position - oPos);
-   // deltaRot = transform.rotation - oRot;
-
-     Vector3 m = transform.InverseTransformDirection(deltaPos);
-      float turn = Mathf.Atan2(m.x, m.z);
-      float forward = 1000*m.z;
-
-      //animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
-      animator.SetFloat("Forward", forward * Time.deltaTime, 0.1f, Time.deltaTime);*/
+  public void MoveToPosition( Vector3 p ){
 
 
-
-      Vector3 dif = targetPage.subjectTarget.position-transform.position;
+      Vector3 dif = p-transform.position;
 
       float angle = 0;
 
@@ -292,73 +372,23 @@ public void SetGrounded(){
         }
 
 
-        deltaRot = transform.rotation;
-        transform.rotation = Quaternion.Slerp(transform.rotation ,targetPage.subjectTarget.rotation,toRotLerp );
-
+        
         //angle = Quaternion.Angle( transform.rotation, deltaRot %3.14f );
         //Todo: Make a way so that we rotate properly!
 
-
       }
 
-
-
-
-    float height = engine.SampleHeight( transform.position );
-
-    if( transform.position.y < height +.2f ){
-
-        //force += Vector3.up;
-
-        velocity = new Vector3( velocity.x , 0 , velocity.z )  * .5f;
-
-        transform.position = new Vector3( transform.position.x , height , transform.position.z );
-    }else{
-
-      if( gravity ){
-        force -= Vector3.up  * gravityForce ;
-      }
-    }
-
-
-
-      velocity += force;
-      velocity *= dampening;
-
-
-
-
-      transform.position += velocity;//  * .001f;//m_Move  * .3f* speed;
-
-
-      Vector3 m = transform.InverseTransformDirection(velocity);
-      float turn = Mathf.Atan2(m.x, m.z);
-      float forward = m.z;
-
-
-      if( inside == false ){
-
-        Rotate(forward , turn);
-        animator.SetFloat("Turn", turn, 0.1f, Time.deltaTime);
-      }else{
-        animator.SetFloat("Turn", 0, 0.1f, Time.deltaTime);
-      }
-
-
-      animator.SetFloat("Forward", forward*runMultiplier, 0.1f, Time.deltaTime);
-
-
-
-      deltaPos = transform.position - oPos;
-
-
-
-    }
-
-
-
-    //m_Move = transform.InverseTransformDirection(m_Move);
   }
+
+
+public void Emit(){
+
+    bodyParticlesSet.shader.SetFloat("_Emit" , 1 );
+    bodyParticlesSet._WhileLiving(1);
+    bodyParticlesSet.shader.SetFloat("_Emit" , 0 );
+  
+}
+
 
   public void Lock( Page p , float speed ){
 

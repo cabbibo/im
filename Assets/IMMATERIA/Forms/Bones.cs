@@ -34,7 +34,15 @@ public class Bones: Form {
     values = new float[count * structSize ];  
   }
 
+public override void WhileLiving( float v ){
+
+  UpdateBones();
+}
+
+
   public void UpdateBones(){
+
+    //print("hello");
 
     for( int i = 0; i < count; i++){
 
@@ -56,6 +64,7 @@ public class Bones: Form {
       values[ i * 32 +13] = tmpMat[1,3];
       values[ i * 32 +14] = tmpMat[2,3];
       values[ i * 32 +15] = tmpMat[3,3];
+
 
 //      var rotation = Matrix4x4.Rotate(mesh.bones[i].rotation);
       tmpMat = bindPoses[i];

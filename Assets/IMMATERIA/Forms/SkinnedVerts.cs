@@ -36,7 +36,10 @@ public class SkinnedVerts : Form {
     m = mesh.sharedMesh;
     count = m.vertices.Length;
   }
+
   public override void Embody(){
+
+    print( "embody" );
 
     Mesh m = mesh.sharedMesh;
 

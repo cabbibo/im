@@ -20,7 +20,7 @@ public class Interface : Cycle {
     }
   }
 
-  public override void WhileGestating(float v){
+  public override void WhileBirthing(float v){
     print(v);
     foreach( LineRenderer l in lr ){
       l.material.SetFloat("_On" , v);
@@ -28,14 +28,14 @@ public class Interface : Cycle {
   }
 
 
-  public override void OnGestate(){
+  public override void OnBirth(){
   foreach( LineRenderer l in lr ){
       l.material.SetFloat("_On" , 0);
       l.enabled = true;
     }
   }
 
-  public override void OnGestated(){
+  public override void OnBirthed(){
     foreach( ToggleBool b in buttons ){
       b.GetComponent<MeshRenderer>().enabled = true;
     }

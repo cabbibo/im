@@ -40,7 +40,11 @@ struct SkinnedVert{
   };
 
 
+float _Emit;
+float _EmissionRate;
 
+#include "../Chunks/snoise.cginc"
+#include "../Chunks/curlNoise.cginc"
 
 RWStructuredBuffer<Vert> _VertBuffer;
 RWStructuredBuffer<SkinnedVert> _SkinnedBuffer;
@@ -70,17 +74,51 @@ void PlacePoint(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
          fTan += v1.tang * vert.triWeights.y;
          fTan += v2.tang * vert.triWeights.z;
 
+           float3 fVel  = v0.vel * vert.triWeights.x;
+         fVel += v1.vel * vert.triWeights.y;
+         fVel += v2.vel * vert.triWeights.z;
+
   float2 fUV  = v0.uv * vert.triWeights.x;
          fUV += v1.uv * vert.triWeights.y;
          fUV += v2.uv * vert.triWeights.z;
 
+
+/*
   vert.nor = normalize(fNor);
   vert.tang = fTan;
   vert.uv = fUV;
 
   vert.debug = 1;
   vert.pos = fPos;
-  
+  */
+
+vert.used -= _EmissionRate;//.001;
+
+float3 force = 0;
+
+if( _Emit > .5 ){
+
+  vert.used -= .2;
+}
+
+
+if( vert.used < 0 ){
+  vert.pos = fPos;
+  vert.vel = -.2 * fVel;//float3(0,0,0);
+  vert.used += 1;
+}else{
+
+//force += normalize( fNor ) * .01;
+force += curlNoise( vert.pos ) * .01;
+
+vert.vel += force * .01;
+
+vert.pos += vert.vel;
+
+}
+
+
+
   _VertBuffer[pID] = vert;
 
 }

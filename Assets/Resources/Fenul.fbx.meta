@@ -1,0 +1,1662 @@
+fileFormatVersion: 2
+guid: b9601de3bb24887488d61ca5907a1eb4
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: fenul_BodyMesh
+    100004: fenul_Ctrl_ChestEndEffector
+    100006: fenul_Ctrl_ChestOriginEffector
+    100008: fenul_Ctrl_Head
+    100010: fenul_Ctrl_HeadEffector
+    100012: fenul_Ctrl_Hips
+    100014: fenul_Ctrl_HipsEffector
+    100016: fenul_Ctrl_LeftAnkleEffector
+    100018: fenul_Ctrl_LeftArm
+    100020: fenul_Ctrl_LeftElbowEffector
+    100022: fenul_Ctrl_LeftFoot
+    100024: fenul_Ctrl_LeftFootEffector
+    100026: fenul_Ctrl_LeftForeArm
+    100028: fenul_Ctrl_LeftHand
+    100030: fenul_Ctrl_LeftHandIndex1
+    100032: fenul_Ctrl_LeftHandIndex2
+    100034: fenul_Ctrl_LeftHandIndex3
+    100036: fenul_Ctrl_LeftHandIndex4
+    100038: fenul_Ctrl_LeftHandIndexEffector
+    100040: fenul_Ctrl_LeftHandMiddle1
+    100042: fenul_Ctrl_LeftHandMiddle2
+    100044: fenul_Ctrl_LeftHandMiddle3
+    100046: fenul_Ctrl_LeftHandMiddle4
+    100048: fenul_Ctrl_LeftHandMiddleEffector
+    100050: fenul_Ctrl_LeftHandPinky1
+    100052: fenul_Ctrl_LeftHandPinky2
+    100054: fenul_Ctrl_LeftHandPinky3
+    100056: fenul_Ctrl_LeftHandPinky4
+    100058: fenul_Ctrl_LeftHandPinkyEffector
+    100060: fenul_Ctrl_LeftHandRing1
+    100062: fenul_Ctrl_LeftHandRing2
+    100064: fenul_Ctrl_LeftHandRing3
+    100066: fenul_Ctrl_LeftHandRing4
+    100068: fenul_Ctrl_LeftHandRingEffector
+    100070: fenul_Ctrl_LeftHandThumb1
+    100072: fenul_Ctrl_LeftHandThumb2
+    100074: fenul_Ctrl_LeftHandThumb3
+    100076: fenul_Ctrl_LeftHandThumb4
+    100078: fenul_Ctrl_LeftHandThumbEffector
+    100080: fenul_Ctrl_LeftHipEffector
+    100082: fenul_Ctrl_LeftKneeEffector
+    100084: fenul_Ctrl_LeftLeg
+    100086: fenul_Ctrl_LeftShoulder
+    100088: fenul_Ctrl_LeftShoulderEffector
+    100090: fenul_Ctrl_LeftToeBase
+    100092: fenul_Ctrl_LeftUpLeg
+    100094: fenul_Ctrl_LeftWristEffector
+    100096: fenul_Ctrl_Neck
+    100098: fenul_Ctrl_Reference
+    100100: fenul_Ctrl_RightAnkleEffector
+    100102: fenul_Ctrl_RightArm
+    100104: fenul_Ctrl_RightElbowEffector
+    100106: fenul_Ctrl_RightFoot
+    100108: fenul_Ctrl_RightFootEffector
+    100110: fenul_Ctrl_RightForeArm
+    100112: fenul_Ctrl_RightHand
+    100114: fenul_Ctrl_RightHandIndex1
+    100116: fenul_Ctrl_RightHandIndex2
+    100118: fenul_Ctrl_RightHandIndex3
+    100120: fenul_Ctrl_RightHandIndex4
+    100122: fenul_Ctrl_RightHandIndexEffector
+    100124: fenul_Ctrl_RightHandMiddle1
+    100126: fenul_Ctrl_RightHandMiddle2
+    100128: fenul_Ctrl_RightHandMiddle3
+    100130: fenul_Ctrl_RightHandMiddle4
+    100132: fenul_Ctrl_RightHandMiddleEffector
+    100134: fenul_Ctrl_RightHandPinky1
+    100136: fenul_Ctrl_RightHandPinky2
+    100138: fenul_Ctrl_RightHandPinky3
+    100140: fenul_Ctrl_RightHandPinky4
+    100142: fenul_Ctrl_RightHandPinkyEffector
+    100144: fenul_Ctrl_RightHandRing1
+    100146: fenul_Ctrl_RightHandRing2
+    100148: fenul_Ctrl_RightHandRing3
+    100150: fenul_Ctrl_RightHandRing4
+    100152: fenul_Ctrl_RightHandRingEffector
+    100154: fenul_Ctrl_RightHandThumb1
+    100156: fenul_Ctrl_RightHandThumb2
+    100158: fenul_Ctrl_RightHandThumb3
+    100160: fenul_Ctrl_RightHandThumb4
+    100162: fenul_Ctrl_RightHandThumbEffector
+    100164: fenul_Ctrl_RightHipEffector
+    100166: fenul_Ctrl_RightKneeEffector
+    100168: fenul_Ctrl_RightLeg
+    100170: fenul_Ctrl_RightShoulder
+    100172: fenul_Ctrl_RightShoulderEffector
+    100174: fenul_Ctrl_RightToeBase
+    100176: fenul_Ctrl_RightUpLeg
+    100178: fenul_Ctrl_RightWristEffector
+    100180: fenul_Ctrl_Spine
+    100182: fenul_Ctrl_Spine1
+    100184: fenul_Ctrl_Spine2
+    100186: fenul_Eyes
+    100188: fenul_Hair
+    100190: fenul_Head
+    100192: fenul_Hips
+    100194: fenul_LeftArm
+    100196: fenul_LeftFoot
+    100198: fenul_LeftForeArm
+    100200: fenul_LeftHand
+    100202: fenul_LeftHandIndex1
+    100204: fenul_LeftHandIndex2
+    100206: fenul_LeftHandIndex3
+    100208: fenul_LeftHandIndex4
+    100210: fenul_LeftHandMiddle1
+    100212: fenul_LeftHandMiddle2
+    100214: fenul_LeftHandMiddle3
+    100216: fenul_LeftHandMiddle4
+    100218: fenul_LeftHandPinky1
+    100220: fenul_LeftHandPinky2
+    100222: fenul_LeftHandPinky3
+    100224: fenul_LeftHandPinky4
+    100226: fenul_LeftHandRing1
+    100228: fenul_LeftHandRing2
+    100230: fenul_LeftHandRing3
+    100232: fenul_LeftHandRing4
+    100234: fenul_LeftHandThumb1
+    100236: fenul_LeftHandThumb2
+    100238: fenul_LeftHandThumb3
+    100240: fenul_LeftHandThumb4
+    100242: fenul_LeftLeg
+    100244: fenul_LeftShoulder
+    100246: fenul_LeftToeBase
+    100248: fenul_LeftUpLeg
+    100250: fenul_Mesh
+    100252: fenul_Neck
+    100254: fenul_Nose
+    100256: fenul_Reference
+    100258: fenul_RightArm
+    100260: fenul_RightFoot
+    100262: fenul_RightForeArm
+    100264: fenul_RightHand
+    100266: fenul_RightHandIndex1
+    100268: fenul_RightHandIndex2
+    100270: fenul_RightHandIndex3
+    100272: fenul_RightHandIndex4
+    100274: fenul_RightHandMiddle1
+    100276: fenul_RightHandMiddle2
+    100278: fenul_RightHandMiddle3
+    100280: fenul_RightHandMiddle4
+    100282: fenul_RightHandPinky1
+    100284: fenul_RightHandPinky2
+    100286: fenul_RightHandPinky3
+    100288: fenul_RightHandPinky4
+    100290: fenul_RightHandRing1
+    100292: fenul_RightHandRing2
+    100294: fenul_RightHandRing3
+    100296: fenul_RightHandRing4
+    100298: fenul_RightHandThumb1
+    100300: fenul_RightHandThumb2
+    100302: fenul_RightHandThumb3
+    100304: fenul_RightHandThumb4
+    100306: fenul_RightLeg
+    100308: fenul_RightShoulder
+    100310: fenul_RightToeBase
+    100312: fenul_RightUpLeg
+    100314: fenul_Sack
+    100316: fenul_Scarf
+    100318: fenul_Spine
+    100320: fenul_Spine1
+    100322: fenul_Spine2
+    100324: fenul_Teeth
+    400000: //RootNode
+    400002: fenul_BodyMesh
+    400004: fenul_Ctrl_ChestEndEffector
+    400006: fenul_Ctrl_ChestOriginEffector
+    400008: fenul_Ctrl_Head
+    400010: fenul_Ctrl_HeadEffector
+    400012: fenul_Ctrl_Hips
+    400014: fenul_Ctrl_HipsEffector
+    400016: fenul_Ctrl_LeftAnkleEffector
+    400018: fenul_Ctrl_LeftArm
+    400020: fenul_Ctrl_LeftElbowEffector
+    400022: fenul_Ctrl_LeftFoot
+    400024: fenul_Ctrl_LeftFootEffector
+    400026: fenul_Ctrl_LeftForeArm
+    400028: fenul_Ctrl_LeftHand
+    400030: fenul_Ctrl_LeftHandIndex1
+    400032: fenul_Ctrl_LeftHandIndex2
+    400034: fenul_Ctrl_LeftHandIndex3
+    400036: fenul_Ctrl_LeftHandIndex4
+    400038: fenul_Ctrl_LeftHandIndexEffector
+    400040: fenul_Ctrl_LeftHandMiddle1
+    400042: fenul_Ctrl_LeftHandMiddle2
+    400044: fenul_Ctrl_LeftHandMiddle3
+    400046: fenul_Ctrl_LeftHandMiddle4
+    400048: fenul_Ctrl_LeftHandMiddleEffector
+    400050: fenul_Ctrl_LeftHandPinky1
+    400052: fenul_Ctrl_LeftHandPinky2
+    400054: fenul_Ctrl_LeftHandPinky3
+    400056: fenul_Ctrl_LeftHandPinky4
+    400058: fenul_Ctrl_LeftHandPinkyEffector
+    400060: fenul_Ctrl_LeftHandRing1
+    400062: fenul_Ctrl_LeftHandRing2
+    400064: fenul_Ctrl_LeftHandRing3
+    400066: fenul_Ctrl_LeftHandRing4
+    400068: fenul_Ctrl_LeftHandRingEffector
+    400070: fenul_Ctrl_LeftHandThumb1
+    400072: fenul_Ctrl_LeftHandThumb2
+    400074: fenul_Ctrl_LeftHandThumb3
+    400076: fenul_Ctrl_LeftHandThumb4
+    400078: fenul_Ctrl_LeftHandThumbEffector
+    400080: fenul_Ctrl_LeftHipEffector
+    400082: fenul_Ctrl_LeftKneeEffector
+    400084: fenul_Ctrl_LeftLeg
+    400086: fenul_Ctrl_LeftShoulder
+    400088: fenul_Ctrl_LeftShoulderEffector
+    400090: fenul_Ctrl_LeftToeBase
+    400092: fenul_Ctrl_LeftUpLeg
+    400094: fenul_Ctrl_LeftWristEffector
+    400096: fenul_Ctrl_Neck
+    400098: fenul_Ctrl_Reference
+    400100: fenul_Ctrl_RightAnkleEffector
+    400102: fenul_Ctrl_RightArm
+    400104: fenul_Ctrl_RightElbowEffector
+    400106: fenul_Ctrl_RightFoot
+    400108: fenul_Ctrl_RightFootEffector
+    400110: fenul_Ctrl_RightForeArm
+    400112: fenul_Ctrl_RightHand
+    400114: fenul_Ctrl_RightHandIndex1
+    400116: fenul_Ctrl_RightHandIndex2
+    400118: fenul_Ctrl_RightHandIndex3
+    400120: fenul_Ctrl_RightHandIndex4
+    400122: fenul_Ctrl_RightHandIndexEffector
+    400124: fenul_Ctrl_RightHandMiddle1
+    400126: fenul_Ctrl_RightHandMiddle2
+    400128: fenul_Ctrl_RightHandMiddle3
+    400130: fenul_Ctrl_RightHandMiddle4
+    400132: fenul_Ctrl_RightHandMiddleEffector
+    400134: fenul_Ctrl_RightHandPinky1
+    400136: fenul_Ctrl_RightHandPinky2
+    400138: fenul_Ctrl_RightHandPinky3
+    400140: fenul_Ctrl_RightHandPinky4
+    400142: fenul_Ctrl_RightHandPinkyEffector
+    400144: fenul_Ctrl_RightHandRing1
+    400146: fenul_Ctrl_RightHandRing2
+    400148: fenul_Ctrl_RightHandRing3
+    400150: fenul_Ctrl_RightHandRing4
+    400152: fenul_Ctrl_RightHandRingEffector
+    400154: fenul_Ctrl_RightHandThumb1
+    400156: fenul_Ctrl_RightHandThumb2
+    400158: fenul_Ctrl_RightHandThumb3
+    400160: fenul_Ctrl_RightHandThumb4
+    400162: fenul_Ctrl_RightHandThumbEffector
+    400164: fenul_Ctrl_RightHipEffector
+    400166: fenul_Ctrl_RightKneeEffector
+    400168: fenul_Ctrl_RightLeg
+    400170: fenul_Ctrl_RightShoulder
+    400172: fenul_Ctrl_RightShoulderEffector
+    400174: fenul_Ctrl_RightToeBase
+    400176: fenul_Ctrl_RightUpLeg
+    400178: fenul_Ctrl_RightWristEffector
+    400180: fenul_Ctrl_Spine
+    400182: fenul_Ctrl_Spine1
+    400184: fenul_Ctrl_Spine2
+    400186: fenul_Eyes
+    400188: fenul_Hair
+    400190: fenul_Head
+    400192: fenul_Hips
+    400194: fenul_LeftArm
+    400196: fenul_LeftFoot
+    400198: fenul_LeftForeArm
+    400200: fenul_LeftHand
+    400202: fenul_LeftHandIndex1
+    400204: fenul_LeftHandIndex2
+    400206: fenul_LeftHandIndex3
+    400208: fenul_LeftHandIndex4
+    400210: fenul_LeftHandMiddle1
+    400212: fenul_LeftHandMiddle2
+    400214: fenul_LeftHandMiddle3
+    400216: fenul_LeftHandMiddle4
+    400218: fenul_LeftHandPinky1
+    400220: fenul_LeftHandPinky2
+    400222: fenul_LeftHandPinky3
+    400224: fenul_LeftHandPinky4
+    400226: fenul_LeftHandRing1
+    400228: fenul_LeftHandRing2
+    400230: fenul_LeftHandRing3
+    400232: fenul_LeftHandRing4
+    400234: fenul_LeftHandThumb1
+    400236: fenul_LeftHandThumb2
+    400238: fenul_LeftHandThumb3
+    400240: fenul_LeftHandThumb4
+    400242: fenul_LeftLeg
+    400244: fenul_LeftShoulder
+    400246: fenul_LeftToeBase
+    400248: fenul_LeftUpLeg
+    400250: fenul_Mesh
+    400252: fenul_Neck
+    400254: fenul_Nose
+    400256: fenul_Reference
+    400258: fenul_RightArm
+    400260: fenul_RightFoot
+    400262: fenul_RightForeArm
+    400264: fenul_RightHand
+    400266: fenul_RightHandIndex1
+    400268: fenul_RightHandIndex2
+    400270: fenul_RightHandIndex3
+    400272: fenul_RightHandIndex4
+    400274: fenul_RightHandMiddle1
+    400276: fenul_RightHandMiddle2
+    400278: fenul_RightHandMiddle3
+    400280: fenul_RightHandMiddle4
+    400282: fenul_RightHandPinky1
+    400284: fenul_RightHandPinky2
+    400286: fenul_RightHandPinky3
+    400288: fenul_RightHandPinky4
+    400290: fenul_RightHandRing1
+    400292: fenul_RightHandRing2
+    400294: fenul_RightHandRing3
+    400296: fenul_RightHandRing4
+    400298: fenul_RightHandThumb1
+    400300: fenul_RightHandThumb2
+    400302: fenul_RightHandThumb3
+    400304: fenul_RightHandThumb4
+    400306: fenul_RightLeg
+    400308: fenul_RightShoulder
+    400310: fenul_RightToeBase
+    400312: fenul_RightUpLeg
+    400314: fenul_Sack
+    400316: fenul_Scarf
+    400318: fenul_Spine
+    400320: fenul_Spine1
+    400322: fenul_Spine2
+    400324: fenul_Teeth
+    2100000: BaseFigure01_ShaderfxShader1
+    2100002: lambert1
+    4300000: fenul_Nose
+    4300002: fenul_Sack
+    4300004: fenul_Hair
+    4300006: fenul_Eyes
+    4300008: fenul_Teeth
+    4300010: fenul_BodyMesh
+    4300012: fenul_Scarf
+    9500000: //RootNode
+    13700000: fenul_BodyMesh
+    13700002: fenul_Eyes
+    13700004: fenul_Hair
+    13700006: fenul_Nose
+    13700008: fenul_Sack
+    13700010: fenul_Scarf
+    13700012: fenul_Teeth
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: fenul_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandRing1
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandRing2
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandRing3
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandPinky1
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandPinky2
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_LeftHandPinky3
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandRing1
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandRing2
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandRing3
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandPinky1
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandPinky2
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_RightHandPinky3
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fenul_Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Fenul(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_Reference
+      parentName: Fenul(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_ChestEndEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0, y: 0.0662009, z: -0.0011329267}
+      rotation: {x: 3.0817192e-16, y: -5.551115e-17, z: -1.6653345e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_ChestOriginEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -7.4505804e-11, y: 0.039499097, z: -1.4901161e-10}
+      rotation: {x: -1.3877788e-17, y: -2.4535325e-17, z: -8.038308e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_HeadEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.000000016018747, y: 0.078328334, z: 0.0020207767}
+      rotation: {x: 1.9714962e-16, y: -5.551115e-17, z: -5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_Hips
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0, y: 0.033418007, z: 0}
+      rotation: {x: 1.9714962e-16, y: -5.551115e-17, z: -5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftUpLeg
+      parentName: fenul_Ctrl_Hips
+      position: {x: -0.0041099144, y: -0.00391875, z: 0}
+      rotation: {x: -1.9714962e-16, y: -5.551115e-17, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftLeg
+      parentName: fenul_Ctrl_LeftUpLeg
+      position: {x: -0, y: -0.015561911, z: 0}
+      rotation: {x: -1.9714962e-16, y: -5.551115e-17, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftFoot
+      parentName: fenul_Ctrl_LeftLeg
+      position: {x: -0, y: -0.012725489, z: 0}
+      rotation: {x: 4.4043172e-16, y: -1.7416744e-16, z: -2.296473e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftToeBase
+      parentName: fenul_Ctrl_LeftFoot
+      position: {x: -0.000000005364418, y: -0.00038794868, z: 0.0044344747}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightUpLeg
+      parentName: fenul_Ctrl_Hips
+      position: {x: 0.0041099144, y: -0.00391875, z: 0}
+      rotation: {x: -1.9714962e-16, y: -5.551115e-17, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightLeg
+      parentName: fenul_Ctrl_RightUpLeg
+      position: {x: -0, y: -0.015561911, z: 0}
+      rotation: {x: -1.9714962e-16, y: -5.551115e-17, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightFoot
+      parentName: fenul_Ctrl_RightLeg
+      position: {x: -0, y: -0.012725489, z: 0}
+      rotation: {x: 2.183871e-16, y: -1.8524918e-16, z: 2.1715728e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightToeBase
+      parentName: fenul_Ctrl_RightFoot
+      position: {x: 0.000000005364418, y: -0.00038794868, z: 0.0044344747}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_Spine
+      parentName: fenul_Ctrl_Hips
+      position: {x: -0, y: 0.00608109, z: 0}
+      rotation: {x: -1.3877788e-17, y: -2.4535325e-17, z: -8.038308e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_Spine1
+      parentName: fenul_Ctrl_Spine
+      position: {x: -0, y: 0.010240803, z: -0.0011329278}
+      rotation: {x: 1.9714962e-16, y: -5.551115e-17, z: -5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_Spine2
+      parentName: fenul_Ctrl_Spine1
+      position: {x: -0, y: 0.010240807, z: 0}
+      rotation: {x: 1.9714962e-16, y: -5.551115e-17, z: -5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftShoulder
+      parentName: fenul_Ctrl_Spine2
+      position: {x: -0.004375, y: 0.0062201736, z: -1.3877787e-19}
+      rotation: {x: 0, y: 0, z: 1.7347235e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftArm
+      parentName: fenul_Ctrl_LeftShoulder
+      position: {x: -0.0048113842, y: 0.00012807369, z: -1.3877787e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftForeArm
+      parentName: fenul_Ctrl_LeftArm
+      position: {x: -0.014482443, y: -8.881784e-18, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHand
+      parentName: fenul_Ctrl_LeftForeArm
+      position: {x: -0.01539381, y: 8.881784e-18, z: -1.3877787e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandIndex1
+      parentName: fenul_Ctrl_LeftHand
+      position: {x: -0.008108205, y: 0.00045428274, z: 0.002203158}
+      rotation: {x: -5.1708714e-20, y: 1.7347235e-18, z: -8.26767e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandIndex2
+      parentName: fenul_Ctrl_LeftHandIndex1
+      position: {x: -0.0032474946, y: -0.000000009536743, z: -0.00008427672}
+      rotation: {x: -1.323489e-23, y: 6.938894e-18, z: -4.1731262e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandIndex3
+      parentName: fenul_Ctrl_LeftHandIndex2
+      position: {x: -0.0022772169, y: -0.000000009536743, z: 0.00008315421}
+      rotation: {x: -9.659946e-39, y: -6.938894e-18, z: -1.392145e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandIndex4
+      parentName: fenul_Ctrl_LeftHandIndex3
+      position: {x: -0.0012231445, y: -0.000000009536743, z: 0.00004263684}
+      rotation: {x: 1.2239041e-16, y: -1.0408341e-17, z: -4.264977e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandMiddle1
+      parentName: fenul_Ctrl_LeftHand
+      position: {x: -0.007978678, y: 0.00064250943, z: 0.00055944716}
+      rotation: {x: -1.2246163e-16, y: 4.3368087e-19, z: 4.320679e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandMiddle2
+      parentName: fenul_Ctrl_LeftHandMiddle1
+      position: {x: -0.0036591338, y: -8.881784e-18, z: 0.00002582088}
+      rotation: {x: -8.9193805e-36, y: -5.2041704e-18, z: -1.713891e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandMiddle3
+      parentName: fenul_Ctrl_LeftHandMiddle2
+      position: {x: -0.0022397088, y: 0, z: -0.00006268937}
+      rotation: {x: -1.2246469e-16, y: -6.7762636e-21, z: 3.7741323e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandMiddle4
+      parentName: fenul_Ctrl_LeftHandMiddle3
+      position: {x: -0.0012535237, y: 0, z: 0.00000007726252}
+      rotation: {x: 6.123234e-17, y: -9.958397e-17, z: 6.1228564e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandPinky1
+      parentName: fenul_Ctrl_LeftHand
+      position: {x: -0.007894287, y: 0.00013381004, z: -0.0027309156}
+      rotation: {x: 9.926167e-24, y: 4.3368087e-19, z: 2.290308e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandPinky2
+      parentName: fenul_Ctrl_LeftHandPinky1
+      position: {x: -0.0034752893, y: 0.000000028610229, z: 0.000015523136}
+      rotation: {x: 2.646978e-23, y: 1.0408341e-17, z: 9.429859e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandPinky3
+      parentName: fenul_Ctrl_LeftHandPinky2
+      position: {x: -0.0019620943, y: 0.000000014305114, z: -0.00008939087}
+      rotation: {x: -8.077936e-28, y: -1.0587912e-22, z: -5.3382796e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandPinky4
+      parentName: fenul_Ctrl_LeftHandPinky3
+      position: {x: -0.0010416365, y: 0.000000014305114, z: 5.9604643e-10}
+      rotation: {x: 3.9293625e-12, y: -1.2656234e-16, z: -1.6306268e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandRing1
+      parentName: fenul_Ctrl_LeftHand
+      position: {x: -0.008111281, y: 0.00056690216, z: -0.0010955662}
+      rotation: {x: 1.2325952e-32, y: -0, z: -9.528586e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandRing2
+      parentName: fenul_Ctrl_LeftHandRing1
+      position: {x: -0.0032476997, y: 0, z: -0.000050538627}
+      rotation: {x: -8.6945615e-36, y: -3.469447e-18, z: -2.5060367e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandRing3
+      parentName: fenul_Ctrl_LeftHandRing2
+      position: {x: -0.0021604537, y: 0, z: -0.00008842021}
+      rotation: {x: -1.2325952e-32, y: -5.293956e-23, z: -2.2771123e-23, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandRing4
+      parentName: fenul_Ctrl_LeftHandRing3
+      position: {x: -0.0012020922, y: -8.881784e-18, z: -4.4703483e-10}
+      rotation: {x: 6.123234e-17, y: 1.2246466e-16, z: 6.123236e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandThumb1
+      parentName: fenul_Ctrl_LeftHand
+      position: {x: -0.0033361102, y: -0.00049906253, z: 0.0031612213}
+      rotation: {x: -4.6837534e-17, y: -7.318365e-18, z: 7.2858386e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandThumb2
+      parentName: fenul_Ctrl_LeftHandThumb1
+      position: {x: -0.0021594143, y: -0.000091390604, z: 0.0011376402}
+      rotation: {x: -5.5507346e-17, y: 7.1804025e-18, z: 1.6923718e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandThumb3
+      parentName: fenul_Ctrl_LeftHandThumb2
+      position: {x: -0.0020092772, y: -0.000000009536743, z: 0.00005029261}
+      rotation: {x: -8.077936e-28, y: -4.4912863e-22, z: -6.352747e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandThumb4
+      parentName: fenul_Ctrl_LeftHandThumb3
+      position: {x: -0.0016667175, y: 0.0000000047683715, z: -0.000000005066395}
+      rotation: {x: -6.3525694e-22, y: -2.2204463e-16, z: -1.4105539e-37, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_Neck
+      parentName: fenul_Ctrl_Spine2
+      position: {x: -0, y: 0.010240803, z: -1.3877787e-19}
+      rotation: {x: -5.551115e-17, y: 1.1495097e-16, z: 1.6384632e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_Head
+      parentName: fenul_Ctrl_Neck
+      position: {x: -0, y: 0.0081066415, z: 0.0031536855}
+      rotation: {x: 1.9714962e-16, y: -5.551115e-17, z: -5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightShoulder
+      parentName: fenul_Ctrl_Spine2
+      position: {x: 0.004375, y: 0.0062201736, z: -1.3877787e-19}
+      rotation: {x: 0, y: -0, z: -1.7347235e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightArm
+      parentName: fenul_Ctrl_RightShoulder
+      position: {x: 0.0048113842, y: 0.00012807369, z: -1.3877787e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightForeArm
+      parentName: fenul_Ctrl_RightArm
+      position: {x: 0.014482443, y: -8.881784e-18, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHand
+      parentName: fenul_Ctrl_RightForeArm
+      position: {x: 0.01539381, y: 8.881784e-18, z: -1.3877787e-19}
+      rotation: {x: -1.2325952e-32, y: 6.123234e-17, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandIndex1
+      parentName: fenul_Ctrl_RightHand
+      position: {x: 0.008108205, y: 0.00045428274, z: 0.002203158}
+      rotation: {x: 2.1792702e-18, y: -5.2041704e-18, z: -5.625118e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandIndex2
+      parentName: fenul_Ctrl_RightHandIndex1
+      position: {x: 0.0032474946, y: -0.000000009536743, z: -0.00008427672}
+      rotation: {x: 3.9115452e-18, y: -1.3877788e-17, z: 1.4248227e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandIndex3
+      parentName: fenul_Ctrl_RightHandIndex2
+      position: {x: 0.0022772169, y: -0.000000009536743, z: 0.00008315421}
+      rotation: {x: 1.0886094e-17, y: 1.0408341e-17, z: 3.7845498e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandIndex4
+      parentName: fenul_Ctrl_RightHandIndex3
+      position: {x: 0.0012231445, y: -0.000000009536743, z: 0.00004263684}
+      rotation: {x: 5.293956e-23, y: 1.0408341e-17, z: 8.3462524e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandMiddle1
+      parentName: fenul_Ctrl_RightHand
+      position: {x: 0.007978678, y: 0.00064250943, z: 0.00055944716}
+      rotation: {x: -1.2962145e-18, y: -4.3368087e-19, z: 1.2245553e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandMiddle2
+      parentName: fenul_Ctrl_RightHandMiddle1
+      position: {x: 0.0036591338, y: -8.881784e-18, z: 0.00002582088}
+      rotation: {x: -1.71322e-18, y: -1.7347235e-18, z: 4.7952966e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandMiddle3
+      parentName: fenul_Ctrl_RightHandMiddle2
+      position: {x: 0.0022397088, y: 0, z: -0.00006268937}
+      rotation: {x: -1.1322397e-20, y: 6.7762636e-21, z: 1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandMiddle4
+      parentName: fenul_Ctrl_RightHandMiddle3
+      position: {x: 0.0012535237, y: 0, z: 0.00000007726252}
+      rotation: {x: 0, y: 6.7762636e-21, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandPinky1
+      parentName: fenul_Ctrl_RightHand
+      position: {x: 0.007894287, y: 0.00013381004, z: -0.0027309156}
+      rotation: {x: -2.1598116e-18, y: -9.591259e-34, z: 4.440785e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandPinky2
+      parentName: fenul_Ctrl_RightHandPinky1
+      position: {x: 0.0034752893, y: 0.000000028610229, z: 0.000015523136}
+      rotation: {x: 1.8379291e-18, y: -3.469447e-18, z: -2.2212814e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandPinky3
+      parentName: fenul_Ctrl_RightHandPinky2
+      position: {x: 0.0019620943, y: 0.000000014305114, z: -0.00008939087}
+      rotation: {x: 3.929245e-12, y: 5.396177e-17, z: 2.2492443e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandPinky4
+      parentName: fenul_Ctrl_RightHandPinky3
+      position: {x: 0.0010416365, y: 0.000000014305114, z: 5.9604643e-10}
+      rotation: {x: 3.929245e-12, y: 5.396161e-17, z: 2.2509384e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandRing1
+      parentName: fenul_Ctrl_RightHand
+      position: {x: 0.008111281, y: 0.00056690216, z: -0.0010955662}
+      rotation: {x: -9.527432e-19, y: -1.7347235e-18, z: 1.4825981e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandRing2
+      parentName: fenul_Ctrl_RightHandRing1
+      position: {x: 0.0032476997, y: 0, z: -0.000050538627}
+      rotation: {x: -2.5039404e-18, y: -2.5659878e-37, z: 1.02477984e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandRing3
+      parentName: fenul_Ctrl_RightHandRing2
+      position: {x: 0.0021604537, y: 0, z: -0.00008842021}
+      rotation: {x: -2.2771123e-23, y: -0, z: 8.46814e-30, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandRing4
+      parentName: fenul_Ctrl_RightHandRing3
+      position: {x: 0.0012020922, y: -8.881784e-18, z: -4.4703483e-10}
+      rotation: {x: 0, y: 7.940934e-23, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandThumb1
+      parentName: fenul_Ctrl_RightHand
+      position: {x: 0.0033361102, y: -0.00049906253, z: 0.0031612213}
+      rotation: {x: 5.7245875e-17, y: -2.4210235e-16, z: -3.469447e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandThumb2
+      parentName: fenul_Ctrl_RightHandThumb1
+      position: {x: 0.0021594143, y: -0.000091390604, z: 0.0011376402}
+      rotation: {x: -5.553717e-17, y: -2.4151205e-19, z: 3.4516593e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandThumb3
+      parentName: fenul_Ctrl_RightHandThumb2
+      position: {x: 0.0020092772, y: -0.000000009536743, z: 0.00005029261}
+      rotation: {x: -6.3525694e-22, y: 2.2204463e-16, z: 1.4105539e-37, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandThumb4
+      parentName: fenul_Ctrl_RightHandThumb3
+      position: {x: 0.0016667175, y: 0.0000000047683715, z: -0.000000005066395}
+      rotation: {x: 1.6653345e-16, y: 7.503496e-22, z: -1.2495831e-37, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_HipsEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 4.4703483e-10, y: 0.029499253, z: 3.72529e-10}
+      rotation: {x: 1.9714962e-16, y: -5.551115e-17, z: -5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftAnkleEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.0041099037, y: 0.0012118291, z: 0.000000015050173}
+      rotation: {x: 4.4043172e-16, y: -1.7416744e-16, z: -2.296473e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftElbowEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.023668833, y: 0.06632897, z: -0.0011329007}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftFootEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.004109909, y: 0.0008238805, z: 0.00443449}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandIndexEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.053918723, y: 0.066783234, z: 0.0011117755}
+      rotation: {x: 1.2239041e-16, y: -1.0408341e-17, z: -4.264977e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandMiddleEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.054193705, y: 0.06697149, z: -0.00061024213}
+      rotation: {x: 6.123234e-17, y: -9.958397e-17, z: 6.1228564e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandPinkyEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.053435974, y: 0.06646285, z: -0.003937684}
+      rotation: {x: 3.9293625e-12, y: -1.2656234e-16, z: -1.6306268e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandRingEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.05378419, y: 0.06689588, z: -0.0023674257}
+      rotation: {x: 6.123234e-17, y: 1.2246466e-16, z: 6.123236e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHandThumbEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.04823418, y: 0.06573852, z: 0.0032162508}
+      rotation: {x: -6.3525694e-22, y: -2.2204463e-16, z: -1.4105539e-37, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftHipEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.0041099135, y: 0.029499251, z: 7.45058e-10}
+      rotation: {x: -1.9714962e-16, y: -5.551115e-17, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftKneeEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.0041099037, y: 0.013937322, z: 0.000000022798776}
+      rotation: {x: -1.9714962e-16, y: -5.551115e-17, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftShoulderEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.009186388, y: 0.06632897, z: -0.0011329293}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_LeftWristEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: -0.03906266, y: 0.06632898, z: -0.0011328998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightAnkleEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.0041099126, y: 0.0012118232, z: -0.00000000834465}
+      rotation: {x: 2.183871e-16, y: -1.8524918e-16, z: 2.1715728e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightElbowEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.023668846, y: 0.06632897, z: -0.001132925}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightFootEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.0041099177, y: 0.00082387443, z: 0.0044344673}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandIndexEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.05391872, y: 0.06678323, z: 0.0011117511}
+      rotation: {x: 5.293956e-23, y: 1.0408341e-17, z: 8.3462524e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandMiddleEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.054193705, y: 0.06697148, z: -0.00061026635}
+      rotation: {x: 0, y: 6.7762636e-21, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandPinkyEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.053435966, y: 0.06646284, z: -0.0039377}
+      rotation: {x: 3.929245e-12, y: 5.396161e-17, z: 2.2509384e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandRingEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.053784188, y: 0.06689587, z: -0.0023674418}
+      rotation: {x: 0, y: 7.940934e-23, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHandThumbEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.04823418, y: 0.065738514, z: 0.0032162296}
+      rotation: {x: 1.6653345e-16, y: 7.503496e-22, z: -1.2495831e-37, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightHipEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.0041099144, y: 0.029499253, z: 0}
+      rotation: {x: -1.9714962e-16, y: -5.551115e-17, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightKneeEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.0041099144, y: 0.013937321, z: 0}
+      rotation: {x: -1.9714962e-16, y: -5.551115e-17, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightShoulderEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.009186389, y: 0.066328965, z: -0.0011329254}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Ctrl_RightWristEffector
+      parentName: fenul_Ctrl_Reference
+      position: {x: 0.03906266, y: 0.06632897, z: -0.0011329191}
+      rotation: {x: -1.2325952e-32, y: 6.123234e-17, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Mesh
+      parentName: Fenul(Clone)
+      position: {x: -0, y: 0, z: -0.00042933642}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_BodyMesh
+      parentName: fenul_Mesh
+      position: {x: -0.0000772495, y: 0.048422787, z: -0.0006342278}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.65568, y: 0.65568, z: 0.65568}
+    - name: fenul_Eyes
+      parentName: fenul_Mesh
+      position: {x: -0.004842298, y: 0.08262864, z: 0.010248176}
+      rotation: {x: 0.6671028, y: -0.079414055, z: 0.07676493, w: 0.73673224}
+      scale: {x: 0.62724185, y: 0.7778489, z: 0.35970318}
+    - name: fenul_Hair
+      parentName: fenul_Mesh
+      position: {x: 0.00016462136, y: 0.092588544, z: 0.00091643725}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Nose
+      parentName: fenul_Mesh
+      position: {x: -0.0000772495, y: 0.042753376, z: -0.0039835507}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.581007, y: 0.581007, z: 0.7913938}
+    - name: fenul_Sack
+      parentName: fenul_Mesh
+      position: {x: 0.0040474753, y: 0.042717922, z: 0.0074324636}
+      rotation: {x: 0, y: 0.26484492, z: -0, w: 0.96429104}
+      scale: {x: 0.7288472, y: 0.7288472, z: 0.7288472}
+    - name: fenul_Scarf
+      parentName: fenul_Mesh
+      position: {x: -0.00026519736, y: 0.0457831, z: -0.00070004}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.65568, y: 0.65568, z: 0.65568}
+    - name: fenul_Teeth
+      parentName: fenul_Mesh
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Reference
+      parentName: Fenul(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Hips
+      parentName: fenul_Reference
+      position: {x: 4.4703483e-10, y: 0.033418003, z: 3.72529e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftUpLeg
+      parentName: fenul_Hips
+      position: {x: -0.004109915, y: -0.00391875, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftLeg
+      parentName: fenul_LeftUpLeg
+      position: {x: 0.000000005960464, y: -0.015561911, z: 0.000000008074691}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftFoot
+      parentName: fenul_LeftLeg
+      position: {x: 0.0000000047683715, y: -0.012725489, z: 0.000000006602941}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftToeBase
+      parentName: fenul_LeftFoot
+      position: {x: -0.000000005364418, y: -0.00038794868, z: 0.0044344747}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightUpLeg
+      parentName: fenul_Hips
+      position: {x: 0.0041099144, y: -0.00391875, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightLeg
+      parentName: fenul_RightUpLeg
+      position: {x: -0.0000000011920929, y: -0.015561911, z: -0.0000000047956275}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightFoot
+      parentName: fenul_RightLeg
+      position: {x: -0.0000000011920929, y: -0.012725489, z: -0.0000000039215426}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightToeBase
+      parentName: fenul_RightFoot
+      position: {x: 0.000000005364418, y: -0.00038794868, z: 0.0044344747}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Spine
+      parentName: fenul_Hips
+      position: {x: -0, y: 0.00608109, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Spine1
+      parentName: fenul_Spine
+      position: {x: -0, y: 0.0102408, z: -0.0011329278}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Spine2
+      parentName: fenul_Spine1
+      position: {x: -0, y: 0.010240807, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftShoulder
+      parentName: fenul_Spine2
+      position: {x: -0.0043750005, y: 0.0062201736, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftArm
+      parentName: fenul_LeftShoulder
+      position: {x: -0.0048113847, y: 0.00012807369, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftForeArm
+      parentName: fenul_LeftArm
+      position: {x: -0.014482443, y: -8.881784e-18, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHand
+      parentName: fenul_LeftForeArm
+      position: {x: -0.01539381, y: 1.7763568e-17, z: -2.7755575e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandThumb1
+      parentName: fenul_LeftHand
+      position: {x: -0.0033361102, y: -0.00049906253, z: 0.0031612213}
+      rotation: {x: -0.016326228, y: 0.11029341, z: -0.022129567, w: 0.99351853}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandThumb2
+      parentName: fenul_LeftHandThumb1
+      position: {x: -0.0021594143, y: -0.000091390604, z: 0.0011376402}
+      rotation: {x: 0.00041397198, y: 0.19670425, z: 0.016588679, w: 0.9803225}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandThumb3
+      parentName: fenul_LeftHandThumb2
+      position: {x: -0.0020092772, y: -0.000000009536743, z: 0.00005029261}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandThumb4
+      parentName: fenul_LeftHandThumb3
+      position: {x: -0.0016667175, y: 0.0000000047683715, z: -0.000000005066395}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandIndex1
+      parentName: fenul_LeftHand
+      position: {x: -0.008108205, y: 0.00045428274, z: 0.002203158}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandIndex2
+      parentName: fenul_LeftHandIndex1
+      position: {x: -0.0032474946, y: -0.000000009536743, z: -0.00008427672}
+      rotation: {x: 0, y: -0.000005316577, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandIndex3
+      parentName: fenul_LeftHandIndex2
+      position: {x: -0.002277216, y: -0.000000009536743, z: 0.00008317843}
+      rotation: {x: 0, y: 0.00003721604, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandIndex4
+      parentName: fenul_LeftHandIndex3
+      position: {x: -0.0012231471, y: -0.000000009536743, z: 0.000042558804}
+      rotation: {x: 0, y: -0.000111648114, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandMiddle1
+      parentName: fenul_LeftHand
+      position: {x: -0.007978678, y: 0.00064250943, z: 0.00055944716}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandMiddle2
+      parentName: fenul_LeftHandMiddle1
+      position: {x: -0.0036591338, y: -8.881784e-18, z: 0.00002582088}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandMiddle3
+      parentName: fenul_LeftHandMiddle2
+      position: {x: -0.0022397088, y: 8.881784e-18, z: -0.00006268937}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandMiddle4
+      parentName: fenul_LeftHandMiddle3
+      position: {x: -0.0012535237, y: 0, z: 0.00000007726252}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandRing1
+      parentName: fenul_LeftHand
+      position: {x: -0.008111281, y: 0.00056690216, z: -0.0010955661}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandRing2
+      parentName: fenul_LeftHandRing1
+      position: {x: -0.0032476997, y: 0, z: -0.000050538627}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandRing3
+      parentName: fenul_LeftHandRing2
+      position: {x: -0.0021604537, y: 0, z: -0.00008842021}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandRing4
+      parentName: fenul_LeftHandRing3
+      position: {x: -0.0012020922, y: 0, z: -4.4703483e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandPinky1
+      parentName: fenul_LeftHand
+      position: {x: -0.007894287, y: 0.00013381004, z: -0.0027309156}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandPinky2
+      parentName: fenul_LeftHandPinky1
+      position: {x: -0.0034752893, y: 0.000000028610229, z: 0.000015523136}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandPinky3
+      parentName: fenul_LeftHandPinky2
+      position: {x: -0.0019620943, y: 0.000000014305114, z: -0.00008939087}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_LeftHandPinky4
+      parentName: fenul_LeftHandPinky3
+      position: {x: -0.0010416365, y: 0.000000014305114, z: 5.9604643e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightShoulder
+      parentName: fenul_Spine2
+      position: {x: 0.004375, y: 0.0062201736, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightArm
+      parentName: fenul_RightShoulder
+      position: {x: 0.004811384, y: 0.00012807369, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightForeArm
+      parentName: fenul_RightArm
+      position: {x: 0.014482443, y: -8.881784e-18, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHand
+      parentName: fenul_RightForeArm
+      position: {x: 0.01539381, y: 1.7763568e-17, z: -1.3877787e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandThumb1
+      parentName: fenul_RightHand
+      position: {x: 0.0033361102, y: -0.00049906253, z: 0.0031612213}
+      rotation: {x: -0.016326228, y: -0.11029341, z: 0.022129567, w: 0.99351853}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandThumb2
+      parentName: fenul_RightHandThumb1
+      position: {x: 0.0021594143, y: -0.000091390604, z: 0.0011376402}
+      rotation: {x: 0.00041397198, y: -0.19670425, z: -0.016588679, w: 0.9803225}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandThumb3
+      parentName: fenul_RightHandThumb2
+      position: {x: 0.0020092772, y: -0.000000009536743, z: 0.00005029261}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandThumb4
+      parentName: fenul_RightHandThumb3
+      position: {x: 0.0016667175, y: 0.0000000047683715, z: -0.000000005066395}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandIndex1
+      parentName: fenul_RightHand
+      position: {x: 0.008108205, y: 0.00045428274, z: 0.002203158}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandIndex2
+      parentName: fenul_RightHandIndex1
+      position: {x: 0.0032474946, y: -0.000000009536743, z: -0.00008427672}
+      rotation: {x: 0, y: -0.0000053167487, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandIndex3
+      parentName: fenul_RightHandIndex2
+      position: {x: 0.0022772178, y: -0.000000009536743, z: 0.00008313}
+      rotation: {x: 0, y: 0.00003721724, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandIndex4
+      parentName: fenul_RightHandIndex3
+      position: {x: 0.0012231418, y: -0.000000009536743, z: 0.000042714877}
+      rotation: {x: 0, y: -0.00011165172, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandMiddle1
+      parentName: fenul_RightHand
+      position: {x: 0.007978678, y: 0.00064250943, z: 0.00055944716}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandMiddle2
+      parentName: fenul_RightHandMiddle1
+      position: {x: 0.0036591338, y: -8.881784e-18, z: 0.00002582088}
+      rotation: {x: 0, y: -0.0000053167487, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandMiddle3
+      parentName: fenul_RightHandMiddle2
+      position: {x: 0.0022397083, y: 8.881784e-18, z: -0.00006271318}
+      rotation: {x: 0, y: 0.00003721724, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandMiddle4
+      parentName: fenul_RightHandMiddle3
+      position: {x: 0.0012535237, y: -8.881784e-18, z: 0.00000015723857}
+      rotation: {x: 0, y: -0.00011165172, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandRing1
+      parentName: fenul_RightHand
+      position: {x: 0.008111281, y: 0.00056690216, z: -0.0010955661}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandRing2
+      parentName: fenul_RightHandRing1
+      position: {x: 0.0032476997, y: 0, z: -0.000050538627}
+      rotation: {x: 0, y: -0.0000053167487, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandRing3
+      parentName: fenul_RightHandRing2
+      position: {x: 0.0021604528, y: 0, z: -0.00008844319}
+      rotation: {x: 0, y: 0.00003721724, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandRing4
+      parentName: fenul_RightHandRing3
+      position: {x: 0.0012020922, y: 0, z: 0.00000007624763}
+      rotation: {x: 0, y: -0.00011165172, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandPinky1
+      parentName: fenul_RightHand
+      position: {x: 0.007894287, y: 0.00013381004, z: -0.0027309156}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandPinky2
+      parentName: fenul_RightHandPinky1
+      position: {x: 0.0034752893, y: 0.000000028610229, z: 0.000015523136}
+      rotation: {x: 0, y: -0.0000053167487, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandPinky3
+      parentName: fenul_RightHandPinky2
+      position: {x: 0.0019620934, y: 0.000000014305114, z: -0.00008941173}
+      rotation: {x: 0, y: 0.00003721724, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_RightHandPinky4
+      parentName: fenul_RightHandPinky3
+      position: {x: 0.0010416365, y: 0.000000014305114, z: 0.00000006705348}
+      rotation: {x: 0, y: -0.00011165172, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Neck
+      parentName: fenul_Spine2
+      position: {x: -0, y: 0.010240803, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fenul_Head
+      parentName: fenul_Neck
+      position: {x: -0, y: 0.0081066415, z: 0.0031536855}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

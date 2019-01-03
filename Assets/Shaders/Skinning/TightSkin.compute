@@ -31,10 +31,10 @@ struct Bone{
 };
 
 int _VertBuffer_COUNT;
-int _BoneBuffer_COUNT;
+int _SkeletonBuffer_COUNT;
 
 RWStructuredBuffer<Vert> _VertBuffer;
-RWStructuredBuffer<Bone> _BoneBuffer;
+RWStructuredBuffer<Bone> _SkeletonBuffer;
 
 #define NR_THREADS 128
 [numthreads(NR_THREADS,1,1)]
@@ -44,10 +44,10 @@ void Skin (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
   Vert vert = _VertBuffer[pID];
 
-  Bone b0 = _BoneBuffer[ int( vert.boneIDs[0])];
-  Bone b1 = _BoneBuffer[ int( vert.boneIDs[1])];
-  Bone b2 = _BoneBuffer[ int( vert.boneIDs[2])];
-  Bone b3 = _BoneBuffer[ int( vert.boneIDs[3])];
+  Bone b0 = _SkeletonBuffer[ int( vert.boneIDs[0])];
+  Bone b1 = _SkeletonBuffer[ int( vert.boneIDs[1])];
+  Bone b2 = _SkeletonBuffer[ int( vert.boneIDs[2])];
+  Bone b3 = _SkeletonBuffer[ int( vert.boneIDs[3])];
 
   //float3 p0 =  mul(  b0.bindPose,float4( vert.bindPos , 1 ) ).xyz;
 
@@ -89,6 +89,14 @@ void Skin (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
          fTan += t1 * vert.boneWeights[1];
          fTan += t2 * vert.boneWeights[2];
          fTan += t3 * vert.boneWeights[3];
+
+/*
+float3 force = 0;
+force += 
+
+vert.vel += force;
+vert.vel *= .8;*/
+vert.vel = vert.pos - fPos;
 
   vert.pos = fPos;
   vert.nor = normalize(fNor);

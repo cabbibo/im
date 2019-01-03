@@ -182,6 +182,10 @@ public class Book : LifeForm {
 
     RaycastHit hit;
    
+
+
+     if(ursulaHovered) ursula.Emit();///.ToggleCloseFar();
+     if(frameHovered && !currentPage.living){ StartPage(); }
 /*
     if( currentPage.living ){
       if(ursulaHovered) EndPage();
@@ -189,8 +193,7 @@ public class Book : LifeForm {
     }else{
       if(frameHovered) StartPage();
       if(ursulaHovered) controls.ToggleCloseFar();
-    }
-*/
+    }*/
 
 
   }

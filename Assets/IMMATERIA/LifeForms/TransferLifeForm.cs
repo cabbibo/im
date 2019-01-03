@@ -19,8 +19,8 @@ public class TransferLifeForm : MeshLifeForm {
 
     cam = Camera.main.transform;
 
-    Cycles.Insert(0,body);
-    Cycles.Insert(1,transfer);
+    Cycles.Insert(Cycles.Count,body);
+    Cycles.Insert(Cycles.Count,transfer);
 
 
   }

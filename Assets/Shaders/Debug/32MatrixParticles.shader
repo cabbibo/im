@@ -31,7 +31,7 @@
 
 
 
-      StructuredBuffer<Vert> _vertBuffer;
+      StructuredBuffer<Vert> _VertBuffer;
 
 
       //uniform float4x4 worldMat;
@@ -72,7 +72,7 @@
         	if( alternate == 5 ){ extra = -l + u; uv = float2(0,1); }
 
 
-        	Vert v = _vertBuffer[base];
+        	Vert v = _VertBuffer[base];
        		o.worldPos = mul(v.transform,float4(0,0,0,1)) + extra * .1;
 	        o.eye = _WorldSpaceCameraPos - o.worldPos;
 

@@ -10,33 +10,22 @@ public class SkinnedLifeForm : MeshLifeForm {
 
 	// Use this for initialization
 	public override void Create(){
-    Lifes.Add(skin);
-    Forms.Add(verts);
-    Forms.Add(triangles);
-    Forms.Add(bones);
+    Cycles.Add(skin);
+    Cycles.Add(verts);
+    Cycles.Add(triangles);
+    Cycles.Add(bones);
 
-    skin._Create();
 
-    verts._Create();
-    triangles._Create();
-    bones._Create();
 
-    skin.BindPrimaryForm("_VertBuffer",verts);
-    skin.BindForm("_BoneBuffer",bones);
 
 	}
 
+  public override void Bind(){
+  
+    skin.BindPrimaryForm("_VertBuffer",verts);
+    skin.BindForm("_BoneBuffer",bones);
 
-  public override void OnGestate(){
-
-    verts._OnGestate();
-    triangles._OnGestate();
-    bones._OnGestate();
   }
 
-  public override void WhileLiving(float v){
-    skin.Live();
-    ((Bones)bones).UpdateBones();
-  }
 
 }
