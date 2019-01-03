@@ -13,6 +13,7 @@ public class Chapter : Cycle {
   public List<Page> pages;
   
   public float startDist;
+  public float endGestateDist;
   private float distToStart = 10000;
   private float oDistToStart = 10000;
 
@@ -25,7 +26,7 @@ public class Chapter : Cycle {
 
   public int startPage = -1;
 
-  
+  public bool chapterStarted = false;
   public UnityEvent OnActivateEvent;
   public UnityEvent OnDeactivateEvent;
   
@@ -67,8 +68,11 @@ public class Chapter : Cycle {
 
   */
   public void ActivateChapter(){
+
     book.SetChapter( this );
-    book.SetPage( pages[currentPage] );
+
+    pages[currentPage]._OnGestate();
+
     OnActivateEvent.Invoke();
   }
 
@@ -86,7 +90,10 @@ public class Chapter : Cycle {
 
     oDistToStart = distToStart;
     distToStart = (ursula.position - start.position).magnitude;
+    if( book.inChapter == false ){
 
+
+    //print( distToStart );
     if( distToStart < startDist && oDistToStart >= startDist ){
       ActivateChapter();
     }
@@ -94,6 +101,28 @@ public class Chapter : Cycle {
     if( distToStart >= startDist && oDistToStart < startDist ){
       DeactivateChapter();
     }
+
+  }
+
+  if( chapterStarted == false && book.inChapter == true && book.currentChapter == this ){
+
+    print( distToStart );
+    print( pages[currentPage].gestating );
+    if( distToStart > endGestateDist  ){
+      
+      print( "gestadddo" );
+      float val = (startDist-distToStart) / (startDist-endGestateDist);
+      print( val );
+      pages[currentPage]._WhileGestating(val);
+    
+    }
+/*
+    if( distToStart < endGestateDist && pages[currentPage].gestating == true ){
+      print("gesteeezo");
+      pages[currentPage]._OnGestated();
+    }
+*/
+  }
 
   }
 

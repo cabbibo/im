@@ -156,13 +156,12 @@ public void SetGrounded(){
       animator.Play("Grounded");
      }
 
-
        if( animator.GetCurrentAnimatorStateInfo(0).IsName("Falling"))
      {
 
       print("fall1");
 
-      animator.SetTrigger("SleepToAwake");
+      animator.SetTrigger("FallToGrounded");
      }
 
 

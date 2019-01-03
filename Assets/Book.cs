@@ -12,6 +12,9 @@ public class Book : LifeForm {
   public AudioPlayer audio;
   public BookObject book;
 
+  public bool quickTransition;
+  public bool skipChapter;
+
   public AudioClip frameHoverOverClip;
   public AudioClip frameHoverOutClip;
   public AudioClip pageLockedClip;
@@ -58,6 +61,7 @@ public class Book : LifeForm {
   public bool ursulaHovered = false;
   public bool frameHovered = false;
   public bool bookHovered = false;
+  public bool inChapter = false;
 
 
 
@@ -69,23 +73,24 @@ public class Book : LifeForm {
     foreach( Chapter c in chapters){
       Cycles.Add(c);
     }
-    chapters[startChapter].ActivateChapter();
 	}
 	
 
   public void SetChapter( Chapter chapter ){
+    inChapter= true;
     lastChapter = currentChapter;
-    lastPage = currentPage;
+    currentChapter = chapter;
+    SetPage( chapter.pages[chapter.currentPage] );
   }
   public void SetPage(Page page){
     lastPage = currentPage;
     currentPage = page;
+    page._OnGestate();
   }
 
   public override void OnBirthed(){
-    currentPage._OnGestate();
-    LivePage(currentPage);
-    gestateTime = Time.time;
+
+    chapters[startChapter].ActivateChapter();
     StartPage();
   }
 
@@ -161,12 +166,23 @@ public class Book : LifeForm {
 
 
 
+  public void OnSwipe( float v ){
+
+    print( v );
+    if( v < 0 ){
+      if( currentPage.living ){
+        EndPage();
+      }else{
+        StartPage();
+      }
+    }
+  }
 
   public void CheckRay( Ray ray ){
 
     RaycastHit hit;
    
-
+/*
     if( currentPage.living ){
       if(ursulaHovered) EndPage();
       if(bookHovered) EndPage();
@@ -174,6 +190,8 @@ public class Book : LifeForm {
       if(frameHovered) StartPage();
       if(ursulaHovered) controls.ToggleCloseFar();
     }
+*/
+
 
   }
 
@@ -190,10 +208,23 @@ public void StartPage(){
 
   Page p = currentPage;
 
+  // Make sure that its been gestated
+  // TODO PROBLEMS
+  if( p.gestated == false ){
+    p._OnGestated();
+  }
+
+  if( currentChapter.chapterStarted == false ){ currentChapter.chapterStarted = true; }
+
 // TODO this is hacky af
   if( p.grounded ){
     ursula.SetGrounded();
     animationState = 5;
+  }
+  
+  if( quickTransition ){
+    p.birthSpeed = p.birthSpeed / 20;
+    p.lockSpeed = p.lockSpeed * 20;
   }
 
 
@@ -245,18 +276,28 @@ public void EndPage(){
 
   if ( currentPage.nextPage != null ){
 
+    inChapter = true;
+
     print( "hasNExtPAge");
-    SetPage( currentPage.nextPage );
+    if( skipChapter ){
+
+      SetPage( currentChapter.pages[currentChapter.pages.Count-1] );
+    }else{
+
+      SetPage( currentPage.nextPage );
+    }
+
     currentPage._OnGestate();
     StartPage();
 
   }else{
 
     print( "No More Pages" );
+    inChapter = false;
     controls.enabled = true;
     controls.SetAfterPage();
 
-  ursula.Unlock();
+    ursula.Unlock();
   
 
   }
