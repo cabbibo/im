@@ -170,10 +170,13 @@ public class Book : LifeForm {
 
     print( v );
     if( v < 0 ){
+      if( !currentPage.birthing ){
       if( currentPage.living ){
         EndPage();
       }else{
-        StartPage();
+        //StartPage();
+      }
+
       }
     }
   }

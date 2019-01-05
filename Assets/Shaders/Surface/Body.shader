@@ -166,40 +166,78 @@ Shader "Final/BodyPost"
 			ENDCG
 		}
 
-		// Shadow pass
-		Pass
-    	{
-            Tags 
-			{
-				"LightMode" = "ShadowCaster"
-			}
 
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #pragma multi_compile_shadowcaster
-            #include "UnityCG.cginc"
+   // SHADOW PASS
 
-            struct v2f { 
-                V2F_SHADOW_CASTER;
-            };
+    Pass
+    {
+      Tags{ "LightMode" = "ShadowCaster" }
 
-            v2f vert(appdata_base v)
-            {
-                v2f o;
-                TRANSFER_SHADOW_CASTER_NORMALOFFSET(o)
-                return o;
-            }
 
-            float4 frag(v2f i) : SV_Target
-            {
-                SHADOW_CASTER_FRAGMENT(i)
-            }
-            ENDCG
-    	}
+      Fog{ Mode Off }
+      ZWrite On
+      ZTest LEqual
+      Cull Off
+      Offset 1, 1
+      CGPROGRAM
 
+      #pragma target 4.5
+      #pragma vertex vert
+      #pragma fragment frag
+      #pragma multi_compile_shadowcaster
+      #pragma fragmentoption ARB_precision_hint_fastest
+
+  #include "UnityCG.cginc"
+struct Vert{
+
+      float3 pos;
+      float3 vel;
+      float3 nor;
+      float3 tang;
+      float2 uv;
+    
+      float used;
+    
+     
+      float3 targetPos;
+      float3 bindPos;
+      float3 bindNor;
+      float3 bindTan;
+
+      float4 boneWeights;
+      float4 boneIDs;
+
+      float debug;
+
+    };
+
+
+    	StructuredBuffer<Vert> _TransferBuffer;
+
+
+sampler2D _MainTex;
+  struct v2f {
+        V2F_SHADOW_CASTER;
+        float2 uv : TEXCOORD1;
+      };
+
+
+      v2f vert(appdata_base v, uint id : SV_VertexID)
+      {
+        v2f o;
+        o.pos = mul(UNITY_MATRIX_VP, float4(_TransferBuffer[id].pos, 1));
+        return o;
+      }
+
+      float4 frag(v2f i) : COLOR
+      {
+        SHADOW_CASTER_FRAGMENT(i)
+      }
+      ENDCG
+    }
+  
 		// Outline pass
-		/*Pass
+		Pass
 		{
 			// Won't draw where it sees ref value 4
 			Cull OFF
@@ -235,18 +273,45 @@ Shader "Final/BodyPost"
 				float4 color : COLOR;
 			};
 
-			vertexOutput vert(vertexInput input)
-			{
+struct Vert{
+
+      float3 pos;
+      float3 vel;
+      float3 nor;
+      float3 tang;
+      float2 uv;
+    
+      float used;
+    
+     
+      float3 targetPos;
+      float3 bindPos;
+      float3 bindNor;
+      float3 bindTan;
+
+      float4 boneWeights;
+      float4 boneIDs;
+
+      float debug;
+
+    };    	
+
+
+    StructuredBuffer<Vert> _TransferBuffer;
+
+
+			  vertexOutput vert( uint id : SV_VertexID)
+      {
 				vertexOutput output;
 
-				float4 newPos = input.vertex;
+				float3 newPos = _TransferBuffer[id].pos;
 
 				// normal extrusion technique
-				float3 normal = normalize(input.normal);
+				float3 normal = normalize(_TransferBuffer[id].nor);
 				newPos += float4(normal, 0.0) * _OutlineExtrusion;
 
 				// convert to world space
-				output.pos = UnityObjectToClipPos(newPos);
+				output.pos = mul(UNITY_MATRIX_VP, float4(newPos, 1));
 
 				output.color = _OutlineColor;
 				return output;
@@ -266,6 +331,6 @@ Shader "Final/BodyPost"
 			}
 
 			ENDCG
-		}*/
+		}
 	}
 }
