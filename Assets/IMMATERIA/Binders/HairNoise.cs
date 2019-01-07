@@ -24,7 +24,8 @@ public class HairNoise : Cycle {
   public override void Bind () {
 
     foreach( Life l in ToBind ){
-//      print(l);
+      print("binding");
+      print(l);
       l.BindAttribute( "_NoiseSpeed" , "noiseSpeed" , this );
       l.BindAttribute( "_NoiseForce" , "noiseForce" , this );
       l.BindAttribute( "_NoiseSize" , "noiseSize" , this );

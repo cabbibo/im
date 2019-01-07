@@ -13,6 +13,9 @@ public class TerrainEngine : LifeForm {
   public int numTiles;
   public GameObject tilePrefab;
 
+  public int traceSteps;
+  public float traceDist;
+
   public HairNoise hairController;
   public Transform[] planes;
   public Transform[] waters;
@@ -29,13 +32,13 @@ public class TerrainEngine : LifeForm {
 
       if( planes[i] ){
         DestroyImmediate(planes[i].gameObject);
-        Cycles.RemoveAt(2);
+        Cycles.RemoveAt(0);
       }
     }
 
 
     // removes our hair noise
-    Cycles.RemoveAt(2);
+    //Cycles.RemoveAt(0);
 
     hairController.ToBind.Clear();
   }
@@ -82,7 +85,7 @@ public class TerrainEngine : LifeForm {
       }
     }
 
-    Cycles.Insert( Cycles.Count , hairController );
+    // /Cycles.Insert( Cycles.Count , hairController );
   }
 
 	// Use this for initialization
@@ -146,9 +149,9 @@ public class TerrainEngine : LifeForm {
 
   public Vector3 Trace( Vector3 ro , Vector3 rd ){
 
-    for( int i = 0; i < 100; i++ ){
+    for( int i = 0; i < traceSteps; i++ ){
 
-      Vector3 pos = ro +rd * i *.4f;
+      Vector3 pos = ro +rd * i *traceDist;
       float h = SampleHeight( pos );
 
       if( pos.y < h ){

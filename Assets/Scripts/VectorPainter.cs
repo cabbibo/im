@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class VectorPainter : LifeForm {
 
 
+  public bool painting;
   public PaintVectors vectors;
   public PaintVectorIndexForm indices;
   public Life life;
@@ -27,6 +28,11 @@ public class VectorPainter : LifeForm {
 
     Cycles.Insert(0,body);
     Cycles.Insert(1,life);
+  }
+
+  public override void Destroy(){
+    Cycles.Remove(body);
+    Cycles.Remove(life);
   }
 
   public override void Bind(){

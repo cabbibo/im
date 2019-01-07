@@ -26,15 +26,13 @@
       #include "UnityCG.cginc"
 
 
-      #include "../Chunks/StructIfDefs.cginc"
-
-      /*      struct Vert{
+            struct Vert{
           float3 pos;
           float3 nor;
           float3 tan;
           float2 uv;
           float debug;
-        };*/
+        };
 
 
 

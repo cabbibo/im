@@ -1,0 +1,243 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1886568954534850}
+  m_IsPrefabAsset: 1
+--- !u!1 &1886568954534850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4958583259968764}
+  - component: {fileID: 114571165931805496}
+  - component: {fileID: 114675244736890664}
+  - component: {fileID: 114459245454801060}
+  - component: {fileID: 114209678248270994}
+  - component: {fileID: 114375437484858326}
+  m_Layer: 0
+  m_Name: VectorPainter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4958583259968764
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886568954534850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114209678248270994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886568954534850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7095ccd261047543a9622dc1c9e59e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  created: 0
+  begunGestation: 0
+  gestating: 0
+  gestated: 0
+  begunBirth: 0
+  birthing: 0
+  birthed: 0
+  begunLive: 0
+  living: 0
+  lived: 0
+  begunDeath: 0
+  dying: 0
+  died: 0
+  destroyed: 1
+  debug: 0
+  active: 0
+  stifle: 0
+  Cycles: []
+  count: 0
+  intBuffer: 0
+  structSize: 0
+  description: 
+  timeToCreate: 0
+  totalMemory: 0
+  debugMaterial: {fileID: 2100000, guid: 209f76675ebb9434a89b653b9ad059a3, type: 2}
+  toIndex: {fileID: 114459245454801060}
+  width: 0
+--- !u!114 &114375437484858326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886568954534850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521ed2d62d2034941a1197389f9c70d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  created: 0
+  begunGestation: 0
+  gestating: 0
+  gestated: 0
+  begunBirth: 0
+  birthing: 0
+  birthed: 0
+  begunLive: 0
+  living: 0
+  lived: 0
+  begunDeath: 0
+  dying: 0
+  died: 0
+  destroyed: 1
+  debug: 0
+  active: 1
+  stifle: 0
+  Cycles: []
+  primaryName: 
+  primaryForm: {fileID: 0}
+  shader: {fileID: 7200000, guid: 571af2e7745197847ab744128f1a08c2, type: 3}
+  kernelName: Paint
+  kernel: 0
+  executionTime: 0
+--- !u!114 &114459245454801060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886568954534850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087d5343c3a3ed045a80212c070cda4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  created: 0
+  begunGestation: 0
+  gestating: 0
+  gestated: 0
+  begunBirth: 0
+  birthing: 0
+  birthed: 0
+  begunLive: 0
+  living: 0
+  lived: 0
+  begunDeath: 0
+  dying: 0
+  died: 0
+  destroyed: 1
+  debug: 0
+  active: 0
+  stifle: 0
+  Cycles: []
+  count: 0
+  intBuffer: 0
+  structSize: 0
+  description: 
+  timeToCreate: 0
+  totalMemory: 0
+  debugMaterial: {fileID: 2100000, guid: 479c356942d4c4e48a428813938ca62b, type: 2}
+  engine: {fileID: 0}
+  lineDebugMaterial: {fileID: 2100000, guid: 479c356942d4c4e48a428813938ca62b, type: 2}
+  planeDebugMaterial: {fileID: 2100000, guid: 9590e2c7a9b6fd545a91bd663463a9a2, type: 2}
+  width: 0
+--- !u!114 &114571165931805496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886568954534850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee1e1ff00a5aaf4d9a4db53c0aaf4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  created: 0
+  begunGestation: 0
+  gestating: 0
+  gestated: 0
+  begunBirth: 0
+  birthing: 0
+  birthed: 0
+  begunLive: 0
+  living: 0
+  lived: 0
+  begunDeath: 0
+  dying: 0
+  died: 0
+  destroyed: 1
+  debug: 0
+  active: 1
+  stifle: 0
+  Cycles: []
+  auto: 0
+  Lifes: []
+  Forms: []
+  vectors: {fileID: 114459245454801060}
+  indices: {fileID: 114209678248270994}
+  life: {fileID: 114375437484858326}
+  trace: {fileID: 0}
+  body: {fileID: 114675244736890664}
+  touch: {fileID: 0}
+  engine: {fileID: 0}
+  paintPosition: {x: 0, y: 0, z: 0}
+  paintDirection: {x: 0, y: 0, z: 0}
+  paintSize: 0
+  paintOpacity: 0
+  normalOrHeight: 0
+--- !u!114 &114675244736890664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886568954534850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c7fa692e4cc426aa37fba780fcae78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  created: 0
+  begunGestation: 0
+  gestating: 0
+  gestated: 0
+  begunBirth: 0
+  birthing: 0
+  birthed: 0
+  begunLive: 0
+  living: 0
+  lived: 0
+  begunDeath: 0
+  dying: 0
+  died: 0
+  destroyed: 1
+  debug: 0
+  active: 0
+  stifle: 0
+  Cycles: []
+  auto: 0
+  Lifes: []
+  Forms: []
+  verts: {fileID: 114459245454801060}
+  triangles: {fileID: 114209678248270994}
+  render: {fileID: 0}
+  mesh: {fileID: 0}
+  filter: {fileID: 0}
+  self: 0
+  material: {fileID: 0}
+  debugMaterial: {fileID: 0}

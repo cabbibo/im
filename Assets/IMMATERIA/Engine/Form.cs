@@ -69,6 +69,7 @@ public class Form : Cycle {
   public void SetData( int[] values ){ _buffer.SetData( values ); }
 
   public ComputeBuffer MakeBuffer(){
+    if( count == 0){ print( this);}
 
     if( intBuffer == true ){
       return new ComputeBuffer( count, sizeof(int) * structSize );

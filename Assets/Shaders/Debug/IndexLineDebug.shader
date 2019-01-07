@@ -24,11 +24,21 @@
 
 
       
-		  #include "../Chunks/StructIfDefs.cginc"
+		  //#include "../Chunks/StructIfDefs.cginc"
 
 
 		  uniform int _Count;
 		  uniform float3 _Color;
+
+
+
+            struct Vert{
+          float3 pos;
+          float3 nor;
+          float3 tan;
+          float2 uv;
+          float debug;
+        };
 
 
 

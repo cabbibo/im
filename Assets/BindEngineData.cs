@@ -8,6 +8,7 @@ public class BindEngineData : Cycle {
   public Life simulation;
 
   public override void Bind(){
+  print( this); 
     engine.BindData(simulation);
   }
 

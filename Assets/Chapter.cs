@@ -36,7 +36,7 @@ public class Chapter : Cycle {
   // Use this for initialization
   public override void Create () {
 
-    print("hellllooo");
+    //print("hellllooo");
     
     currentPage = startPage;
     
@@ -47,7 +47,7 @@ public class Chapter : Cycle {
       page.subjectTarget.GetComponent<MeshRenderer>().enabled = false;
       id++;
       if( id < pages.Count ){
-        print("Has Next Page");
+//        print("Has Next Page");
         page.nextPage = pages[id];
       }
     }

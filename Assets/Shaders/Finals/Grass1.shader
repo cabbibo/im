@@ -100,7 +100,7 @@ float dif = saturate((_FalloffRadius -  length( v.worldPos - _Player ))/_Falloff
         color *= (tcol+1);
 				if( tcol.a < .8 ){ discard; }
 color *= dif;
-        if( v.debug.y < .3 ){ discard; }
+       // if( v.debug.y < .3 ){ discard; }
         return float4( color.xyz * shadow, 1.);
 			}
 

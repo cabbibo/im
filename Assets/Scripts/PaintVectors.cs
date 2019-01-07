@@ -6,6 +6,7 @@ public class PaintVectors : Form {
 
   public TerrainEngine engine;
   public Material lineDebugMaterial;
+  public Material planeDebugMaterial;
   public int width;
 
   /*
@@ -66,12 +67,18 @@ public class PaintVectors : Form {
     lineDebugMaterial.SetPass(0);
     lineDebugMaterial.SetBuffer("_VertBuffer", _buffer);
     lineDebugMaterial.SetInt("_Count",count);
-    Graphics.DrawProcedural(MeshTopology.Lines, count  * 2 );
+    Graphics.DrawProcedural(MeshTopology.Triangles, count  * 3 );
 
-    debugMaterial.SetPass(0);
+  /*  debugMaterial.SetPass(0);
     debugMaterial.SetBuffer("_VertBuffer", _buffer);
     debugMaterial.SetInt("_Count",count);
-    Graphics.DrawProcedural(MeshTopology.Triangles, count * 3 * 2 );
+    Graphics.DrawProcedural(MeshTopology.Triangles, count * 3 );*/
+
+    planeDebugMaterial.SetPass(0);
+    planeDebugMaterial.SetBuffer("_VertBuffer", _buffer);
+    planeDebugMaterial.SetInt("_Count",count);
+    planeDebugMaterial.SetInt("_Width",width);
+    Graphics.DrawProcedural(MeshTopology.Triangles, (width-1) *(width-1) * 3 * 2 );
 
   }
 
