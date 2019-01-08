@@ -12,6 +12,7 @@ public class RotateXY : MonoBehaviour {
   public TerrainEngine engine;
 
   public float angle;
+  public float addAngle;
 
 
 
@@ -22,9 +23,12 @@ public class RotateXY : MonoBehaviour {
 public bool far;
   public float closeRadius;
   public float closeHeight;
+  public float closeAngle;
+
 
   public float farRadius;
   public float farHeight;
+  public float farAngle;
 
   public float closeFarChangeSpeed;
 
@@ -84,10 +88,13 @@ private float pageEndTime;
     if( far ){
       radius = Mathf.Lerp(radius,farRadius , closeFarChangeSpeed * Time.deltaTime);
       height = Mathf.Lerp(height,farHeight , closeFarChangeSpeed * Time.deltaTime);
+      addAngle = Mathf.Lerp(addAngle,farAngle , closeFarChangeSpeed * Time.deltaTime);
     }else{
 
       radius = Mathf.Lerp(radius,closeRadius , closeFarChangeSpeed  * Time.deltaTime);
       height = Mathf.Lerp(height,closeHeight , closeFarChangeSpeed  * Time.deltaTime);
+      addAngle = Mathf.Lerp(addAngle,closeAngle , closeFarChangeSpeed * Time.deltaTime);
+    
     }
 
 
@@ -109,7 +116,7 @@ private float pageEndTime;
     angle = Mathf.Clamp( angle , -90 , 90 );
 
     // Adds the rotation of the subject to the rotaion of our rig 
-    targetRot = Quaternion.Euler(0, subject.eulerAngles.y + angle + 180 , 0);
+    targetRot = Quaternion.Euler(0, subject.eulerAngles.y + angle + addAngle  , 0);
     
 
 

@@ -1,0 +1,66 @@
+﻿
+#pragma kernel Transfer
+
+struct Vert{
+    float3 pos;
+    float3 vel;
+    float3 nor;
+    float3 tang;
+    float2 uv;
+    float2  debug;
+};
+
+RWStructuredBuffer<Vert> _VertBuffer;
+RWStructuredBuffer<Vert> _SkeletonBuffer;
+
+int _VertBuffer_COUNT;
+int _SkeletonBuffer_COUNT;
+#include "../Chunks/safeID.cginc"
+
+
+float3 _CameraUp;
+float3 _CameraLeft;
+float _Radius;
+
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void Transfer (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+    int pID = threadID + u3GroupID.x * NR_THREADS;
+
+    int particleID = pID / 4;
+    int upID = (particleID + 1) % _SkeletonBuffer_COUNT;
+
+
+    Vert p = _SkeletonBuffer[safeID(particleID,_SkeletonBuffer_COUNT)];
+    Vert pU = _SkeletonBuffer[safeID(upID,_SkeletonBuffer_COUNT)];
+
+    int idInParticle = pID % 4;
+    int row = idInParticle / 2;
+    int col = pID % 2;
+
+    float r = p.debug.y;
+
+    float3 p1 = p.pos - p.nor * r * .03;//1normalize(cross(p.nor,float3(0,1,0)));
+    float3 p2 = p.pos + p.nor * r * .03;
+    float3 p3 = pU.pos - pU.nor * r * .03;
+    float3 p4 = pU.pos + pU.nor * r * .03;
+    
+
+    float3 fPos = p.pos;;
+
+    if( idInParticle == 0 ) fPos = p1; //= p.pos + (l + u);//*  _Radius * saturate(min((1-p.debug.y)*4,p.debug.y));
+    if( idInParticle == 1 ) fPos = p2; //= p.pos + (l + u);//*  _Radius * saturate(min((1-p.debug.y)*4,p.debug.y));
+    if( idInParticle == 2 ) fPos = p3; //= p.pos + (l + u);//*  _Radius * saturate(min((1-p.debug.y)*4,p.debug.y));
+    if( idInParticle == 3 ) fPos = p4; //= p.pos + (l + u);//*  _Radius * saturate(min((1-p.debug.y)*4,p.debug.y));
+
+    float2 fUV = float2( float(row) , float(col) );
+
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].pos = fPos;
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].uv = fUV;
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].nor = p.nor;
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].tang = float3(p.uv,p.debug.x);
+    _VertBuffer[safeID(pID,_VertBuffer_COUNT)].debug = float2(float(particleID), p.debug.y);
+
+}

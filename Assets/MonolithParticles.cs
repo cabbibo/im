@@ -40,8 +40,10 @@ public class MonolithParticles : LifeForm{
   
     simulate.BindAttribute("_RayOrigin", "RayOrigin",touch);
     simulate.BindAttribute("_RayDirection", "RayDirection",touch);
-    simulate.BindAttribute("_Emitting", "emitting",this);
+    simulate.BindAttribute("_Emit", "emitting",this);
     simulate.BindAttribute("_EmitterPosition", "emitterPos",this);
+
+    transfer.transfer.BindAttribute("_Radius","radius",this);
 
     engine.BindData(simulate);
 

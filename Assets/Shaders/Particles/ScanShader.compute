@@ -1,0 +1,88 @@
+﻿#pragma kernel Scan
+
+
+struct Vert{
+  float3 pos;
+  float3 vel;
+  float3 nor;
+  float3 ogPos;
+  float2 uv;
+  float2 debug;
+};
+
+
+
+RWStructuredBuffer<Vert> _VertBuffer;
+Texture2D<float4> _HeightMap;
+SamplerState sampler_HeightMap;
+float _MapSize;
+float _MapHeight;
+
+
+float _Emit;
+float _ScanTime;
+float3 _ScanPosition;
+
+float3 worldPos( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    pos.y = max(pos.y, c.x * _MapHeight + 1 + c.a*2);
+    return pos;
+}
+
+
+float3 directionVector( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    return 2*float3(c.g,.5,c.b)-1;
+}
+
+int _VertBuffer_COUNT;
+int _SkeletonBuffer_COUNT;
+
+#include "../Chunks/safeID.cginc"
+#include "../Chunks/snoise.cginc"
+#include "../Chunks/hash.cginc"
+#include "../Chunks/curlNoise.cginc"
+
+
+
+
+float4 sample( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    c.x = c.x * _MapHeight;// + 1 + c.a*2);
+    return c;
+}
+
+
+
+#define NR_THREADS 128
+[numthreads(NR_THREADS,1,1)]
+void Scan(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
+
+  int pID = threadID + u3GroupID.x * NR_THREADS;
+
+  pID = safeID(pID,_VertBuffer_COUNT);
+  Vert vert = _VertBuffer[pID];
+
+  float angle = (float(pID) / float(_VertBuffer_COUNT) ) * 6.28;
+
+  float x = sin(angle);
+  float y = -cos(angle);
+  float3 dir = x * float3(1,0,0) + y * float3(0,0,1);
+
+
+  float3 fPos = dir  * _ScanTime * _ScanTime * 5 + _ScanPosition;// + _ScanPosition;
+
+
+    float4 data = sample(fPos);
+
+    float height = data.x;
+    float2 direction = (data.yz *2- 1);
+    float grass = data.w;
+
+vert.pos = float3(fPos.x , data.x + grass * 2 + 1,fPos.z);
+vert.nor = normalize(dir);
+vert.debug.y = _ScanTime * _ScanTime * 5;
+vert.debug.x = _ScanTime;
+  _VertBuffer[pID] = vert;
+
+}

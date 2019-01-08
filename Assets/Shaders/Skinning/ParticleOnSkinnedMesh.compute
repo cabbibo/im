@@ -44,10 +44,23 @@ float _Emit;
 float _EmissionRate;
 
 #include "../Chunks/snoise.cginc"
+#include "../Chunks/hash.cginc"
 #include "../Chunks/curlNoise.cginc"
 
 RWStructuredBuffer<Vert> _VertBuffer;
 RWStructuredBuffer<SkinnedVert> _SkinnedBuffer;
+
+
+Texture2D<float4> _HeightMap;
+SamplerState sampler_HeightMap;
+float _MapSize;
+float _MapHeight;
+float4 sample( float3 pos ){
+    float4 c = _HeightMap.SampleLevel(sampler_HeightMap, pos.xz * _MapSize , 1);//tex2Dlod(_HeightMap , float4(pos.xz * _MapSize,0,0) );
+    c.x = c.x * _MapHeight;// + 1 + c.a*2);
+    return c;
+}
+
 
 #define NR_THREADS 128
 [numthreads(NR_THREADS,1,1)]
@@ -107,11 +120,30 @@ if( vert.used < 0 ){
   vert.vel = -.2 * fVel;//float3(0,0,0);
   vert.used += 1;
 }else{
+   float4 data = sample(vert.pos);
+
+    float height = data.x;
+    float2 direction = (data.yz *2- 1);
+    float grass = data.w;
+
 
 //force += normalize( fNor ) * .01;
-force += curlNoise( vert.pos ) * .01;
+force += curlNoise( vert.pos ) ;
+force += float3(direction.x,0,direction.y);
+
+
+float h = 3 + 2 * hash(pID*1000);
+    if( vert.pos.y < height + h* .2+ grass * 2){
+      float delta =  vert.pos.y - (height + h + grass * 2);
+      force -= .3 * delta * float3(0,1,0);
+    }else{
+      force -= .1 * float3(0,1,0);
+    }
+
 
 vert.vel += force * .01;
+
+vert.vel *= .9;
 
 vert.pos += vert.vel;
 

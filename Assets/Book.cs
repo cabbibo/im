@@ -188,6 +188,7 @@ public class Book : LifeForm {
 
 
      if(ursulaHovered) ursula.Emit();///.ToggleCloseFar();
+     if(ursulaHovered) controls.ToggleCloseFar();
      if(frameHovered && !currentPage.living){ StartPage(); }
 /*
     if( currentPage.living ){
