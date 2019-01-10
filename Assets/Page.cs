@@ -18,6 +18,7 @@ public class Page : Cycle {
   public Frame frame;
 
   public Page nextPage;
+  public Page previousPage;
 
   public float animationState;
   public Book book;

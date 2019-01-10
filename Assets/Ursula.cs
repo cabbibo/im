@@ -38,6 +38,9 @@ public class Ursula : MonoBehaviour {
   public float forceCutoffRadiusStart;
   public float forceCutoffRadiusEnd;
 
+  public float walkCutoffRadiusStart;
+  public float walkCutoffRadiusEnd;
+
   public float trailLerp;
   public float maxDist;
   
@@ -77,6 +80,9 @@ public class Ursula : MonoBehaviour {
   private Quaternion tmpRot;
 
   public Life bodyParticlesSet;
+
+  public bool bookRaised;
+  public BookLock bookLock;
 
 
 	// Use this for initialization
@@ -192,7 +198,7 @@ public void SetGrounded(){
 
 
       if( moveTarget != null ){
-      MoveToPosition( moveTarget );
+      FreeMoveToPosition( moveTarget );
 }
 
     force += m_Move * moveForce * .1f  * runForce;
@@ -288,7 +294,27 @@ public void SetGrounded(){
     //m_Move = transform.InverseTransformDirection(m_Move);
   }
 
+  public void LookAtBook(){
 
+    if( bookRaised ){
+      LowerBook();
+    }else{
+      RaiseBook();
+    }
+  }
+
+  
+  public void RaiseBook(){
+    bookRaised = true;
+    animator.SetTrigger("RaiseBook");
+    bookLock.LockBook();
+  }
+
+  public void LowerBook(){
+    bookRaised = false;
+    animator.SetTrigger("LowerBook");
+  bookLock.UnlockBook();
+  }
 
 
   public void WASDMove(){
@@ -379,6 +405,41 @@ public void SetGrounded(){
       }
 
   }
+
+
+    public void FreeMoveToPosition( Vector3 p ){
+
+
+      Vector3 dif = p-transform.position;
+
+      float angle = 0;
+
+      bool inside = false;
+
+      if( dif.magnitude > maxDist ){
+        transform.position = transform.position + dif.normalized * maxDist; // = dif.normalized * .03f * lockForce;// m_Move * moveForce;
+      }
+
+      if( dif.magnitude > walkCutoffRadiusStart ){
+        inside = false;
+        force = dif.normalized * .03f * lockForce;// m_Move * moveForce;
+      }else{
+
+        inside = true;
+
+        if( dif.magnitude > walkCutoffRadiusEnd  ){
+          force = dif.normalized * .03f * lockForce  *  (  (dif.magnitude-walkCutoffRadiusEnd)  / (walkCutoffRadiusStart - walkCutoffRadiusEnd)); 
+        }
+
+
+        
+        //angle = Quaternion.Angle( transform.rotation, deltaRot %3.14f );
+        //Todo: Make a way so that we rotate properly!
+
+      }
+
+  }
+
 
 
 public void Emit(){

@@ -8,7 +8,8 @@ public class AudioPlayer : MonoBehaviour {
   public int playID;
   public int numSources;
 
-    public static AudioPlayer Instance { get; private set; }
+
+    public static AudioPlayer instance = null; //{ get; private set; }
     
     public float db;
 
@@ -24,14 +25,18 @@ public class AudioPlayer : MonoBehaviour {
 void Update(){
 //    mixer.SetFloat("Volume",db);
 }
-    void Start () {
 
-        if( Instance == null ){
-            Instance = this;
+
+    void Awake() {
+
+        if( instance == null ){
+            instance = this;
             //DontDestroyOnLoad(gameObject);
-        }else{
-            //Destroy( gameObject);
+        }else if( instance != this ){
+            Destroy( gameObject);
         }
+
+        DontDestroyOnLoad( gameObject );
 
         sources = new AudioSource[numSources];
         objects = new GameObject[numSources];

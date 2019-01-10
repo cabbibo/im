@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ENGINE
   - togglePainting
+  - Audio
   layers:
   - Default
   - TransparentFX

@@ -45,11 +45,14 @@ public class Chapter : Cycle {
       page._Create();
       page.frame.borderLine.material = frameMaterial;
       page.subjectTarget.GetComponent<MeshRenderer>().enabled = false;
+      
+      if( id > 0 ){ page.previousPage = pages[id-1]; }
       id++;
       if( id < pages.Count ){
 //        print("Has Next Page");
         page.nextPage = pages[id];
       }
+
     }
 
     

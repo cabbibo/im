@@ -171,12 +171,19 @@ public class Book : LifeForm {
     print( v );
     if( v < 0 ){
       if( !currentPage.birthing ){
-      if( currentPage.living ){
-        EndPage();
-      }else{
-        //StartPage();
+        if( currentPage.living ){
+          NextPage();
+        }else{
+          //StartPage();
+        }
       }
-
+    }else{
+       if( !currentPage.birthing ){
+        if( currentPage.living ){
+          PreviousPage();
+        }else{
+          //StartPage();
+        }
       }
     }
   }
@@ -188,7 +195,7 @@ public class Book : LifeForm {
 
 
      if(ursulaHovered) ursula.Emit();///.ToggleCloseFar();
-     if(ursulaHovered) controls.ToggleCloseFar();
+     if(ursulaHovered) ursula.LookAtBook();//controls.ToggleCloseFar();
      if(frameHovered && !currentPage.living){ StartPage(); }
 /*
     if( currentPage.living ){
@@ -269,7 +276,52 @@ public void LivePage(Page cp){
 
 }
 
-public void EndPage(){
+
+
+public void PreviousPage(){
+  
+  currentPage._OnLived();
+  currentPage._OnDie();
+
+
+  deathTime = Time.time;
+  pageActive = 0;
+
+  ursula.Unlock();
+  
+
+  if ( currentPage.previousPage != null ){
+
+    inChapter = true;
+
+    print( "hasPreviousPAge");
+
+    SetPage( currentPage.previousPage );
+    
+    currentPage._OnGestate();
+    StartPage();
+
+  }else{
+
+    print( "No More Pages" );
+    inChapter = false;
+    controls.enabled = true;
+    controls.SetAfterPage();
+   // currentChapter.ActivateChapter();
+
+    ursula.Unlock();
+  
+
+  }
+
+
+  audio.Play(pageEndClip);
+
+
+}
+
+
+public void NextPage(){
   
   currentPage._OnLived();
   currentPage._OnDie();
