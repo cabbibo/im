@@ -165,10 +165,29 @@ public class TerrainEngine : LifeForm {
 
     return ro + rd * 40;
 
-
-
   }
 
+
+  public Vector3 Trace( Vector3 ro , Vector3 rd , out bool hit ){
+
+    hit = false;
+    for( int i = 0; i < traceSteps; i++ ){
+
+      Vector3 pos = ro +rd * i *traceDist;
+      float h = SampleHeight( pos );
+
+      if( pos.y < h ){
+        hit = true;
+       // print( h);
+        return pos;
+//        break;
+      }
+
+    }
+
+    return ro + rd * 40;
+
+  }
 
   public void BindData(Life life){
 

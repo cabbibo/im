@@ -7,6 +7,10 @@ TagManager:
   - ENGINE
   - togglePainting
   - Audio
+  - Ursula
+  - Book
+  - Frame
+  - Monolith
   layers:
   - Default
   - TransparentFX

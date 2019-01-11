@@ -43,7 +43,7 @@ public class Page : Cycle {
     
     frame.borderLine.enabled = false;
     frame.borderLine.material.SetFloat("_Cutoff" , 1 );
-    collider.enabled = true;
+    //collider.enabled = true;
 //    print("pageCreate");
     DoCreate();
   
@@ -67,6 +67,7 @@ public class Page : Cycle {
   }
 
   public override  void _OnBirth(){
+    print("ON BITRH" + this );
     collider.enabled = false;
     startTime = Time.time;
     DoBirth();

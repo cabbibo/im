@@ -188,6 +188,12 @@ public class Book : LifeForm {
     }
   }
 
+
+  public void CheckStart(){
+    if( !currentPage.living ){ StartPage(); }
+  }
+
+
   public void CheckRay( Ray ray ){
 
     RaycastHit hit;
@@ -281,7 +287,6 @@ public void LivePage(Page cp){
 public void PreviousPage(){
   
   currentPage._OnLived();
-  currentPage._OnDie();
 
 
   deathTime = Time.time;
@@ -292,6 +297,9 @@ public void PreviousPage(){
 
   if ( currentPage.previousPage != null ){
 
+
+    currentPage._OnDie();
+
     inChapter = true;
 
     print( "hasPreviousPAge");
@@ -301,13 +309,16 @@ public void PreviousPage(){
     currentPage._OnGestate();
     StartPage();
 
+
   }else{
 
     print( "No More Pages" );
     inChapter = false;
     controls.enabled = true;
     controls.SetAfterPage();
-   // currentChapter.ActivateChapter();
+    Chapter tmp = currentChapter;
+    currentChapter.DeactivateChapter();
+    tmp.ActivateChapter();
 
     ursula.Unlock();
   

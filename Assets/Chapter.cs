@@ -75,11 +75,16 @@ public class Chapter : Cycle {
     book.SetChapter( this );
 
     pages[currentPage]._OnGestate();
+    pages[currentPage].collider.enabled = true;
 
     OnActivateEvent.Invoke();
   }
 
   public void DeactivateChapter(){
+
+    chapterStarted = false;
+    book.inChapter = false;
+    book.currentChapter = null;
     OnDeactivateEvent.Invoke();
   }	
 
@@ -109,13 +114,13 @@ public class Chapter : Cycle {
 
   if( chapterStarted == false && book.inChapter == true && book.currentChapter == this ){
 
-    print( distToStart );
-    print( pages[currentPage].gestating );
+//    print( distToStart );
+ //   print( pages[currentPage].gestating );
     if( distToStart > endGestateDist  ){
       
-      print( "gestadddo" );
+    //  print( "gestadddo" );
       float val = (startDist-distToStart) / (startDist-endGestateDist);
-      print( val );
+     // print( val );
       pages[currentPage]._WhileGestating(val);
     
     }

@@ -7,20 +7,6 @@ using UnityEditor;
 
 
 
-[System.Serializable]
-public class Vector2Event : UnityEvent<Vector2>{}
-
-[System.Serializable]
-public class Vector3Event : UnityEvent<Vector3>{}
-
-[System.Serializable]
-public class FloatEvent : UnityEvent<float>{}
-
-
-
-[System.Serializable]
-public class RayEvent : UnityEvent<Ray>{}
-
 public class TouchToRay : MonoBehaviour {
 
   public bool sceneView;

@@ -57,7 +57,7 @@ public class SetMesh : LifeForm{
   }
 
   void Update(){
-    sphere.transform.position = position;
+//    sphere.transform.position = position;
   }
 	
 }
