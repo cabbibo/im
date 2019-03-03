@@ -8,7 +8,7 @@ public class WandParticles : LifeForm{
   public Particles particles;
   public Life simulation;
 
-  public Book book;
+  public Story story;
   public Ursula ursula;
 
   public Wand wand;
@@ -43,10 +43,10 @@ public class WandParticles : LifeForm{
 
   public override void WhileLiving(float v){
        
-    frame1 = book.currentPage.frame.bottomLeft;
-    frame2 = book.currentPage.frame.bottomRight;
-    frame3 = book.currentPage.frame.topLeft;
-    frame4 = book.currentPage.frame.topRight;
+    frame1 = story.currentPage.frame.bottomLeft;
+    frame2 = story.currentPage.frame.bottomRight;
+    frame3 = story.currentPage.frame.topLeft;
+    frame4 = story.currentPage.frame.topRight;
     
   }
 
@@ -55,7 +55,7 @@ public class WandParticles : LifeForm{
 
     simulation.BindPrimaryForm("_VertBuffer",particles);
     simulation.BindAttribute("_Down", "Down",touch);
-    simulation.BindAttribute("_CurrentTarget", "currentTargetPosition",book);
+    simulation.BindAttribute("_CurrentTarget", "currentTargetPosition",story);
 
     simulation.BindAttribute( "_WandPos", "position" , wand );
     simulation.BindAttribute( "_UrsulaPos", "position" , ursula );

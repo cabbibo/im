@@ -10,25 +10,26 @@ public class BookObject : MonoBehaviour {
   public MeshRenderer renderer;
 
   public Transform lockObj;
+  public float offsetVal;
 
-  public void Hide(){
-   // renderer.enabled = false;
-
-        transform.parent = lockObj.parent.transform;
-
-    print(lockObj.parent);
-    transform.localPosition = lockObj.localPosition;
-    transform.localRotation = lockObj.localRotation;
-    transform.localScale = lockObj.localScale;
+  public void TransferParent(){
   
+    transform.parent = lockObj.parent.transform;
 
+     transform.localRotation = lockObj.localRotation;
+     transform.localPosition = lockObj.localPosition;
+     // transform.localPosition = -Vector3.forward * (renderer.transform.localScale.x);//lockObj.localPosition;
+ 
   }
 
   public void Show(){
     renderer.enabled = true;
-
-
-
   }
 
+
+  public void Update(){
+
+         transform.localRotation = lockObj.localRotation;
+     transform.localPosition = lockObj.localPosition;
+}
 }

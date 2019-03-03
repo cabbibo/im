@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Chapter : Cycle {
+public class BookChapter : Cycle {
 
   public Material frameMaterial;
 
-  public Ursula ursula;
-  public Story story;
 
-  public bool BookChapter;
+  public BookStory story;
+
+ // public bool BookChapter;
 
   public List<Page> pages;
   
@@ -88,7 +88,7 @@ public class Chapter : Cycle {
     story.inChapter = false;
     story.currentChapter = null;
     OnDeactivateEvent.Invoke();
-  }	
+  } 
 
 
   /*
@@ -96,48 +96,8 @@ public class Chapter : Cycle {
     Need to see if we are close enough to activate or deactivate the page 
 
   */
-	public override void WhileLiving( float v ){
+  public override void WhileLiving( float v ){
 
-    if( !BookChapter ){
-
-      oDistToStart = distToStart;
-      distToStart = (ursula.position - start.position).magnitude;
-      if( story.inChapter == false ){
-
-
-        //print( distToStart );
-        if( distToStart < startDist && oDistToStart >= startDist ){
-          ActivateChapter();
-        }
-
-        if( distToStart >= startDist && oDistToStart < startDist ){
-          DeactivateChapter();
-        }
-
-      }
-
-      if( chapterStarted == false && story.inChapter == true && story.currentChapter == this ){
-
-    //    print( distToStart );
-     //   print( pages[currentPage].gestating );
-        if( distToStart > endGestateDist  ){
-          
-        //  print( "gestadddo" );
-          float val = (startDist-distToStart) / (startDist-endGestateDist);
-         // print( val );
-          pages[currentPage]._WhileGestating(val);
-        
-        }
-    /*
-        if( distToStart < endGestateDist && pages[currentPage].gestating == true ){
-          print("gesteeezo");
-          pages[currentPage]._OnGestated();
-        }
-    */
-      }
-    }else{
-      
-    }
 
 
 

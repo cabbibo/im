@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Page : Cycle {
 
+  public bool restricted;
+
   public float gestateSpeed = 1;
   public float birthSpeed = 1;
   public float deathSpeed = 1;
@@ -21,7 +23,7 @@ public class Page : Cycle {
   public Page previousPage;
 
   public float animationState;
-  public Book book;
+  public Story story;
 
   public Collider collider;
 
@@ -43,6 +45,7 @@ public class Page : Cycle {
     
     frame.borderLine.enabled = false;
     frame.borderLine.material.SetFloat("_Cutoff" , 1 );
+    frame.borderLine.material.SetFloat("_Restricted" , restricted ? 1 : 0 );
     //collider.enabled = true;
 //    print("pageCreate");
     DoCreate();
@@ -63,6 +66,10 @@ public class Page : Cycle {
 
   public override void _WhileGestating(float v){
     frame.borderLine.material.SetFloat("_Cutoff" , 1 - .5f * v );
+
+    print( restricted ? 1 : 0 );
+
+    frame.borderLine.material.SetFloat("_Restricted" , restricted ? 1 : 0 );
     DoGestating(v);
   }
 
@@ -75,9 +82,15 @@ public class Page : Cycle {
   }
 
   public override void _WhileBirthing( float v ){
-    frame.borderLine.material.SetFloat("_Cutoff" , .5f - v *.5f);
+    frame.borderLine.material.SetFloat("_Cutoff" , .5f - v *.5f); 
+    frame.borderLine.material.SetFloat("_Restricted" , restricted ? 1 : 0 );
     DoBirthing(v);
   }
+
+public override void _WhileLiving( float v ){
+    frame.borderLine.material.SetFloat("_Restricted" , restricted ? 1 : 0 );
+}
+
 
   public override void _OnLive(){
     OnLiveEvent.Invoke();

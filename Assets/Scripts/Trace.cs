@@ -5,7 +5,7 @@ using UnityEngine;
 public class Trace : MonoBehaviour {
 
   public TerrainEngine engine;
-  public Book book;
+  public Story book;
   public TouchToRay touch;
   public Transform marker;
   public Vector3 targetPos;

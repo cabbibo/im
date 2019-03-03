@@ -140,7 +140,7 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
     d = v.pos - _UrsulaPos;
     l = length(d);
-    force += .04 * normalize(d) * -saturate(( (3 - l ) /3 ));
+    force += .01 * normalize(d) * -saturate(( (3 - l ) /3 ));
     force += .001*curlNoise( v.pos * .1 + float3(0,_Time* .2,0));
 
 
@@ -148,7 +148,7 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
 
 
 
-    force += .01*(v.pos- fAnchor);
+    force += .005*(v.pos- fAnchor);
 
     if( length( v.pos - fAnchor ) > 5  ){
 
@@ -170,10 +170,10 @@ void Simulation(uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
     v.nor = mul( rot , float4(0,1,0,0)).xyz; ///normalize(v.vel);
 
 
-    v.vel -= force;
+    v.vel -= force * .1;
     v.pos += v.vel;
     
-    v.vel *= .9;
+    v.vel *= .99;
 
     _VertBuffer[sID] = v;
 

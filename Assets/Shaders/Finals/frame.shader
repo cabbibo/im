@@ -47,6 +47,7 @@ Shader "Final/Frame" {
 
       float _Cutoff;
       float _Hovered;
+      float _Restricted;
 
 
       float3 _Player;
@@ -176,7 +177,7 @@ Shader "Final/Frame" {
 					float val = getFogVal(normalize(rd), p * _NoiseSize );	
 
 
-          col += hsv( stepVal * _HueSize * (1 + _Hovered * .5 ) - _HueSize * .5* _Hovered + _BaseHue, 0 , val*val) * fadeVal;
+          col += hsv( stepVal * _HueSize * (1 + _Hovered * .5 ) - _HueSize * .5* _Hovered + _BaseHue, _Restricted , val*val) * fadeVal;
 
 
         }
@@ -190,6 +191,8 @@ Shader "Final/Frame" {
         //discard;
        }
 col /= _NumberSteps;
+
+//if( _Restricted > .5 ){ col = float3(1,0,0);}
 		    fixed4 color;
         //col = float3(1,0,0);
         color = fixed4( col , 1. );

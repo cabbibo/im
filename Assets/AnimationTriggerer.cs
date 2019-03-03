@@ -25,7 +25,7 @@ public class AnimationTriggerer : MonoBehaviour {
 
   public void PickUp(){
 
-    bookObject.Hide();
+    bookObject.TransferParent();
 
     particles.Emit( bookObject.transform.position );
     print("WHOA");

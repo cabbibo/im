@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonolithParticles : LifeForm{
 
-  public Book book;
+  public Story story;
   public TerrainEngine engine;
   public Particles particles;
   public Form transferVerts;
@@ -36,7 +36,7 @@ public class MonolithParticles : LifeForm{
 
 
     simulate.BindPrimaryForm("_VertBuffer",particles);
-    simulate.BindAttribute("_UrsulaPos","position" , book.ursula );
+    simulate.BindAttribute("_UrsulaPos","position" , story.ursula );
   
     simulate.BindAttribute("_RayOrigin", "RayOrigin",touch);
     simulate.BindAttribute("_RayDirection", "RayDirection",touch);
